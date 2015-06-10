@@ -18,9 +18,9 @@ public class Ejecutivo {
 
     //Class constructors.
     public Ejecutivo() {
-        this.alias = "no asignada";
-        this.clave = "no asignada";
-        this.nombreEjecutivo = "no disponible";
+        this.alias = new String();
+        this.clave = new String();
+        this.nombreEjecutivo = new String();
     }
 
     public Ejecutivo(String alias, String clave, String nombreEjecutivo) {

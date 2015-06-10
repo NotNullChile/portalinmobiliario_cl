@@ -88,5 +88,33 @@
         </div>
     </nav>
         <h1>Ingreso a Intranet</h1>
+        Ingrese sus datos
+		<form method="POST" action="" >
+			<table border ="0">
+                            <tbody>
+				<tr>
+                                    <td>
+                                        User
+                                    </td>
+                                    <td>
+					<input type="text" name="txt_user" value="" size="16" maxlength="15">
+                                    </td>
+				</tr>
+				<tr> 
+                                    <td>
+                                        Password
+                                    </td>
+                                    <td >
+					<input type="password" name="txt_password" value="" size="16" maxlength="15">
+                                    </td>
+				</tr>
+				<tr>                             
+                                    <td>
+					<input type="submit" value="Entrar" name="btn_entrar">
+                                    </td>
+				</tr>
+                           </tbody>
+			</table>
+		</form>
     </body>
 </html>

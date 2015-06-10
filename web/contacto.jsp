@@ -88,5 +88,36 @@
         </div>
     </nav>
         <h1>Contacto</h1>
+        Ingresa tus datos en este formulario
+
+    <form method="post">
+        <table border="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" name="txt_nombre_cliente" value="" size="30" placeholder="Nombre de Contacto">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="txt_email" value="" size="30" placeholder="E-Mail">
+                    </td>
+                </tr>
+                    <td>
+                        <input type="text" name="txt_telefono" value="" size="30" placeholder="Telefono">
+                    </td>
+                <tr>
+                    <td>                       
+                        <textarea name="txt_pregunta" value="" cols="31" rows="5" placeholder="Pregunta"></textarea>
+                    </td>
+                </tr>
+                <tr >
+                    <td align="right">
+                        <input type="submit" value="Enviar" name="btn_enviar">
+                    </td>
+                </tr>               
+            </tbody>
+        </table>
+    </form>
     </body>
 </html>

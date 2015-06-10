@@ -36,13 +36,13 @@ public class Propiedad {
     }
     
     public Propiedad() {
-        this.codigoPropiedad = "no asignado";
-        this.tipoPropiedad = "no asignado";
+        this.codigoPropiedad = new String();
+        this.tipoPropiedad = new String();
         this.precioUF = 0.0;
-        this.comuna = "no asignado";
+        this.comuna = new String();
         this.metrosConstruidos = 0.0;
         this.metrosTotal = 0.0;
-        this.descripcion = "no asignado";
+        this.descripcion = new String();
         this.numeroDormitorios =0;
         this.numeroBanios = 0;
     }

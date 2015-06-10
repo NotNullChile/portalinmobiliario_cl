@@ -27,9 +27,9 @@ public class Pregunta {
     }
 
     public Pregunta() {
-        this.nombreCliente = "no asignado";
-        this.pregunta = "no asignado";
-        this.email = "no asignado";
+        this.nombreCliente = new String();
+        this.pregunta = new String();
+        this.email = new String();
         this.telefonoContacto = 0;
     }
 
