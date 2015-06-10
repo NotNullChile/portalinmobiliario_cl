@@ -50,36 +50,34 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand " href="#">
+                    <a class="navbar-brand " href="index.jsp">
                         <div class="logotexto">
-                            PortalInmobili
-                                <i class="fa fa-home"/></i>
-                            rio.cl
+                            PortalInmobili<i class="fa fa-home"/></i>rio.cl
                         </div>
                     </a>
                 </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#">
+                    <li>
+                        <a href="propiedades.jsp">
                             <i class="fa fa-building"></i>
                             &nbsp; Propiedades
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="contacto.jsp">
                             <i class="fa fa-comments"></i>
                             &nbsp; Contacto
                         </a>
                     </li> 
                     <li>
-                        <a href="#">
+                        <a href="ingreso_intranet.jsp">
                             <i class="fa fa-lock"></i>
                             &nbsp; Intranet
                         </a>
                     </li> 
                     <li>
-                        <a href="#">
+                        <a href="about.jsp">
                             <i class="fa fa-code"></i>
                                 &nbsp; by not-null.cl
                         </a>
@@ -108,36 +106,51 @@
     <!--Main table using Bootstrap styles-->
     <div class="container bg-success ">
 	<br>
-	<h3>
+	<h4>
             Últimas propiedades en nuestro portal:
-	</h3>
+        
+        <button type="button" class="btn btn-primary">
+            <span class="badge">7</span> 
+            nuevas en la última semana.
+        </button>
+            </h4>
 	<br>
 	<table class="table table-hover" >
             <thead>
   		<tr class="bg-primary">
-  			<td><i class="fa fa-photo"></i></td>
-  			<td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
-  			<td><i class="fa fa-usd"></i>&nbsp;UF</td>
-  			<td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
-  			<td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
-  			<td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
-  			<td><i class="fa fa-bed"></i>Dorms.</td>
-  			<td><i class="fa fa-tint"></i>Baños</td>
-  			<td><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
+                    <td><i class="fa fa-photo"></i></td>
+                    <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
+                    <td><i class="fa fa-usd"></i>&nbsp;UF</td>
+                    <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
+                    <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
+                    <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
+                    <td><i class="fa fa-bed"></i>Dorms.</td>
+                    <td><i class="fa fa-tint"></i>Baños</td>
+                    <td><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
   		</tr>
             </thead>
             <tbody>
   		<tr>
-  			<td><img src="images/casa.png" class="img-thumbnail"></td>
-  			<td>Casa</td>
-  			<td>1000</td>
-  			<td>Santiago Centro</td>
-  			<td>100</td>
-  			<td>200</td>
-  			<td>3</td>
-  			<td>2</td>
-  			<td>Espaciosa casa en barrio céntrico, estilo clásico. A dos cuadras de metro Santa Ana</td>
-
+                    <td><img src="images/casa.png" class="img-thumbnail"></td>
+                    <td>Casa</td>
+                    <td>1000</td>
+                    <td>Santiago Centro</td>
+                    <td>100</td>
+                    <td>200</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>Espaciosa casa en barrio céntrico, estilo clásico. A dos cuadras de metro Santa Ana</td>
+  		</tr>
+                <tr>
+                    <td><img src="images/depto.jpg" class="img-thumbnail"></td>
+                    <td>Departamento</td>
+                    <td>3500</td>
+                    <td>Providencia</td>
+                    <td>80</td>
+                    <td>80</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>Departamento chico y caro.</td>
   		</tr>
             </tbody>
 	</table>
