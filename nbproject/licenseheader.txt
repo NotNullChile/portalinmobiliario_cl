@@ -1,0 +1,12 @@
+<#if licenseFirst??>${licenseFirst}
+</#if>
+
+${licensePrefix}portalinmobiliario_notNull por notNull Chile
+${licensePrefix}Se distribuye bajo una Licencia Creative Commons
+${licensePrefix}Atribucion-NoComercial-SinDerivar 4.0 Internacional.
+${licensePrefix}Basada en una obra en https://github.com/NotNullChile/portalinmobiliario_cl.
+<#if licenseLast??>
+${licenseLast}
+</#if>
+
+   
