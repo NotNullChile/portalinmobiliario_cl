@@ -18,4 +18,4 @@ Usa:
   * Base de datos mySQL.
   * Bootstrap, CSS y Javascript.
   
-![Early demo - Demo inicial](https://github.com/NotNullChile/portalinmobiliario_cl/web/images/portalinmobiliario.png)
+![Early demo - Demo inicial](https://github.com/NotNullChile/portalinmobiliario_cl/blob/master/web/images/portalinmobiliario.png)
