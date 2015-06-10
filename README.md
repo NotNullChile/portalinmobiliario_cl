@@ -19,7 +19,7 @@ Usa:
   * Bootstrap, CSS y Javascript.
   
 ![Early demo - Demo inicial](https://github.com/NotNullChile/portalinmobiliario_cl/blob/master/web/images/portalinmobiliario.png)
-
+---
 ![Creative Commons](https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png)  
 portalinmobiliario_notNull por notNull Chile se distribuye bajo una Licencia Creative Commons.  
 Atribución-NoComercial-SinDerivar 4.0 Internacional.  
