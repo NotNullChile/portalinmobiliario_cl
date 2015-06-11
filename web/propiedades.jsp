@@ -105,7 +105,7 @@
         </div>
         <div class="col-sm-2">
             <button class="btn btn-success" type="submit" value="Filtrar Resultados" name="btn_comuna">
-            Filtrar Resultados
+                <i class="fa fa-filter"></i> &nbsp; Filtrar Resultados
             </button>
         </div>
 	<br>

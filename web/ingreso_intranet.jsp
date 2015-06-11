@@ -89,7 +89,7 @@
     </nav>
        <!--Formulario de ingreso a intranet corporativa-->      
         <div class="container well">
-            <h2>Ingrese sus credenciales</h2>
+            <h2>Ingrese sus credenciales <a href="intranet.jsp">go!</a></h2>
             <hr>
             <form class="form-horizontal" role="form" method="post">
                 <div class="form-group">

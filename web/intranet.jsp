@@ -59,35 +59,74 @@
                 </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="propiedades.jsp">
-                            <i class="fa fa-building"></i>
-                            &nbsp; Propiedades
+                    <li class="active">
+                        <a href="intranet.jsp">
+                            <i class="fa fa-unlock"></i>
+                            &nbsp; Home Intranet
                         </a>
                     </li>
                     <li>
-                        <a href="contacto.jsp">
-                            <i class="fa fa-comments"></i>
-                            &nbsp; Contacto
+                        <a href="buscar_propiedad.jsp">
+                            <i class="fa fa-cogs"></i>
+                            &nbsp; Administrar Propiedades
                         </a>
-                    </li> 
-                    <li class="active">
+                    </li>
+                    <li>
+                        <a href="preguntas.jsp">
+                            <i class="fa fa-inbox"></i>
+                            &nbsp; Responder Preguntas
+                        </a>
+                    </li>  
+                    <li>
                         <a href="ingreso_intranet.jsp">
                             <i class="fa fa-lock"></i>
-                            &nbsp; Intranet
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="about.jsp">
-                            <i class="fa fa-code"></i>
-                                &nbsp; by not-null.cl
+                                &nbsp; Logout
                         </a>
                     </li> 
                 </ul>
             </div>
         </div>
     </nav>
-        <h1>Hola mundo </h1>
-        
+    
+    <div class="well">
+        <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido administrador</h1>
+        <h3>Seleccione una acción:</h3>
+            
+        <div class="list-group">
+            <a href="buscar_propiedad.jsp" class="list-group-item"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
+            <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
+            <a href="modificar_propiedad.jsp" class="list-group-item"><i class="fa fa-sliders"></i>&nbsp;Modificar propiedades</a>
+            <a href="eliminar_propiedad.jsp" class="list-group-item"><i class="fa fa-trash"></i>&nbsp;Eliminar propiedades</a>
+            <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
+
+        </div>
+    </div>
+        <!--Creative Commons License-->
+    <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2 text-left">
+    	<h6>
+        <small>
+    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+            <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
+    	</a>
+    	<br/>
+    	<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"> portalinmobiliario_notNull
+    	</span>por 
+    	<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
+            notNull Chile
+    	</a> se distribuye bajo una 
+    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative Commons Atribución-NoComercial-SinDerivar 4.0 Internacional
+    	</a>.
+    	<br />
+    	Basada en una obra en 
+    	<a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/portalinmobiliario_cl" rel="dct:source">
+    		https://github.com/NotNullChile/portalinmobiliario_cl
+    	</a>.
+    	</small>
+        </h6>
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
     </body>
 </html>
