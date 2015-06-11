@@ -4,9 +4,17 @@
         <servlet-name>ProcesarValidacionEjecutivo</servlet-name>
         <servlet-class>portalinmobiliario.controller.ProcesarValidacionEjecutivo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CerrarSession</servlet-name>
+        <servlet-class>portalinmobiliario.controller.CerrarSession</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProcesarValidacionEjecutivo</servlet-name>
         <url-pattern>/procesar_validacion_ejecutivo.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSession</servlet-name>
+        <url-pattern>/cerrar_session.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

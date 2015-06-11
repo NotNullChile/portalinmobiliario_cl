@@ -4,6 +4,7 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Ejecutivo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -87,7 +88,11 @@
     </nav>
         <!--body-->
         <div class="well">
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido administrador</h1>
+            <%
+            HttpSession sesion = request.getSession();
+            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");     
+            %>
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getAlias()%></h1>
             <h3>Seleccione una acción:</h3>
             <div  class="row">
                 <!--side menu-->

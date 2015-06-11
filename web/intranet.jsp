@@ -4,6 +4,7 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Ejecutivo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -78,7 +79,7 @@
                         </a>
                     </li>  
                     <li>
-                        <a href="ingreso_intranet.jsp">
+                        <a href="wwa.jsp">
                             <i class="fa fa-lock"></i>
                                 &nbsp; Logout
                         </a>
@@ -89,7 +90,11 @@
     </nav>
     
     <div class="well">
-        <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido administrador</h1>
+        <%
+        HttpSession sesion = request.getSession();
+        Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");     
+        %>
+        <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getAlias()%></h1>
         <h3>Seleccione una acción:</h3>
             
         <div class="list-group">

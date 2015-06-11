@@ -49,7 +49,7 @@ public class EjecutivoDal
         
         try 
         {        
-            String sql = "select alias, clave, nombreEjecutivo  from ejecutivo where alias = '" + ej.getAlias() + "' and clave = '" + ej.getClave() + "';";
+            String sql = "select alias, clave, nombreEjecutivo from ejecutivo where alias = '" + ej.getAlias() + "' and clave = '" + ej.getClave() + "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             return rs.next();
@@ -60,30 +60,5 @@ public class EjecutivoDal
         }
      return false;
     }
-    public void validarPasswordEjecutivo(String password)
-    {
-      try 
-        {       
-            String sql = "select clave from ejecutivo where clave = '" + password + "';";
-          
-        } 
-        catch (Exception e) 
-        {
-            
-        }
-    }
-    public void insertEjecutivo(String alias,String clave, String nombre)
-    {
-        try 
-        {
-            EjecutivoDal();
-            String sql = "insert into ejecutivo values ('11','111','11');"; 
-            state.executeUpdate(sql);
-            
-        } catch (Exception e) 
-        {
-             e.printStackTrace();
-        }
-       
-    }
+   
 }
