@@ -39,7 +39,7 @@ public class ProcesarValidacionEjecutivo extends HttpServlet {
             EjecutivoDal ej = new EjecutivoDal();
             
             
-            String username = request.getParameter("txt_user");
+            String username = request.getParameter("txt_username");
             String password = request.getParameter("txt_password");
             Ejecutivo e = new Ejecutivo();
             e.setAlias(username);
@@ -48,7 +48,7 @@ public class ProcesarValidacionEjecutivo extends HttpServlet {
             ej.EjecutivoDal();
             if (ej.validarUserEjecutivo(e))             
             {               
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("intranet.jsp").forward(request, response);
                 request.getSession().setAttribute("ejecutivo", e);
             }
             else
