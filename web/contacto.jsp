@@ -85,37 +85,94 @@
                 </div>
             </div>
         </nav>
-        <h1>Contacto</h1>
-        <!--Formulario de ingreso de consultas-->
-        Ingresa tus datos en este formulario
-        <form method="post">
-            <table border="0">
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="text" name="txt_nombre_cliente" value="" size="30" placeholder="Nombre de Contacto">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" name="txt_email" value="" size="30" placeholder="E-Mail">
-                        </td>
-                    </tr>
-                        <td>
-                            <input type="text" name="txt_telefono" value="" size="30" placeholder="Telefono">
-                        </td>
-                    <tr>
-                        <td>                       
-                            <textarea name="txt_pregunta" value="" cols="31" rows="5" placeholder="Pregunta"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <input type="submit" value="Enviar" name="btn_enviar">
-                        </td>
-                    </tr>               
-                </tbody>
-            </table>
-        </form>
+        <h1></h1>
+        <!--Formulario de ingreso de consultas-->      
+        <div class="container well">
+            <h2>¿Tienes preguntas? Nuestros ejecutivos te contactarán a la brevedad:</h2>
+            <hr>
+            <form class="form-horizontal" role="form" method="post">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nombre">
+                        <i class="fa fa-user"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text"
+                            name="txt_nombre"
+                            class="form-control"
+                            id="nombre"
+                            name="txt_nombre_contacto" 
+                            placeholder="Nombre de Contacto" />
+                    </div>
+                    <label class="control-label col-sm-2" for="email">
+                        <i class="fa fa-envelope"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="email" 
+                            class="form-control" 
+                            id="email" 
+                            name="txt_nombre" 
+                            placeholder="Escriba su email">
+                    </div>
+                    <label class="control-label col-sm-2" for="phone">
+                        <i class="fa fa-phone"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="tel" 
+                            class="form-control" 
+                            id="phone" 
+                            name="txt_phone" 
+                            placeholder="Escriba su número Telefónico">
+                    </div>
+                    <label class="control-label col-sm-2" for="pregunta">
+                        <i class="fa fa-comment"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <textarea name="txt_pregunta" 
+                            id="pregunta"
+                            value="" 
+                            cols="" 
+                            rows="3" 
+                            
+                            class="form-control">
+                        </textarea>
+                    </div>
+                    <label class="control-label col-sm-2" for="pregunta">
+                        <i class="fa fa-check"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <button type="submit" 
+                                class="btn btn-success" 
+                                name="btn_enviar">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2 text-left">
+    	<h6>
+        <small>
+    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+            <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
+    	</a>
+    	<br/>
+    	<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"> portalinmobiliario_notNull
+    	</span>por 
+    	<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
+            notNull Chile
+    	</a> se distribuye bajo una 
+    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative Commons Atribución-NoComercial-SinDerivar 4.0 Internacional
+    	</a>.
+    	<br />
+    	Basada en una obra en 
+    	<a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/portalinmobiliario_cl" rel="dct:source">
+    		https://github.com/NotNullChile/portalinmobiliario_cl
+    	</a>.
+    	</small>
+        </h6>
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
     </body>
 </html>
