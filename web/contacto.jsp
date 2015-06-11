@@ -124,7 +124,7 @@
                             placeholder="Escriba su número Telefónico">
                     </div>
                     <label class="control-label col-sm-2" for="pregunta">
-                        <i class="fa fa-comment"></i>
+                        <i class="fa fa-edit"></i>
                     </label>
                     <div class="col-sm-10">
                         <textarea name="txt_pregunta" 
@@ -136,7 +136,7 @@
                             class="form-control">
                         </textarea>
                     </div>
-                    <label class="control-label col-sm-2" for="pregunta">
+                    <label class="control-label col-sm-2" for="enviar">
                         <i class="fa fa-check"></i>
                     </label>
                     <div class="col-sm-10">

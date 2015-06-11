@@ -25,8 +25,7 @@
         <link rel="icon" type="image/png" href="images/pi.png">
     </head>
     <body>
-        
-                <style>
+        <style>
             h1 {
                 font-family: Lobster, Monospace;
             }
@@ -47,7 +46,7 @@
             
         </style>
         
-                <!--Bootstrap Navigation Bar-->
+        <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -88,6 +87,95 @@
         </div>
     </nav>
         
-        <h1>listado propiedades</h1>
+    <div class="container bg-success ">
+	<br>
+        <div class="col-sm-5">
+        <h4>    
+        Selecciona la comuna donde buscas casa o departamento:
+        </h4>
+        </div>
+        <div class="col-sm-5">
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>    
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-success" type="submit" value="Filtrar Resultados" name="btn_comuna">
+            Filtrar Resultados
+            </button>
+        </div>
+	<br>
+	<table class="table table-hover" >
+            <thead>
+  		<tr class="bg-primary">
+                    <td><i class="fa fa-photo"></i></td>
+                    <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
+                    <td><i class="fa fa-usd"></i>&nbsp;UF</td>
+                    <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
+                    <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
+                    <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
+                    <td><i class="fa fa-bed"></i>Dorms.</td>
+                    <td><i class="fa fa-tint"></i>Baños</td>
+                    <td><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
+  		</tr>
+            </thead>
+            <tbody>
+  		<tr>
+                    <td><img src="images/casa.png" class="img-thumbnail"></td>
+                    <td>Casa</td>
+                    <td>1000</td>
+                    <td>Santiago Centro</td>
+                    <td>100</td>
+                    <td>200</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>Espaciosa casa en barrio céntrico, estilo clásico. A dos cuadras de metro Santa Ana</td>
+  		</tr>
+                <tr>
+                    <td><img src="images/depto.jpg" class="img-thumbnail"></td>
+                    <td>Departamento</td>
+                    <td>3500</td>
+                    <td>Providencia</td>
+                    <td>80</td>
+                    <td>80</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>Departamento chico y caro.</td>
+  		</tr>
+            </tbody>
+	</table>
+    </div>
+    
+    <!--Creative Commons License-->
+    <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2 text-left">
+    	<h6>
+        <small>
+    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+            <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
+    	</a>
+    	<br/>
+    	<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"> portalinmobiliario_notNull
+    	</span>por 
+    	<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
+            notNull Chile
+    	</a> se distribuye bajo una 
+    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative Commons Atribución-NoComercial-SinDerivar 4.0 Internacional
+    	</a>.
+    	<br />
+    	Basada en una obra en 
+    	<a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/portalinmobiliario_cl" rel="dct:source">
+    		https://github.com/NotNullChile/portalinmobiliario_cl
+    	</a>.
+    	</small>
+        </h6>
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
     </body>
 </html>

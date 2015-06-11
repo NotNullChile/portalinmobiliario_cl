@@ -87,34 +87,69 @@
             </div>
         </div>
     </nav>
-        <h1>Ingreso a Intranet</h1>
-        Ingrese sus datos
-		<form method="POST" action="" >
-			<table border ="0">
-                            <tbody>
-				<tr>
-                                    <td>
-                                        User
-                                    </td>
-                                    <td>
-					<input type="text" name="txt_user" value="" size="16" maxlength="15">
-                                    </td>
-				</tr>
-				<tr> 
-                                    <td>
-                                        Password
-                                    </td>
-                                    <td >
-					<input type="password" name="txt_password" value="" size="16" maxlength="15">
-                                    </td>
-				</tr>
-				<tr>                             
-                                    <td>
-					<input type="submit" value="Entrar" name="btn_entrar">
-                                    </td>
-				</tr>
-                           </tbody>
-			</table>
-		</form>
+       <!--Formulario de ingreso a intranet corporativa-->      
+        <div class="container well">
+            <h2>Ingrese sus credenciales</h2>
+            <hr>
+            <form class="form-horizontal" role="form" method="post">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nombre">
+                        <i class="fa fa-user"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text"
+                            name="txt_username"
+                            class="form-control"
+                            id="nombre"
+                            placeholder="Usuario" />
+                    </div>
+                    <label class="control-label col-sm-2" for="password">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="password" 
+                            class="form-control" 
+                            id="password" 
+                            name="txt_password" 
+                            placeholder="Contraseña">
+                    </div>
+                    <label class="control-label col-sm-2" for="pregunta">
+                        <i class="fa fa-sign-in"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <button type="submit" 
+                                class="btn btn-danger" 
+                                name="btn_enviar">Acceder</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2 text-left">
+    	<h6>
+        <small>
+    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+            <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
+    	</a>
+    	<br/>
+    	<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"> portalinmobiliario_notNull
+    	</span>por 
+    	<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
+            notNull Chile
+    	</a> se distribuye bajo una 
+    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative Commons Atribución-NoComercial-SinDerivar 4.0 Internacional
+    	</a>.
+    	<br />
+    	Basada en una obra en 
+    	<a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/portalinmobiliario_cl" rel="dct:source">
+    		https://github.com/NotNullChile/portalinmobiliario_cl
+    	</a>.
+    	</small>
+        </h6>
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
     </body>
 </html>
