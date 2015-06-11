@@ -89,7 +89,7 @@
     </nav>
         <h1>Ingreso a Intranet</h1>
         Ingrese sus datos
-		<form method="POST" action="" >
+		<form method="POST" action="procesar_validacion_ejecutivo.do" >
 			<table border ="0">
                             <tbody>
 				<tr>

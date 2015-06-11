@@ -55,5 +55,11 @@ public class Ejecutivo {
         this.nombreEjecutivo = nombreEjecutivo;
     }
     
+    
     //Custom methods.
+
+    @Override
+    public String toString() {
+        return "Ejecutivo{" + "alias=" + alias + ", clave=" + clave + ", nombreEjecutivo=" + nombreEjecutivo + '}';
+    }
 }

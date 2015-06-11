@@ -46,6 +46,7 @@ email varchar(50),
 teléfonoContacto int,
 constraint pk_idPregunta primary key (idPregunta)
 );
+/*insersion Comuna */
 INSERT INTO comuna
 VALUES
 (1,'Arica'),
@@ -393,7 +394,8 @@ VALUES
 (343,'Timaukel'),
 (344,'Natales'),
 (345,'Torres del Paine');
-
+/* Fin insersion Comuna */
+insert into ejecutivo values ('rick','rick','Ricardo');
 select * from comuna;
 
 
