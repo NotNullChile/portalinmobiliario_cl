@@ -90,7 +90,7 @@
         <div class="container well">
             <h2>¿Tienes preguntas? Nuestros ejecutivos te contactarán a la brevedad:</h2>
             <hr>
-            <form class="form-horizontal" role="form" method="post">
+            <form class="form-horizontal" role="form" method="post" action = "procesar_pregunta.do">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="nombre">
                         <i class="fa fa-user"></i>
@@ -99,8 +99,7 @@
                         <input type="text"
                             name="txt_nombre"
                             class="form-control"
-                            id="nombre"
-                            name="txt_nombre_contacto" 
+                            id="nombre"                           
                             placeholder="Nombre de Contacto" />
                     </div>
                     <label class="control-label col-sm-2" for="email">
@@ -110,7 +109,7 @@
                         <input type="email" 
                             class="form-control" 
                             id="email" 
-                            name="txt_nombre" 
+                            name="txt_email" 
                             placeholder="Escriba su email">
                     </div>
                     <label class="control-label col-sm-2" for="phone">
