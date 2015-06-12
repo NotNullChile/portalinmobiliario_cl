@@ -1,6 +1,6 @@
 <%-- 
-    Document   : contacto
-    Created on : Jun 10, 2015, 5:01:00 PM
+    Document   : error_user
+    Created on : Jun 10, 2015, 4:34:21 PM
     Author     : urtubia @ notNull
 --%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Contacto</title>
+        <title>Ingreso Intranet</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Bootstrap-->
@@ -25,6 +25,7 @@
         <link rel="icon" type="image/png" href="images/pi.png">
     </head>
     <body>
+        
         <style>
             html {
                 position: relative;
@@ -57,6 +58,7 @@
                 background-color: #000000;
             }
         </style>
+        
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -75,13 +77,13 @@
                                 &nbsp; Propiedades
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="contacto.jsp">
                                 <i class="fa fa-comments"></i>
                                 &nbsp; Contacto
                             </a>
                         </li> 
-                        <li>
+                        <li class="active">
                             <a href="ingreso_intranet.jsp">
                                 <i class="fa fa-lock"></i>
                                 &nbsp; Intranet
@@ -90,70 +92,51 @@
                         <li>
                             <a href="about.jsp">
                                 <i class="fa fa-code"></i>
-                                &nbsp; by not-null.cl
+                                    &nbsp; by not-null.cl
                             </a>
                         </li> 
                     </ul>
                 </div>
             </div>
         </nav>
-        <h1></h1>
-        <!--Formulario de ingreso de consultas-->      
+       <!--Formulario de ingreso a intranet corporativa-->      
         <div class="container well">
-            <h1><i class="fa fa-comments"></i> &nbsp;¿Tienes preguntas? Nuestros ejecutivos te contactarán a la brevedad:</h1>
+            <h1>
+                <i class="fa fa-user-times"></i> 
+                Error:</h1>
             <hr>
-            <form class="form-horizontal" role="form" method="post" action = "procesar_pregunta.do">
+            <div class="alert alert-danger">
+                <strong>Username y/o password incorrecto(s)!</strong> Vuelva a escribir sus credenciales.
+            </div>
+            <form class="form-horizontal" role="form" method="post" action = "procesar_validacion_ejecutivo.do">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="nombre">
+                    <label class="control-label col-sm-2 " for="nombre">
                         <i class="fa fa-user"></i>
                     </label>
                     <div class="col-sm-10">
                         <input type="text"
-                            name="txt_nombre"
+                            name="txt_username"
                             class="form-control"
-                            id="nombre"                           
-                            placeholder="Nombre de Contacto" />
+                            id="nombre"
+                            placeholder="Usuario" />
                     </div>
-                    <label class="control-label col-sm-2" for="email">
-                        <i class="fa fa-envelope"></i>
+                    <label class="control-label col-sm-2" for="password">
+                        <i class="fa fa-ellipsis-h"></i>
                     </label>
                     <div class="col-sm-10">
-                        <input type="email" 
+                        <input type="password" 
                             class="form-control" 
-                            id="email" 
-                            name="txt_email" 
-                            placeholder="Escriba su email">
-                    </div>
-                    <label class="control-label col-sm-2" for="phone">
-                        <i class="fa fa-phone"></i>
-                    </label>
-                    <div class="col-sm-10">
-                        <input type="tel" 
-                            class="form-control" 
-                            id="phone" 
-                            name="txt_phone" 
-                            placeholder="Escriba su número Telefónico">
+                            id="password" 
+                            name="txt_password" 
+                            placeholder="Contraseña">
                     </div>
                     <label class="control-label col-sm-2" for="pregunta">
-                        <i class="fa fa-edit"></i>
-                    </label>
-                    <div class="col-sm-10">
-                        <textarea name="txt_pregunta" 
-                            id="pregunta"
-                            value="" 
-                            cols="" 
-                            rows="3" 
-                            
-                            class="form-control">
-                        </textarea>
-                    </div>
-                    <label class="control-label col-sm-2" for="enviar">
-                        <i class="fa fa-check"></i>
+                        <i class="fa fa-sign-in"></i>
                     </label>
                     <div class="col-sm-10">
                         <button type="submit" 
-                                class="btn btn-success" 
-                                name="btn_enviar">Enviar</button>
+                                class="btn btn-danger" 
+                                name="btn_enviar">Acceder</button>
                     </div>
                 </div>
             </form>

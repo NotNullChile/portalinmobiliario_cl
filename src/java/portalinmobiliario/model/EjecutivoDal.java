@@ -44,21 +44,25 @@ public class EjecutivoDal
     }
     
     
-    public boolean validarUserEjecutivo(Ejecutivo ej)
+    public Ejecutivo validarUserEjecutivo(Ejecutivo ej)
     {
-        
+        Ejecutivo ejecutivo = new Ejecutivo();
         try 
         {        
             String sql = "select alias, clave, nombreEjecutivo from ejecutivo where alias = '" + ej.getAlias() + "' and clave = '" + ej.getClave() + "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            return rs.next();
+            if (rs.first()) {
+                ejecutivo.setAlias(rs.getString("alias"));
+                ejecutivo.setClave(rs.getString("clave"));
+                ejecutivo.setNombreEjecutivo(rs.getString("nombreEjecutivo"));
+            }
         } 
         catch (Exception e) 
         {
           e.printStackTrace();
         }
-     return false;
+     return ejecutivo;
     }
-   
+
 }

@@ -46,15 +46,16 @@ public class ProcesarValidacionEjecutivo extends HttpServlet {
             e.setClave(password);
             e.getNombreEjecutivo();
             ej.EjecutivoDal();
-            if (ej.validarUserEjecutivo(e))             
-            {    
+            e = ej.validarUserEjecutivo(e);
+            if (e.getNombreEjecutivo() != "")             
+            {   
+                
                 request.getSession().setAttribute("ejecutivo", e);
                 request.getRequestDispatcher("intranet.jsp").forward(request, response);
-                
             }
             else
-            {                
-                request.getRequestDispatcher("about.jsp").forward(request, response);
+            {   
+                request.getRequestDispatcher("error_user.jsp").forward(request, response);
             }
            
         }

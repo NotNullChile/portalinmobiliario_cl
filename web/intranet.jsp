@@ -26,8 +26,7 @@
         <link rel="icon" type="image/png" href="images/pi.png">
     </head>
     <body>
-        
-                <style>
+        <style>
             h1 {
                 font-family: Lobster, Monospace;
             }
@@ -48,7 +47,7 @@
             
         </style>
         
-                <!--Bootstrap Navigation Bar-->
+        <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -92,9 +91,10 @@
     <div class="well">
         <%
         HttpSession sesion = request.getSession();
-        Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");     
+        Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");
+        
         %>
-        <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getAlias()%></h1>
+        <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
         <h3>Seleccione una acción:</h3>
             
         <div class="list-group">
