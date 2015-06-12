@@ -40,7 +40,7 @@
                 font-family: Raleway, Monospace;
             }
             body {
-                background-image: url(images/bg.jpg);
+                background-image: url(images/bg7.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -149,7 +149,7 @@
                             <small>
                                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                                 <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
-                                </a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">portalinmobiliario_notNull</span>por 
+                                </a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">portalinmobiliario_notNull</span> por 
                                 <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
                                 notNull Chile</a> se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
                                     Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br /> Basada en una obra en 

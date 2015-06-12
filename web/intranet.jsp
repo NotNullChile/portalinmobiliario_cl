@@ -26,7 +26,11 @@
         <link rel="icon" type="image/png" href="images/pi.png">
     </head>
     <body>
-        <style>
+                <style>
+            html {
+                position: relative;
+                min-height: 100%;
+            }
             h1 {
                 font-family: Lobster, Monospace;
             }
@@ -37,14 +41,22 @@
                 font-family: Raleway, Monospace;
             }
             body {
-                background-image: url(images/bg.jpg);
+                background-image: url(images/bg1.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
                 background-color: #464646;
+                margin-bottom: 60px;
             } 
-            
+            .footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                /* Set the fixed height of the footer here */
+                height: 60px;
+                background-color: #000000;
+            }
         </style>
         
         <!--Bootstrap Navigation Bar-->
@@ -106,32 +118,29 @@
 
         </div>
     </div>
-        <!--Creative Commons License-->
-    <div class="row">
-        <div class="col-sm-5"></div>
-        <div class="col-sm-2 text-left">
-    	<h6>
-        <small>
-    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
-            <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
-    	</a>
-    	<br/>
-    	<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"> portalinmobiliario_notNull
-    	</span>por 
-    	<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
-            notNull Chile
-    	</a> se distribuye bajo una 
-    	<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative Commons Atribución-NoComercial-SinDerivar 4.0 Internacional
-    	</a>.
-    	<br />
-    	Basada en una obra en 
-    	<a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/portalinmobiliario_cl" rel="dct:source">
-    		https://github.com/NotNullChile/portalinmobiliario_cl
-    	</a>.
-    	</small>
-        </h6>
-        </div>
-        <div class="col-sm-5"></div>
-    </div>
+        <footer class="footer">
+            <div class="container">
+                <!--Creative Commons License-->
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8 text-left">
+                        <h6>
+                            <small>
+                                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                                <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
+                                </a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">portalinmobiliario_notNull</span>por 
+                                <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
+                                notNull Chile</a> se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
+                                    Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br /> Basada en una obra en 
+                                <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/portalinmobiliario_cl" rel="dct:source">
+                                https://github.com/NotNullChile/portalinmobiliario_cl</a>.
+                            </small>
+                        </h6>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+                <!--End of creative Commons License-->
+            </div>
+        </footer>
     </body>
 </html>
