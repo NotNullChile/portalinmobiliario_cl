@@ -20,7 +20,7 @@ public class Ejecutivo {
     public Ejecutivo() {
         this.alias = new String();
         this.clave = new String();
-        this.nombreEjecutivo = new String();
+        this.nombreEjecutivo = "";
     }
 
     public Ejecutivo(String alias, String clave, String nombreEjecutivo) {
