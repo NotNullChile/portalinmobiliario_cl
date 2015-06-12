@@ -10,6 +10,7 @@ package portalinmobiliario.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -46,11 +47,11 @@ public class PreguntaDal
             String insert = "insert into preguntas values(null,'"+ p.getNombreCliente() + "','" + p.getPregunta() + "','" + p.getEmail() + "'," + p.getTelefonoContacto() +");";
            return state.executeUpdate(insert);
         }
-        catch (Exception e) 
+        catch (SQLException e) 
         {
-            e.printStackTrace();
+            return e.getErrorCode();
         }
-        return -1;
+        
     }
     public ArrayList<Pregunta> listaPreguntas(){
         return null;

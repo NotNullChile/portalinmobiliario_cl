@@ -39,7 +39,7 @@ constraint fk_propiedad_comuna foreign key (idComuna) references comuna (idComun
 
 create table preguntas
 (
-idPregunta int,
+idPregunta int auto_increment,
 nombreCliente varchar(50),
 pregunta varchar(50),
 email varchar(50),
@@ -407,11 +407,8 @@ insert into propiedad values (4,  7013.64,	100,100,3,2,2,345,'Estupendo Departam
 insert into propiedad values (5,  2444.76,	 90,110,3,1,1,125,'amplio living-comedor, cocina, cercana a supermercados, colegios, farmacia, centros comerciales, centros médicos, áreas verdes, excelente Ubicación.');
 insert into propiedad values (6,  2417	 ,	 39, 82,3,1,2, 81,'Edificio Viña Neoriente ha sido diseñado pensando en ti y en tu familia. Emplazado en el nuevo polo comercial de la ciudad, a pasos de centros comerciales y financieros, colegios y locomoción a la puerta. ');
 /* Fin insersion Propiedad */
-
-
-
-
-
+insert into ejecutivo values ('rick','rick','Ricardo');
+insert into ejecutivo values ('Ricardo','Ricardo','Ricardo');
 
 
 select * from ejecutivo;
@@ -419,7 +416,8 @@ select alias from ejecutivo where alias =  'rick';
 select alias from ejecutivo where alias = 'user ';
 
 select alias from ejecutivo where alias = 'rick';
-insert into ejecutivo values ('rick','rick','Ricardo');
+
 select * from comuna;
-
-
+delete from preguntas;
+insert into preguntas values(null,'waa','waaa','waa',1);
+select * from preguntas;

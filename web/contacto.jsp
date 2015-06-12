@@ -112,7 +112,8 @@
                             name="txt_nombre"
                             class="form-control"
                             id="nombre"                           
-                            placeholder="Nombre de Contacto" />
+                            placeholder="Nombre de Contacto"
+                            required />
                     </div>
                     <label class="control-label col-sm-2" for="email">
                         <i class="fa fa-envelope"></i>
@@ -122,7 +123,8 @@
                             class="form-control" 
                             id="email" 
                             name="txt_email" 
-                            placeholder="Escriba su email">
+                            placeholder="Escriba su email"
+                            required />
                     </div>
                     <label class="control-label col-sm-2" for="phone">
                         <i class="fa fa-phone"></i>
@@ -132,7 +134,8 @@
                             class="form-control" 
                             id="phone" 
                             name="txt_phone" 
-                            placeholder="Escriba su número Telefónico">
+                            placeholder="Escriba su número Telefónico"
+                            required />
                     </div>
                     <label class="control-label col-sm-2" for="pregunta">
                         <i class="fa fa-edit"></i>
@@ -144,7 +147,8 @@
                             cols="" 
                             rows="3" 
                             
-                            class="form-control">
+                            class="form-control"
+                            required />
                         </textarea>
                     </div>
                     <label class="control-label col-sm-2" for="enviar">

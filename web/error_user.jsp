@@ -118,7 +118,9 @@
                             name="txt_username"
                             class="form-control"
                             id="nombre"
-                            placeholder="Usuario" />
+                            placeholder="Usuario"
+                            required
+                            />
                     </div>
                     <label class="control-label col-sm-2" for="password">
                         <i class="fa fa-ellipsis-h"></i>
@@ -128,7 +130,9 @@
                             class="form-control" 
                             id="password" 
                             name="txt_password" 
-                            placeholder="Contraseña">
+                            placeholder="Contraseña"
+                            required
+                            />
                     </div>
                     <label class="control-label col-sm-2" for="pregunta">
                         <i class="fa fa-sign-in"></i>
