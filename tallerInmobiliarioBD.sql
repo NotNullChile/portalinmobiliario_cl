@@ -27,11 +27,11 @@ idPropiedad int,
 precioUf double,
 mtsConstruido double,
 mtsTotal double,
-descripcion varchar(100),
 numeroCormitorios int, 
 numeroBaños int,
 idTipoPropiedad int,
 idComuna int,
+descripcion varchar(255),
 constraint pk_idPropiedad primary key (idPropiedad),
 constraint fk_propiedad_tipoPropiedad foreign key (idTipoPropiedad) references tipoPropiedad (idTipoPropiedad),
 constraint fk_propiedad_comuna foreign key (idComuna) references comuna (idComuna)
@@ -395,6 +395,30 @@ VALUES
 (344,'Natales'),
 (345,'Torres del Paine');
 /* Fin insersion Comuna */
+/* insersion tipoPropiedad */
+insert into tipoPropiedad values (1,'Casa');
+insert into tipoPropiedad values (2,'Departamento');
+/* Fin insersion tipoPropiedad */
+/* insersion Propiedad */
+insert into propiedad values (1, 20000	 ,	200,400,4,3,1,109,'ESTILO CHILENO, LIVING COMEDOR SEPARADOS, CON TERRAZA Y PISCINA, COCINA CON LOGIA GRANDE Y TECHADA, UNO EN SUITE CON SALIDA A LA TERRAZA');
+insert into propiedad values (2, 10000	 ,	187,200,2,1,2,106,'Departamento con Amplio hall de acceso con piso flotante. Living y comedor separados con piso flotante. Dormitorio principal, en suite con walk in closet.');
+insert into propiedad values (3,  8200	 ,	140,277,4,3,1,117,'Buen sector locomoción, universidad y Comercio esta casa posee Jardín armado , terraza cocina ampliada posibilidad de ampliar aun mas.');
+insert into propiedad values (4,  7013.64,	100,100,3,2,2,345,'Estupendo Departamento en venta de 3 dormitorios y 2 baños, condominio con grandes jardines,juegos de niños,piscina.');
+insert into propiedad values (5,  2444.76,	 90,110,3,1,1,125,'amplio living-comedor, cocina, cercana a supermercados, colegios, farmacia, centros comerciales, centros médicos, áreas verdes, excelente Ubicación.');
+insert into propiedad values (6,  2417	 ,	 39, 82,3,1,2, 81,'Edificio Viña Neoriente ha sido diseñado pensando en ti y en tu familia. Emplazado en el nuevo polo comercial de la ciudad, a pasos de centros comerciales y financieros, colegios y locomoción a la puerta. ');
+/* Fin insersion Propiedad */
+
+
+
+
+
+
+
+select * from ejecutivo;
+select alias from ejecutivo where alias =  'rick';
+select alias from ejecutivo where alias = 'user ';
+
+select alias from ejecutivo where alias = 'rick';
 insert into ejecutivo values ('rick','rick','Ricardo');
 select * from comuna;
 
