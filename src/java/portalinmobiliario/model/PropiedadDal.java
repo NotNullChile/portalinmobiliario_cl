@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class PropiedadDal
 {
  private Connection conn;
-    private Statement state;
+ private Statement state;
     
     public void conexion()
     {
@@ -82,5 +82,59 @@ public class PropiedadDal
             return null;
         }
         
+    }
+    public ArrayList<Propiedad> listaPropiedad(int idComuna)
+    {       
+        try 
+        {
+            ArrayList <Propiedad> listaPropiedades = new ArrayList<>();
+            conexion();
+            String sql = "select p.idPropiedad, p.foto, p.precioUf,p.mtsConstruido,"
+                    + " p.mtsTotal,p.numeroCormitorios,p.numeroBaños, "
+                    + "p.tipoPropiedad,c.nombreComuna,p.descripcion "
+                    + "from propiedad p inner join comuna c on p.idComuna = c.idComuna "
+                    + "where c.idComuna = " + idComuna + ";";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Propiedad p = new Propiedad();             
+                p.setFoto(rs.getString(2));
+                p.setPrecioUF(rs.getDouble(3));
+                p.setMetrosConstruidos(rs.getDouble(4));
+                p.setMetrosTotal(rs.getDouble(5));
+                p.setNumeroDormitorios(rs.getInt(6));
+                p.setNumeroBanios(rs.getInt(7));
+                p.setTipoPropiedad(rs.getString(8));
+                p.setComuna(rs.getString(9));
+                p.setDescripcion(rs.getString(10));
+                listaPropiedades.add(p);
+            }
+            return listaPropiedades;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }        
+    }
+    public int countPropiedad()
+    {
+      try
+      {
+            conexion();
+            String sql = "select count(idPropiedad) from propiedad;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            { 
+               return rs.getInt(1);
+            }
+            
+       }
+      catch(SQLException e)
+      {
+          return e.getErrorCode();
+      }
+      return 0;
     }
 }

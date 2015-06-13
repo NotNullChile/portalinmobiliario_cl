@@ -135,4 +135,8 @@ public class Propiedad {
     
     //Custom methods:
     
+    public int precioCPL()
+    {
+        return (int) getPrecioUF() * 22500;
+    }
 }

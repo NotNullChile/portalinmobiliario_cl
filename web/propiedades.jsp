@@ -4,6 +4,11 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Propiedad"%>
+<%@page import="portalinmobiliario.model.Comuna"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="portalinmobiliario.model.ComunaDal"%>
+<%@page import="portalinmobiliario.model.PropiedadDal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -98,28 +103,34 @@
                 </div>
             </div>
         </nav>
-
+ <form action="propiedades.jsp" method="POST">  
         <div class="container bg-success ">
             <br>
             <div class="col-sm-5">
             <h4>    
             Selecciona la comuna donde buscas casa o departamento:
             </h4>
-            </div>
-            <div class="col-sm-5">
-            <select class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>    
-            </div>
+            </div>       
+            <div class="col-sm-5">                    
+            <select name = "dll_comunas" class="form-control">
+                <%
+                ComunaDal comunaDal = new ComunaDal();
+                ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
+                for(Comuna c : listasComunas)
+                {      
+                %>
+                 <option value = "<%=c.getIdComuna()%>"><%=c.getNombreComuna()%></option>
+                 <%
+                }
+                 %>
+            </select>                
+            </div>          
             <div class="col-sm-2">
-                <button class="btn btn-success" type="submit" value="Filtrar Resultados" name="btn_comuna">
+                <button class="btn btn-success" type="submit" value="Filtrar Resultados" name="btn_comuna" >
                     <i class="fa fa-filter"></i> &nbsp; Filtrar Resultados
                 </button>
             </div>
+            </form> 
             <br>
             <table class="table table-hover" >
                 <thead>
@@ -127,6 +138,7 @@
                         <td><i class="fa fa-photo"></i></td>
                         <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
                         <td><i class="fa fa-usd"></i>&nbsp;UF</td>
+                        <td><i class="fa fa-usd"></i>&nbsp;Pesos</td>
                         <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
                         <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
                         <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
@@ -136,28 +148,40 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <%                                   
+                    try
+                    {   
+                        int comuna = 1;  
+                        PropiedadDal propiedadDal = new PropiedadDal();
+                        ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
+                        if(request.getParameter("btn_comuna") != null) 
+                        {                                                 
+                        comuna = Integer.parseInt(request.getParameter("dll_comunas")); 
+                        listaPropiedades = propiedadDal.listaPropiedad(comuna);
+                        }
+                        for(Propiedad p : listaPropiedades)
+                        {                                       
+                    %>
                     <tr>
-                        <td><img src="images/casa.png" class="img-thumbnail"></td>
-                        <td>Casa</td>
-                        <td>1000</td>
-                        <td>Santiago Centro</td>
-                        <td>100</td>
-                        <td>200</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>Espaciosa casa en barrio céntrico, estilo clásico. A dos cuadras de metro Santa Ana</td>
+                        <td><img src="images/<%=p.getFoto()%>" class="img-thumbnail"></td>
+                        <td><%=p.getTipoPropiedad()%></td>
+                        <td><%=p.getPrecioUF()%></td>
+                        <td><%=p.precioCPL()%></td>
+                        <td><%=p.getComuna()%></td>
+                        <td><%=p.getMetrosTotal()%></td>
+                        <td><%=p.getMetrosConstruidos()%></td>
+                        <td><%=p.getNumeroDormitorios()%></td>
+                        <td><%=p.getNumeroBanios()%></td>                      
+                        <td><%=p.getDescripcion()%></td>  
                     </tr>
-                    <tr>
-                        <td><img src="images/depto.jpg" class="img-thumbnail"></td>
-                        <td>Departamento</td>
-                        <td>3500</td>
-                        <td>Providencia</td>
-                        <td>80</td>
-                        <td>80</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>Departamento chico y caro.</td>
-                    </tr>
+                    <%
+                       }                       
+                    }
+                    catch(Exception e)
+                    {
+                              
+                    }
+                    %>
                 </tbody>
             </table>
         </div>

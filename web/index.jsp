@@ -103,7 +103,9 @@
         <!--End of Bootstrap Navigation Bar-->
         
         <!--Bootstrap default jumbotron-->
+         
         <div class="container">
+                
             <div class="jumbotron">
                 <h1 class='text-primary'>PortalInmobili<i class="fa fa-home"/></i>rio.cl
                 </h1>
@@ -114,13 +116,14 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     ...la direcci<i class="fa fa-compass"></i>n de tu nuevo hogar.
-                </h3>
+                </h3>              
                 <button type='button' class='btn btn-success btn-lg btn-block'>
                     Busca casas y departamentos por comuna &nbsp;&nbsp;&nbsp; 
-                    <i class="fa fa-search	"></i>
-                </button>
-            </div>
+                    <i class="fa fa-search"></i>                   
+                </button>                  
+            </div>         
         </div>
+     
         <!--En of Boostrap default jumbotron-->
         
         <!--Main page-->
@@ -130,7 +133,12 @@
             <h4>
                 Últimas propiedades en nuestro portal:
                 <button type="button" class="btn btn-primary">
-                    <span class="badge">7</span> 
+                    <span class="badge">
+                        <%
+                        PropiedadDal pro = new PropiedadDal();
+                        out.print(pro.countPropiedad());
+                        %>
+                    </span> 
                     nuevas en la última semana.
                 </button>
             </h4>
@@ -143,6 +151,7 @@
                         <td><i class="fa fa-photo"></i></td>
                         <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
                         <td><i class="fa fa-usd"></i>&nbsp;UF</td>
+                        <td><i class="fa fa-usd"></i>&nbsp;Pesos</td>
                         <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
                         <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
                         <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
@@ -163,6 +172,7 @@
                                 out.print("<td><img src='images/" + p.getFoto() + "' class='img-thumbnail'></td>");
                                 out.print("<td>" + p.getTipoPropiedad() + "</td>" );
                                 out.print("<td>" + p.getPrecioUF() + "</td>" );
+                                out.print("<td>" + p.precioCPL()+ "</td>" );
                                 out.print("<td>" + p.getComuna() + "</td>" );
                                 out.print("<td>" + p.getMetrosTotal() + "</td>" );
                                 out.print("<td>" + p.getMetrosConstruidos()+ "</td>" );
