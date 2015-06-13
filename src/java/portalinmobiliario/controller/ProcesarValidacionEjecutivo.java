@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import portalinmobiliario.model.Conexion;
 import portalinmobiliario.model.Ejecutivo;
 import portalinmobiliario.model.EjecutivoDal;
 
@@ -36,9 +37,7 @@ public class ProcesarValidacionEjecutivo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            EjecutivoDal ej = new EjecutivoDal();
-            
-            
+            EjecutivoDal ej = new EjecutivoDal();           
             String username = request.getParameter("txt_username");
             String password = request.getParameter("txt_password");
             Ejecutivo e = new Ejecutivo();
@@ -55,6 +54,7 @@ public class ProcesarValidacionEjecutivo extends HttpServlet {
             }
             else
             {   
+                
                 request.getRequestDispatcher("error_user.jsp").forward(request, response);
             }
            

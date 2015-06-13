@@ -4,6 +4,9 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="portalinmobiliario.model.Pregunta"%>
+<%@page import="portalinmobiliario.model.PreguntaDal"%>
 <%@page import="portalinmobiliario.model.Ejecutivo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -116,34 +119,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Pepe</td>
-                                <td>¿Qué es servlet?</td>
-                                <td>pepe@pension.cl</td>
-                                <td>5555555</td>
-                                <td>
-                                    <button class="btn btn-success">
-                                        <i class="fa fa-envelope"></i> email 
-                                    </button>
-                                    <button class="btn btn-success">
-                                        <i class="fa fa-skype"></i> skype
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Pepe</td>
-                                <td>Ce avrán dado quenta ke no era llo zino ke mi ermano jemelo el ke estava con la nami?</td>
-                                <td>pepe@pension.cl</td>
-                                <td>5555555</td>
-                                <td>
-                                    <button class="btn btn-success">
-                                        <i class="fa fa-envelope"></i> email 
-                                    </button>
-                                    <button class="btn btn-success">
-                                        <i class="fa fa-skype"></i> skype
-                                    </button>
-                                </td>
-                            </tr>
+                            <%                           
+                            // Se llama a la clase Dal para el acceso a la DB
+                            PreguntaDal preguntaDal = new PreguntaDal();
+                            // Se crea un ArrayList de Pregunta y la igualamos
+                            // a la que se encuentra a la BD
+                            ArrayList<Pregunta> listadoPreguntas = preguntaDal.listaPreguntas();
+                            //Ahora se crea un arrayList para encontrar cada pregunta
+                            for(Pregunta pregunta : listadoPreguntas)
+                            {
+                                out.println("<tr>");
+                                    out.println("<td>" + pregunta.getNombreCliente()    + "</td>");
+                                    out.println("<td>" + pregunta.getPregunta()         + "</td>");
+                                    out.println("<td>" + pregunta.getEmail()            + "</td>");
+                                    out.println("<td>" + pregunta.getTelefonoContacto() + "</td>");
+                                    out.println("<td>");
+                                        out.println("<button class='btn btn-success'>");
+                                            out.println("<i class='fa fa-envelope'></i> email");
+                                        out.println("</button>");
+                                        out.println("<button class='btn btn-success'>");
+                                            out.println("<i class='fa fa-skype'></i> skype");
+                                        out.println("</button>");                                           
+                                out.println("</tr>");
+                            }
+                            %>
                         </tbody>
                     </table>
                 </div>    

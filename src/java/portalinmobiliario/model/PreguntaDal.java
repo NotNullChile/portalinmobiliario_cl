@@ -10,6 +10,8 @@ package portalinmobiliario.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -44,7 +46,8 @@ public class PreguntaDal
     {
         try 
         {
-            String insert = "insert into preguntas values(null,'"+ p.getNombreCliente() + "','" + p.getPregunta() + "','" + p.getEmail() + "'," + p.getTelefonoContacto() +");";
+           conexion();
+           String insert = "insert into preguntas values(null,'"+ p.getNombreCliente() + "','" + p.getPregunta() + "','" + p.getEmail() + "'," + p.getTelefonoContacto() +");";
            return state.executeUpdate(insert);
         }
         catch (SQLException e) 
@@ -53,7 +56,31 @@ public class PreguntaDal
         }
         
     }
-    public ArrayList<Pregunta> listaPreguntas(){
-        return null;
+    public ArrayList<Pregunta> listaPreguntas()
+    {
+        
+        try 
+        {
+            ArrayList <Pregunta> listaPreguntas = new ArrayList<>();
+            conexion();
+            String sql = "select * from preguntas";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Pregunta p = new Pregunta();
+                p.setNombreCliente(rs.getString(2));
+                p.setPregunta(rs.getString(3));
+                p.setEmail(rs.getString(4));
+                p.setTelefonoContacto(rs.getInt(5));
+                listaPreguntas.add(p);
+            }
+            return listaPreguntas;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+        
     }
 }

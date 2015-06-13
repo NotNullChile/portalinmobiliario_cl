@@ -4,6 +4,9 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Propiedad"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="portalinmobiliario.model.PropiedadDal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -149,28 +152,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><img src="images/casa.png" class="img-thumbnail"></td>
-                        <td>Casa</td>
-                        <td>1000</td>
-                        <td>Santiago Centro</td>
-                        <td>100</td>
-                        <td>200</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>Espaciosa casa en barrio céntrico, estilo clásico. A dos cuadras de metro Santa Ana</td>
-                    </tr>
-                    <tr>
-                        <td><img src="images/depto.jpg" class="img-thumbnail"></td>
-                        <td>Departamento</td>
-                        <td>3500</td>
-                        <td>Providencia</td>
-                        <td>80</td>
-                        <td>80</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>Departamento chico y caro.</td>
-                    </tr>
+                    <%
+                    try
+                    {                                         
+                        PropiedadDal propiedadDal = new PropiedadDal();
+                        ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
+                        for(Propiedad p : listaPropiedades)
+                        {
+                            out.print("<tr>");
+                                out.print("<td><img src='images/" + p.getFoto() + "' class='img-thumbnail'></td>");
+                                out.print("<td>" + p.getTipoPropiedad() + "</td>" );
+                                out.print("<td>" + p.getPrecioUF() + "</td>" );
+                                out.print("<td>" + p.getComuna() + "</td>" );
+                                out.print("<td>" + p.getMetrosTotal() + "</td>" );
+                                out.print("<td>" + p.getMetrosConstruidos()+ "</td>" );
+                                out.print("<td>" + p.getNumeroDormitorios()+ "</td>" );
+                                out.print("<td>" + p.getNumeroBanios()+ "</td>" );
+                                out.print("<td>" + p.getDescripcion()+ "</td>" );
+                            out.print("</tr>");                            
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        
+                    }
+                    %>             
                 </tbody>
             </table>
             <!--End of Main table-->

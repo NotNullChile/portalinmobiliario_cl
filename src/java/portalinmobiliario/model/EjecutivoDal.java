@@ -24,11 +24,7 @@ public class EjecutivoDal
 {
     private Connection conn;
     private Statement state;
-    private Ejecutivo ej = new Ejecutivo();
-
-    public EjecutivoDal() 
-    {
-    }
+    
     public void EjecutivoDal()
     {
         try 
@@ -50,7 +46,7 @@ public class EjecutivoDal
         try 
         {        
             String sql = "select alias, clave, nombreEjecutivo from ejecutivo where alias = '" + ej.getAlias() + "' and clave = '" + ej.getClave() + "';";
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);           
             ResultSet rs = ps.executeQuery();
             if (rs.first()) {
                 ejecutivo.setAlias(rs.getString("alias"));

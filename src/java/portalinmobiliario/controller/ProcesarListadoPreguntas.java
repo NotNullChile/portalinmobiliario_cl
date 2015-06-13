@@ -10,7 +10,9 @@ package portalinmobiliario.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +23,8 @@ import portalinmobiliario.model.PreguntaDal;
  *
  * @author Ricardo
  */
-public class ProcesarPregunta extends HttpServlet {
+@WebServlet(name = "ListadoPreguntas", urlPatterns = {"/listado_preguntas.do"})
+public class ProcesarListadoPreguntas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,42 +38,18 @@ public class ProcesarPregunta extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try 
+        try (PrintWriter out = response.getWriter()) 
         {
-            //Inicializamos la conexion a la DB
-            PreguntaDal preguntaDal = new PreguntaDal();
-            //Capturamos los valores del JSP
-            String nombre   = request.getParameter("txt_nombre");
-            String email    = request.getParameter("txt_email");
-            int phone       = Integer.parseInt(request.getParameter("txt_phone"));
-            String pregunta = request.getParameter("txt_pregunta");
-            Pregunta p = new Pregunta(nombre, pregunta, email, phone);
-            //Nos Conectamos a la BD
-            preguntaDal.conexion();
-            if (nombre.trim().length() > 0 && email.trim().length() > 0 
-                && phone > 0 && pregunta.trim().length() > 0)
-            {                          
-                if (preguntaDal.insertPregunta(p) == 1) 
-                {
-                    //Redirige a la misma pagina
-                    request.getRequestDispatcher("contacto.jsp").forward(request, response);
-                }
-                else
-                {
-                    //Redirige pagina error
-                    out.print("Error");
-                }  
-            }
-            else
-            {
-                //Redirige pagina error
-                  out.print("Error");
-            }
-        }
-        catch(Exception e)
-        {
-            
+            // Se llama a la clase Dal para el acceso a la DB
+               PreguntaDal preguntaDal = new PreguntaDal();
+           // Se crea un ArrayList de Pregunta y la igualamos
+           // a la que se encuentra a la BD
+              ArrayList<Pregunta> listadoPreguntas = preguntaDal.listaPreguntas();
+              if (listadoPreguntas != null) 
+              {
+                  request.getSession().setAttribute("listadoPreguntas", listadoPreguntas);
+                  request.getRequestDispatcher("preguntas.jsp");
+              }
         }
     }
 

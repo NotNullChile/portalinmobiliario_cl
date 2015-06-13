@@ -13,6 +13,7 @@ package portalinmobiliario.model;
 public class Propiedad {
     //Class fields.
     private String codigoPropiedad;
+    private String foto;
     private String tipoPropiedad;
     private double precioUF;
     private String comuna;
@@ -23,8 +24,9 @@ public class Propiedad {
     private int numeroBanios;
     
     //Class constructors.
-    public Propiedad(String codigoPropiedad, String tipoPropiedad, double precioUF, String comuna, double metrosConstruidos, double metrosTotal, String descripcion, int numeroDormitorios, int numeroBanios) {
+    public Propiedad(String codigoPropiedad,String foto ,String tipoPropiedad, double precioUF, String comuna, double metrosConstruidos, double metrosTotal, String descripcion, int numeroDormitorios, int numeroBanios) {
         this.codigoPropiedad = codigoPropiedad;
+        this.foto = foto;
         this.tipoPropiedad = tipoPropiedad;
         this.precioUF = precioUF;
         this.comuna = comuna;
@@ -37,9 +39,10 @@ public class Propiedad {
     
     public Propiedad() {
         this.codigoPropiedad = new String();
+        this.foto = new String();
         this.tipoPropiedad = new String();
         this.precioUF = 0.0;
-        this.comuna = new String();
+        this.comuna = "";
         this.metrosConstruidos = 0.0;
         this.metrosTotal = 0.0;
         this.descripcion = new String();
@@ -48,6 +51,16 @@ public class Propiedad {
     }
     
     //Encapsulation methods:
+
+    
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+    
     public String getCodigoPropiedad() {
         return codigoPropiedad;
     }
