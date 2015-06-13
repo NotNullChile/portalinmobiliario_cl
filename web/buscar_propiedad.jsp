@@ -4,6 +4,9 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Propiedad"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="portalinmobiliario.model.PropiedadDal"%>
 <%@page import="portalinmobiliario.model.Ejecutivo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -102,9 +105,9 @@
         <div class="well">
             <%
             HttpSession sesion = request.getSession();
-            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");     
+            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");            
             %>
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getAlias()%></h1>
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
             <h3>Seleccione una acción:</h3>
                 <div  class="row">
                 <!--side menu-->
@@ -116,6 +119,7 @@
                     <a href="#" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
                 </div>
                 <!--búsqueda-->
+                <form action="buscar_propiedad.jsp" method="POST">               
                 <div class="col-sm-8">
                     <div class="form-group">
                         <div class="col-sm-8">
@@ -127,39 +131,48 @@
                                 placeholder="Código de Propiedad" />
                         </div>
                         <div class="col-sm-2">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" name = "btn_buscar">
                                 <i class="fa fa-search"></i>
                                 Buscar
                             </button>
                         </div>
                     </div>
-                    
+                  </form>
                     <table class="table table-hover" >
-                        <thead>
-                            <tr class="bg-primary">
-                                <td><i class="fa fa-photo"></i></td>
-                                <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
-                                <td><i class="fa fa-usd"></i>&nbsp;UF</td>
-                                <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
-                                <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
-                                <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
-                                <td><i class="fa fa-bed"></i>Dorms.</td>
-                                <td><i class="fa fa-tint"></i>Baños</td>
-                                <td><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="images/casa.png" class="img-thumbnail"></td>
-                                <td>Casa</td>
-                                <td>1000</td>
-                                <td>Santiago Centro</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td>3</td>
-                                <td>2</td>
-                                <td>Espaciosa casa en barrio céntrico, estilo clásico. A dos cuadras de metro Santa Ana</td>
-                            </tr> 
+                       <%                                   
+                        try
+                        {   
+                            int idPropiedad = 1;  
+                            PropiedadDal propiedadDal = new PropiedadDal();
+                            ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
+                            if(request.getParameter("btn_buscar") != null) 
+                            {                                                 
+                            idPropiedad = Integer.parseInt(request.getParameter("txt_codigo")); 
+                            listaPropiedades = propiedadDal.listaPropiedades(idPropiedad);
+                            }
+                            for(Propiedad p : listaPropiedades)
+                            {                                       
+                    %>
+                    <tr>
+                        <td><img src="images/<%=p.getFoto()%>" class="img-thumbnail"></td>
+                        <td><%=p.getTipoPropiedad()%></td>
+                        <td><%=p.getPrecioUF()%></td>
+                        <td><%=p.precioCPL()%></td>
+                        <td><%=p.getComuna()%></td>
+                        <td><%=p.getMetrosTotal()%></td>
+                        <td><%=p.getMetrosConstruidos()%></td>
+                        <td><%=p.getNumeroDormitorios()%></td>
+                        <td><%=p.getNumeroBanios()%></td>                      
+                        <td><%=p.getDescripcion()%></td>  
+                    </tr>
+                    <%
+                        }                       
+                     }
+                     catch(Exception ex)
+                     {
+
+                     }
+                    %>
                         </tbody>
                     </table>
                        

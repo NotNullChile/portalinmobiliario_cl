@@ -117,6 +117,40 @@ public class PropiedadDal
             return null;
         }        
     }
+     public ArrayList<Propiedad> listaPropiedades(int idPropiedad)
+    {       
+        try 
+        {
+            ArrayList <Propiedad> listaPropiedades = new ArrayList<>();
+            conexion();
+            String sql = "select p.idPropiedad, p.foto, p.precioUf,p.mtsConstruido,"
+                    + " p.mtsTotal,p.numeroCormitorios,p.numeroBaños, "
+                    + "p.tipoPropiedad,c.nombreComuna,p.descripcion "
+                    + "from propiedad p inner join comuna c on p.idComuna = c.idComuna "
+                    + "where p.idPropiedad = " + idPropiedad + ";";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Propiedad p = new Propiedad();             
+                p.setFoto(rs.getString(2));
+                p.setPrecioUF(rs.getDouble(3));
+                p.setMetrosConstruidos(rs.getDouble(4));
+                p.setMetrosTotal(rs.getDouble(5));
+                p.setNumeroDormitorios(rs.getInt(6));
+                p.setNumeroBanios(rs.getInt(7));
+                p.setTipoPropiedad(rs.getString(8));
+                p.setComuna(rs.getString(9));
+                p.setDescripcion(rs.getString(10));
+                listaPropiedades.add(p);
+            }
+            return listaPropiedades;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }        
+    }
     public int countPropiedad()
     {
       try
@@ -136,5 +170,36 @@ public class PropiedadDal
           return e.getErrorCode();
       }
       return 0;
+    }
+    public int updatePropiedad(Propiedad p)
+    {
+        try 
+        {
+
+        conexion();
+        String sql = "update propiedad set foto = '"+ p.getFoto() +"',precioUf = " + p.getPrecioUF() + ""
+                + ", mtsConstruido = " + p.getMetrosConstruidos() +", mtsTotal = " + p.getMetrosTotal() + ""
+                + ", numeroCormitorios = "+ p.getNumeroDormitorios() + ", numeroBaños = " + p.getNumeroBanios()+ ""
+                + ", tipopropiedad = '"+ p.getTipoPropiedad() +"', idComuna = '" + p.getComuna() + "'"
+                + ",descripcion = '"+ p.getDescripcion() +"' where idPropiedad = " + p.getCodigoPropiedad() +" ; ";
+        return state.executeUpdate(sql);                    
+        } 
+        catch (SQLException e)
+        {
+            return e.getErrorCode();
+        }
+    }
+     public int deletePropiedad(int idPropiedad)
+    {
+        try 
+        {
+        conexion();
+        String sql = "delete from propiedad where idPropiedad = "+ idPropiedad +";";
+        return state.executeUpdate(sql);                    
+        } 
+        catch (SQLException e)
+        {
+            return e.getErrorCode();
+        }
     }
 }

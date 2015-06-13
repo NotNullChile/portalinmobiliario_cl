@@ -95,7 +95,7 @@
             HttpSession sesion = request.getSession();
             Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");     
             %>
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getAlias()%></h1>
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
             <h3>Seleccione una acción:</h3>
             <div  class="row">
                 <!--side menu-->
