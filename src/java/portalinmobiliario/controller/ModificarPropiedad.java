@@ -40,8 +40,10 @@ public class ModificarPropiedad extends HttpServlet {
         PrintWriter out = response.getWriter();
         try  
         {
+            //Instanciamos las Clases
             PropiedadDal propiedadDal = new PropiedadDal();
             Propiedad p = new Propiedad();
+            //Capturamos los valores del JSP
             p.setCodigoPropiedad(request.getParameter("txt_codigo_evaluar"));
             p.setFoto(request.getParameter("dll_fotos"));
             p.setPrecioUF(Double.parseDouble(request.getParameter("txt_precio_uf")));
@@ -52,15 +54,17 @@ public class ModificarPropiedad extends HttpServlet {
             p.setTipoPropiedad(request.getParameter("dll_tipo_propiedad"));
             p.setComuna(request.getParameter("dll_comunas"));
             p.setDescripcion(request.getParameter("txt_descripcion"));
-            
+            //Pregunta si la Consulta es = 1 y el button(Update) del JSP es !null modificará los datos
             if (propiedadDal.updatePropiedad(p) == 1 && request.getParameter("btn_update") != null) 
             {
-                //Poner pagina de buen ingreso
+                //Poner pagina de buen update
                 //request.getRequestDispatcher("modificar_propiedad").forward(request, response); 
                 out.print("Update OK");
             }
+            //Si eso no ocurre pregunta si el Button(delete)es precionado borrará el objeto Propiedad
             else if(propiedadDal.deletePropiedad(p) == 1 && request.getParameter("btn_delete") != null)
-            {     
+            {    
+                //Poner pagina de buen delete
                 out.print("Delete OK");
             }
             else

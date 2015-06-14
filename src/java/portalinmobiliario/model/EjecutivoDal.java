@@ -39,7 +39,7 @@ public class EjecutivoDal
         }
     }
     
-    
+    //Metodo que valida si el user existe en la BD
     public Ejecutivo validarUserEjecutivo(Ejecutivo ej)
     {
         Ejecutivo ejecutivo = new Ejecutivo();

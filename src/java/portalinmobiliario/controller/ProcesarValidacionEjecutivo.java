@@ -26,8 +26,11 @@ public class ProcesarValidacionEjecutivo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            EjecutivoDal ej = new EjecutivoDal();           
+        try (PrintWriter out = response.getWriter()) 
+        {
+            //Instancia de la clase
+            EjecutivoDal ej = new EjecutivoDal();         
+            //Se captura los datos del JSP
             String username = request.getParameter("txt_username");
             String password = request.getParameter("txt_password");
             Ejecutivo e = new Ejecutivo();
@@ -36,6 +39,7 @@ public class ProcesarValidacionEjecutivo extends HttpServlet {
             e.getNombreEjecutivo();
             ej.EjecutivoDal();
             e = ej.validarUserEjecutivo(e);
+            // Si todo esta correcto creará la session ejecutivo, sino redirige a una pagina de error.
             if (e.getNombreEjecutivo() != "")             
             {   
                 request.getSession().setAttribute("ejecutivo", e);

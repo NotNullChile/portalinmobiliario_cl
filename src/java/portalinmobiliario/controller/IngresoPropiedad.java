@@ -38,8 +38,10 @@ public class IngresoPropiedad extends HttpServlet {
         PrintWriter out = response.getWriter();
         try
         {
+            //Instanciamos las clases
             PropiedadDal propiedadDal = new PropiedadDal();
             Propiedad p = new Propiedad();
+            //Capturamos los datos del JSP
             p.setCodigoPropiedad(request.getParameter("txt_codigo"));
             p.setFoto(request.getParameter("dll_foto"));
             p.setPrecioUF(Double.parseDouble(request.getParameter("txt_precio_uf")));
@@ -50,6 +52,7 @@ public class IngresoPropiedad extends HttpServlet {
             p.setTipoPropiedad(request.getParameter("dll_tipo_propiedad"));
             p.setComuna(request.getParameter("dll_comunas"));
             p.setDescripcion(request.getParameter("txt_descripcion"));
+            //Preguntamos si la inserción es = a 1 creé dicho propiedad
             if (propiedadDal.insertPropiedad(p)  == 1)
             {
              out.print("ingreso OK");

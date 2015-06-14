@@ -42,7 +42,7 @@ public class Propiedad {
         this.foto = "error.jpg";
         this.tipoPropiedad = "no disponible";
         this.precioUF = 0.0;
-        this.comuna = "no asignada";
+        this.comuna = new String();
         this.metrosConstruidos = 0.0;
         this.metrosTotal = 0.0;
         this.descripcion = "no disponible";
