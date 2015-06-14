@@ -20,7 +20,7 @@
             <table>
                         <tr>
                             <td>
-				Codigo Propiedad		
+				Codigo Propiedad 		
                             </td>				
                             <td>
                                 <input type="text" name="txt_codigo" value="" size="5" />
