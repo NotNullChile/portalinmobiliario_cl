@@ -58,7 +58,7 @@ public class EjecutivoDal
         {
           e.printStackTrace();
         }
-     return ejecutivo;
+        return ejecutivo;
     }
 
 }

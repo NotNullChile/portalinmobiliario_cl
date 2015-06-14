@@ -63,7 +63,8 @@ public class PropiedadDal
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                Propiedad p = new Propiedad();             
+                Propiedad p = new Propiedad(); 
+                p.setCodigoPropiedad(rs.getString(1));
                 p.setFoto(rs.getString(2));
                 p.setPrecioUF(rs.getDouble(3));
                 p.setMetrosConstruidos(rs.getDouble(4));
@@ -132,7 +133,8 @@ public class PropiedadDal
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                Propiedad p = new Propiedad();             
+                Propiedad p = new Propiedad();
+                p.setCodigoPropiedad(rs.getString(1));
                 p.setFoto(rs.getString(2));
                 p.setPrecioUF(rs.getDouble(3));
                 p.setMetrosConstruidos(rs.getDouble(4));
@@ -197,5 +199,33 @@ public class PropiedadDal
         {
             return e.getErrorCode();
         }
+    }
+     
+    public Propiedad buscarPropiedad(String codigoPropiedad){
+        Propiedad p = new Propiedad();
+        try 
+        {
+            conexion();
+            String sql = "SELECT idPropiedad, foto, precioUF, mtsConstruido, mtsTotal, numeroCormitorios, numeroBaños, tipoPropiedad, idComuna, descripcion FROM propiedad WHERE idPropiedad = " + codigoPropiedad + ";";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+            if(rs.first()){
+                p.setCodigoPropiedad(rs.getString("idPropiedad"));
+                p.setFoto(rs.getString("foto"));
+                p.setPrecioUF(rs.getDouble("precioUF"));
+                p.setMetrosConstruidos(rs.getDouble("mtsConstruido"));
+                p.setMetrosTotal(rs.getDouble("mtsTotal"));
+                p.setNumeroDormitorios(rs.getInt("numeroCormitorios"));
+                p.setNumeroBanios(rs.getInt("numeroBaños"));
+                p.setTipoPropiedad(rs.getString("tipoPropiedad"));
+                p.setComuna(rs.getString("idComuna"));
+                p.setDescripcion(rs.getString("descripcion"));
+            }
+        } 
+        catch (Exception e) 
+        {
+            
+        }
+        return p;
     }
 }

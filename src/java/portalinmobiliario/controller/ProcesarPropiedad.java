@@ -5,47 +5,55 @@
  * Atribucion-NoComercial-SinDerivar 4.0 Internacional.
  * Basada en una obra en https://github.com/NotNullChile/portalinmobiliario_cl.
  */
-
 package portalinmobiliario.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import portalinmobiliario.model.Conexion;
-import portalinmobiliario.model.Ejecutivo;
-import portalinmobiliario.model.EjecutivoDal;
+import portalinmobiliario.model.Propiedad;
+import portalinmobiliario.model.PropiedadDal;
 
 /**
  *
- * @author Ricardo
+ * @author urtubia @ notNull
  */
-public class ProcesarValidacionEjecutivo extends HttpServlet {
+@WebServlet(name = "ProcesarPropiedad", urlPatterns = {"/procesar_propiedad.do"})
+public class ProcesarPropiedad extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            EjecutivoDal ej = new EjecutivoDal();           
-            String username = request.getParameter("txt_username");
-            String password = request.getParameter("txt_password");
-            Ejecutivo e = new Ejecutivo();
-            e.setAlias(username);
-            e.setClave(password);
-            e.getNombreEjecutivo();
-            ej.EjecutivoDal();
-            e = ej.validarUserEjecutivo(e);
-            if (e.getNombreEjecutivo() != "")             
-            {   
-                request.getSession().setAttribute("ejecutivo", e);
-                request.getRequestDispatcher("intranet.jsp").forward(request, response);
+        //PrintWriter out = response.getWriter();
+        try  {
+            //Busca una propiedad en la base de datos con el código ingresado.             
+            PropiedadDal prop_dal = new PropiedadDal();
+            String codigoPropiedad = request.getParameter("txt_codigo");
+            //Crea una propiedad basada en el retorno de la base de datos.
+            
+            Propiedad prop = new Propiedad();
+            
+            prop = prop_dal.buscarPropiedad(codigoPropiedad);
+            
+            if (prop.getCodigoPropiedad() != "no disponible") {
+                //Si se recibe una propiedad válida, se crea el atributo de sesión
+                request.getSession().setAttribute("propiedad", prop);
+                //...y se muestra la propiedad encontrada.
+                Propiedad sample = (Propiedad)request.getSession().getAttribute("propiedad");
+                request.getRequestDispatcher("mostrar_propiedad.jsp").forward(request, response);
             }
             else
-            {   
-                request.getRequestDispatcher("error_user.jsp").forward(request, response);
+            {
+                //Si no se recibe una propiedad válida, se muestra un JSP de error.
+                request.getRequestDispatcher("error_propiedad.jsp").forward(request, response);
             }
         }
+        catch (Exception e)
+            {
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

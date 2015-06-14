@@ -102,24 +102,24 @@
             </div>
         </nav>
         <!--body-->
-        <div class="well">
+                <div class="col-sm-1"></div>
+        <div class="well col-sm-10">
             <%
             HttpSession sesion = request.getSession();
             Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");            
             %>
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
-            <h3>Seleccione una acción:</h3>
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Búsqueda de propiedades:</h1>
+            <h3>&nbsp;</h3>
                 <div  class="row">
                 <!--side menu-->
                 <div class="list-group col-sm-2">
-                    <a href="#" class="list-group-item active"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-sliders"></i>&nbsp;Modificar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-trash"></i>&nbsp;Eliminar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
+                    <a href="buscar_propiedad.jsp" class="list-group-item active"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
+                    <a href="listar_propiedades.jsp" class="list-group-item"><i class="fa fa-list-ol"></i>&nbsp;Listar propiedades</a>
+                    <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
+                    <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
                 </div>
                 <!--búsqueda-->
-                <form action="buscar_propiedad.jsp" method="POST">               
+                <form action="procesar_propiedad.do" method="POST">               
                 <div class="col-sm-8">
                     <div class="form-group">
                         <div class="col-sm-8">
@@ -127,7 +127,6 @@
                                 name="txt_codigo"
                                 class="form-control"
                                 id="codigo"
-                                name="txt_codigo" 
                                 placeholder="Código de Propiedad" />
                         </div>
                         <div class="col-sm-2">
@@ -139,60 +138,25 @@
                     </div>
                   </form>
                     <table class="table table-hover" >
-                       <%                                   
-                        try
-                        {   
-                            int idPropiedad = 1;  
-                            PropiedadDal propiedadDal = new PropiedadDal();
-                            ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
-                            if(request.getParameter("btn_buscar") != null) 
-                            {                                                 
-                            idPropiedad = Integer.parseInt(request.getParameter("txt_codigo")); 
-                            listaPropiedades = propiedadDal.listaPropiedades(idPropiedad);
-                            }
-                            for(Propiedad p : listaPropiedades)
-                            {                                       
-                    %>
-                    <tr>
-                        <td><img src="images/<%=p.getFoto()%>" class="img-thumbnail"></td>
-                        <td><%=p.getTipoPropiedad()%></td>
-                        <td><%=p.getPrecioUF()%></td>
-                        <td><%=p.precioCPL()%></td>
-                        <td><%=p.getComuna()%></td>
-                        <td><%=p.getMetrosTotal()%></td>
-                        <td><%=p.getMetrosConstruidos()%></td>
-                        <td><%=p.getNumeroDormitorios()%></td>
-                        <td><%=p.getNumeroBanios()%></td>                      
-                        <td><%=p.getDescripcion()%></td>  
-                    </tr>
-                    <%
-                        }                       
-                     }
-                     catch(Exception ex)
-                     {
-
-                     }
-                    %>
+                        <tbody>
+                        <br>
+                        <h1>
+                            <center>
+                                <i class="fa fa-search"></i>&nbsp;&nbsp;
+                                <small><i class="fa fa-spin fa-repeat"></i>&nbsp;&nbsp;</small>
+                            <i class="fa fa-database"></i>
+                            </center>
+                        </h1>
+                        <div class="alert alert-info">
+                            <i class="fa fa-info-circle"></i>
+                            &nbsp;&nbsp;
+                            <strong>Búsqueda:</strong> Ingrese el código de la propiedad para buscarlo en la base de datos.
+                        </div>
                         </tbody>
-                    </table>
-                       
-                </div>
-                <div class="row"></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-danger">
-                                <i class="fa fa-search"></i>
-                                Eliminar esta propiedad
-                            </button>
-                        </div>
-                        <div class="col-sm-2">&nbsp;
-                            <button class="btn btn-warning">
-                                <i class="fa fa-search"></i>
-                                Modificar esta propiedad
-                            </button>
-                        </div>
-                    </div> 
-                </div>
+                    </table> 
+                </div>        
+            </div>        
+        </div>
             
         <footer class="footer">
             <div class="container">
