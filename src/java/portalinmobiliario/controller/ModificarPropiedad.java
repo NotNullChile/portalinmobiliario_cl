@@ -49,7 +49,7 @@ public class ModificarPropiedad extends HttpServlet {
             p.setMetrosTotal(Double.parseDouble(request.getParameter("txt_metros_total")));
             p.setNumeroDormitorios(Integer.parseInt(request.getParameter("sp_dormitorios")));
             p.setNumeroBanios(Integer.parseInt(request.getParameter("sp_banios")));
-            p.setTipoPropiedad(request.getParameter("txt_tipo_propiedad"));
+            p.setTipoPropiedad(request.getParameter("dll_tipo_propiedad"));
             p.setComuna(request.getParameter("dll_comunas"));
             p.setDescripcion(request.getParameter("txt_descripcion"));
             

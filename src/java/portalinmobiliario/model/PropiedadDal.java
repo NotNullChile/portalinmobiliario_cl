@@ -38,10 +38,8 @@ public class PropiedadDal
     {
         try 
         {
-           String insert = "insert into propiedades values(" + p.getCodigoPropiedad() + ",'" + p.getFoto() + "',"            +
-                                                               p.getPrecioUF() + "," + p.getMetrosConstruidos() + ","        +
-                                                               p.getMetrosTotal() + "," + p.getNumeroDormitorios() + ",'"    + 
-                                                               p.getTipoPropiedad() + "'," + p.getComuna() + ",'" + p.getDescripcion() + "');";
+            conexion();
+           String insert = "insert into propiedad values('" + p.getCodigoPropiedad() + "','" + p.getFoto() + "'," + p.getPrecioUF() + "," + p.getMetrosConstruidos() + "," + p.getMetrosTotal() + "," + p.getNumeroDormitorios() + "," + p.getNumeroBanios() + ",'" + p.getTipoPropiedad() + "','" + p.getComuna() + "','" + p.getDescripcion() + "');";
            return state.executeUpdate(insert);
         }
         catch (SQLException e) 

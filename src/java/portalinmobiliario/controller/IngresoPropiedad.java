@@ -14,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import portalinmobiliario.model.Propiedad;
+import portalinmobiliario.model.PropiedadDal;
 
 /**
  *
@@ -33,8 +35,33 @@ public class IngresoPropiedad extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            
+        PrintWriter out = response.getWriter();
+        try
+        {
+            PropiedadDal propiedadDal = new PropiedadDal();
+            Propiedad p = new Propiedad();
+            p.setCodigoPropiedad(request.getParameter("txt_codigo"));
+            p.setFoto(request.getParameter("dll_foto"));
+            p.setPrecioUF(Double.parseDouble(request.getParameter("txt_precio_uf")));
+            p.setMetrosConstruidos(Double.parseDouble(request.getParameter("txt_metros_construidos")));
+            p.setMetrosTotal(Double.parseDouble(request.getParameter("txt_metros_total")));
+            p.setNumeroDormitorios(Integer.parseInt(request.getParameter("sp_dormitorios")));
+            p.setNumeroBanios(Integer.parseInt(request.getParameter("sp_banios")));
+            p.setTipoPropiedad(request.getParameter("dll_tipo_propiedad"));
+            p.setComuna(request.getParameter("dll_comunas"));
+            p.setDescripcion(request.getParameter("txt_descripcion"));
+            if (propiedadDal.insertPropiedad(p)  == 1)
+            {
+             out.print("ingreso OK");
+            }
+            else
+            {
+               out.print("ingreso Bad"); 
+            }
+        }
+        catch(Exception e)
+        {
+            out.print(e.getMessage());
         }
     }
 

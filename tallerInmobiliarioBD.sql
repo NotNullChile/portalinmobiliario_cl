@@ -17,7 +17,7 @@ constraint pk_idComuna primary key (idComuna)
 drop table propiedad;
 create table propiedad 
 (
-idPropiedad int,
+idPropiedad varchar(10),
 foto varchar(30),
 precioUf double,
 mtsConstruido double,
@@ -390,12 +390,12 @@ VALUES
 (345,'Torres del Paine');
 /* Fin insersion Comuna */
 /* insersion Propiedad */
-insert into propiedad values (1,'casa.png' , 20000	 ,	200,400,4,3,'Casa'			,109,'Edificio Viña Neoriente ha sido diseñado pensando en ti y en tu familia. Emplazado en el nuevo polo comercial de la ciudad, a pasos de centros comerciales y financieros, colegios y locomoción a la puerta.');
-insert into propiedad values (2,'depto.jpg', 10000	 ,	187,200,2,1,'Departamento'	,106,'Departamento con Amplio hall de acceso con piso flotante. Living y comedor separados con piso flotante. Dormitorio principal, en suite con walk in closet.');
-insert into propiedad values (3,'casa2.jpg',  8200	 ,	140,277,4,3,'Casa'			,117,'Buen sector locomoción, universidad y Comercio esta casa posee Jardín armado , terraza cocina ampliada posibilidad de ampliar aun mas.');
-insert into propiedad values (4,'casa.jpg' ,  7013.64,	100,100,3,2,'Departamento'	,1,'Estupendo Departamento en venta de 3 dormitorios y 2 baños, condominio con grandes jardines,juegos de niños,piscina.');
-insert into propiedad values (5,  2444.76,	 90,110,3,1,'Casa'			,125,'amplio living-comedor, cocina, cercana a supermercados, colegios, farmacia, centros comerciales, centros médicos, áreas verdes, excelente Ubicación.');
-insert into propiedad values (6,  2417	 ,	 39, 82,3,1,'Departamento'	, 81,'Ewaa');
+insert into propiedad values ('1','casa.png' , 20000	 ,	200,400,4,3,'Casa'			,109,'Edificio Viña Neoriente ha sido diseñado pensando en ti y en tu familia. Emplazado en el nuevo polo comercial de la ciudad, a pasos de centros comerciales y financieros, colegios y locomoción a la puerta.');
+insert into propiedad values ('2','depto.jpg', 10000	 ,	187,200,2,1,'Departamento'	,106,'Departamento con Amplio hall de acceso con piso flotante. Living y comedor separados con piso flotante. Dormitorio principal, en suite con walk in closet.');
+insert into propiedad values ('3','casa2.jpg',  8200	 ,	140,277,4,3,'Casa'			,117,'Buen sector locomoción, universidad y Comercio esta casa posee Jardín armado , terraza cocina ampliada posibilidad de ampliar aun mas.');
+insert into propiedad values ('4','casa.png' ,  7013.64,	100,100,3,2,'Departamento'	,1,'Estupendo Departamento en venta de 3 dormitorios y 2 baños, condominio con grandes jardines,juegos de niños,piscina.');
+insert into propiedad values ('5',  2444.76,	 90,110,3,1,'Casa'			,125,'amplio living-comedor, cocina, cercana a supermercados, colegios, farmacia, centros comerciales, centros médicos, áreas verdes, excelente Ubicación.');
+insert into propiedad values ('6',  2417	 ,	 39, 82,3,1,'Departamento'	, 81,'Ewaa');
 /* Fin insersion Propiedad */
 insert into ejecutivo values ('rick','rick','Ricardo');
 insert into ejecutivo values ('Ricardo','Ricardo','Ricardo');
@@ -413,6 +413,7 @@ insert into preguntas values(null,'waa','waaa','waa',1);
 select * from preguntas;
 
 select * from preguntas;
+select * from propiedad;
 
 select p.foto, p.precioUf, p.mtsConstruido, p.mtsTotal,p.numeroCormitorios, p.numeroBaños, p.tipoPropiedad,c.idComuna ,c.nombreComuna, p.descripcion 
 from propiedad p inner join comuna c
@@ -421,3 +422,13 @@ where c.nombreComuna = 'La florida';
 select p.idPropiedad, p.foto, p.precioUf, p.mtsConstruido, p.mtsTotal,p.numeroCormitorios, p.numeroBaños, p.tipoPropiedad,c.idComuna, p.descripcion from propiedad p inner join comuna c on p.idComuna = c.idComuna;
 select p.idPropiedad, p.foto, p.precioUf,p.mtsConstruido, p.mtsTotal,p.numeroCormitorios,p.numeroBaños, p.tipoPropiedad,c.nombreComuna,p.descripcion from propiedad p inner join comuna c on p.idComuna = c.idComuna where c.nombreComuna = 'la florida';
 select * from propiedad p inner join comuna c;
+
+select count(idPropiedad) from propiedad;
+
+delete
+from propiedad 
+where idPropiedad =  4;
+
+
+insert into propiedad values('123','sad',123,123,123,123,123,'asd','2','asd');
+
