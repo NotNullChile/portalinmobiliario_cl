@@ -13,10 +13,6 @@
         <servlet-class>portalinmobiliario.controller.UpdatePropiedad</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeletePropiedad</servlet-name>
-        <servlet-class>portalinmobiliario.controller.DeletePropiedad</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ProcesarPregunta</servlet-name>
         <servlet-class>portalinmobiliario.controller.ProcesarPregunta</servlet-class>
     </servlet>
@@ -31,10 +27,6 @@
     <servlet-mapping>
         <servlet-name>UpdatePropiedad</servlet-name>
         <url-pattern>/update_propiedad.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeletePropiedad</servlet-name>
-        <url-pattern>/delete_propiedad.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProcesarPregunta</servlet-name>

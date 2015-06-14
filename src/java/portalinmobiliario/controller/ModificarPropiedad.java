@@ -11,6 +11,7 @@ package portalinmobiliario.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +22,8 @@ import portalinmobiliario.model.PropiedadDal;
  *
  * @author Ricardo
  */
-public class UpdatePropiedad extends HttpServlet {
+@WebServlet(name = "ModificarPropiedad", urlPatterns = {"/modificar_propiedad.do"})
+public class ModificarPropiedad extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +38,7 @@ public class UpdatePropiedad extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try 
+        try  
         {
             PropiedadDal propiedadDal = new PropiedadDal();
             Propiedad p = new Propiedad();
@@ -51,21 +53,26 @@ public class UpdatePropiedad extends HttpServlet {
             p.setComuna(request.getParameter("dll_comunas"));
             p.setDescripcion(request.getParameter("txt_descripcion"));
             
-            if (propiedadDal.updatePropiedad(p) != 1) 
+            if (propiedadDal.updatePropiedad(p) == 1 && request.getParameter("btn_update") != null) 
             {
-              out.print("Error");
-            }
-            else
-            {     
                 //Poner pagina de buen ingreso
                 //request.getRequestDispatcher("modificar_propiedad").forward(request, response); 
                 out.print("Update OK");
+            }
+            else if(propiedadDal.deletePropiedad(p) == 1 && request.getParameter("btn_delete") != null)
+            {     
+                out.print("Delete OK");
+            }
+            else
+            {
+                out.print("error");
             }
         }
         catch(Exception e)
         {
             out.print(e.getMessage());            
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

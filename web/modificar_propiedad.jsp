@@ -36,7 +36,7 @@
             </table>
 
         </form>
-        <form action="update_propiedad.do" method="post">
+        <form action="modificar_propiedad.do" method="post">
 		<table>
                     <tbody>
                         <%                                   
@@ -128,6 +128,7 @@
                         </tr>
                         <tr>
                             <td><input type="submit" value="Update" name="btn_update" /></td>
+                            <td><input type="submit" value="Delete" name="btn_delete" /></td>
                         </tr>
                     <%
                         }                       
@@ -144,7 +145,7 @@
                             
                         
                        
-                            <input type="submit" value="Delete" name="btn_delete" />
+                          
                         
     </body>
 </html>

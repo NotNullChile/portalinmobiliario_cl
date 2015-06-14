@@ -185,12 +185,12 @@ public class PropiedadDal
             return e.getErrorCode();
         }
     }
-     public int deletePropiedad(String idPropiedad)
+     public int deletePropiedad(Propiedad p)
     {
         try 
         {
         conexion();
-        String sql = "delete from propiedad where idPropiedad = '"+ idPropiedad +"';";
+        String sql = "delete from propiedad where idPropiedad = '"+ p.getCodigoPropiedad() +"';";
         return state.executeUpdate(sql);                    
         } 
         catch (SQLException e)
