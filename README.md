@@ -18,7 +18,7 @@ Usa:
   * Base de datos mySQL.
   * Bootstrap, CSS y Javascript.
   
-![Early demo - Demo inicial](https://github.com/NotNullChile/portalinmobiliario_cl/blob/master/web/images/portalinmobiliario.png)
+![Early demo - Demo inicial](https://github.com/NotNullChile/portalinmobiliario_cl/blob/master/web/images/portalInmobiliario2.PNG)
 ---
 ![Creative Commons](https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png)  
 portalinmobiliario_notNull por notNull Chile se distribuye bajo una Licencia Creative Commons.  

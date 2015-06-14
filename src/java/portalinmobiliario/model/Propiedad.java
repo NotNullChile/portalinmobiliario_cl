@@ -139,4 +139,10 @@ public class Propiedad {
     {
         return (int) getPrecioUF() * 22500;
     }
+
+    @Override
+    public String toString() {
+        return "Propiedad{" + "codigoPropiedad=" + codigoPropiedad + ", foto=" + foto + ", tipoPropiedad=" + tipoPropiedad + ", precioUF=" + precioUF + ", comuna=" + comuna + ", metrosConstruidos=" + metrosConstruidos + ", metrosTotal=" + metrosTotal + ", descripcion=" + descripcion + ", numeroDormitorios=" + numeroDormitorios + ", numeroBanios=" + numeroBanios + '}';
+    }
+    
 }

@@ -11,15 +11,19 @@ package portalinmobiliario.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import portalinmobiliario.model.Propiedad;
+import portalinmobiliario.model.PropiedadDal;
 
 /**
  *
  * @author Ricardo
  */
-public class DeletePropiedad extends HttpServlet {
+@WebServlet(name = "ModificarPropiedad", urlPatterns = {"/modificar_propiedad.do"})
+public class ModificarPropiedad extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,18 +37,42 @@ public class DeletePropiedad extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DeletePropiedad</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DeletePropiedad at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+        try  
+        {
+            PropiedadDal propiedadDal = new PropiedadDal();
+            Propiedad p = new Propiedad();
+            p.setCodigoPropiedad(request.getParameter("txt_codigo_evaluar"));
+            p.setFoto(request.getParameter("dll_fotos"));
+            p.setPrecioUF(Double.parseDouble(request.getParameter("txt_precio_uf")));
+            p.setMetrosConstruidos(Double.parseDouble(request.getParameter("txt_metros_construidos")));
+            p.setMetrosTotal(Double.parseDouble(request.getParameter("txt_metros_total")));
+            p.setNumeroDormitorios(Integer.parseInt(request.getParameter("sp_dormitorios")));
+            p.setNumeroBanios(Integer.parseInt(request.getParameter("sp_banios")));
+            p.setTipoPropiedad(request.getParameter("txt_tipo_propiedad"));
+            p.setComuna(request.getParameter("dll_comunas"));
+            p.setDescripcion(request.getParameter("txt_descripcion"));
+            
+            if (propiedadDal.updatePropiedad(p) == 1 && request.getParameter("btn_update") != null) 
+            {
+                //Poner pagina de buen ingreso
+                //request.getRequestDispatcher("modificar_propiedad").forward(request, response); 
+                out.print("Update OK");
+            }
+            else if(propiedadDal.deletePropiedad(p) == 1 && request.getParameter("btn_delete") != null)
+            {     
+                out.print("Delete OK");
+            }
+            else
+            {
+                out.print("error");
+            }
         }
+        catch(Exception e)
+        {
+            out.print(e.getMessage());            
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
