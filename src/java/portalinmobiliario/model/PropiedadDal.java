@@ -177,11 +177,7 @@ public class PropiedadDal
         {
 
         conexion();
-        String sql = "update propiedad set foto = '"+ p.getFoto() +"',precioUf = " + p.getPrecioUF() + ""
-                + ", mtsConstruido = " + p.getMetrosConstruidos() +", mtsTotal = " + p.getMetrosTotal() + ""
-                + ", numeroCormitorios = "+ p.getNumeroDormitorios() + ", numeroBaños = " + p.getNumeroBanios()+ ""
-                + ", tipopropiedad = '"+ p.getTipoPropiedad() +"', idComuna = '" + p.getComuna() + "'"
-                + ",descripcion = '"+ p.getDescripcion() +"' where idPropiedad = " + p.getCodigoPropiedad() +" ; ";
+        String sql = "update propiedad set foto = '"+ p.getFoto() +"',precioUf = " + p.getPrecioUF() + ", mtsConstruido = " + p.getMetrosConstruidos() +", mtsTotal = " + p.getMetrosTotal() + ", numeroCormitorios = "+ p.getNumeroDormitorios() + ", numeroBaños = " + p.getNumeroBanios()+ ", tipopropiedad = '"+ p.getTipoPropiedad() +"', idComuna = '" + p.getComuna() + "', descripcion = '"+ p.getDescripcion() +"' where idPropiedad = '" + p.getCodigoPropiedad() +"' ; ";
         return state.executeUpdate(sql);                    
         } 
         catch (SQLException e)
@@ -189,12 +185,12 @@ public class PropiedadDal
             return e.getErrorCode();
         }
     }
-     public int deletePropiedad(int idPropiedad)
+     public int deletePropiedad(String idPropiedad)
     {
         try 
         {
         conexion();
-        String sql = "delete from propiedad where idPropiedad = "+ idPropiedad +";";
+        String sql = "delete from propiedad where idPropiedad = '"+ idPropiedad +"';";
         return state.executeUpdate(sql);                    
         } 
         catch (SQLException e)

@@ -14,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import portalinmobiliario.model.Propiedad;
+import portalinmobiliario.model.PropiedadDal;
 
 /**
  *
@@ -33,17 +35,36 @@ public class UpdatePropiedad extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdatePropiedad</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdatePropiedad at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+        try 
+        {
+            PropiedadDal propiedadDal = new PropiedadDal();
+            Propiedad p = new Propiedad();
+            p.setCodigoPropiedad(request.getParameter("txt_codigo_evaluar"));
+            p.setFoto(request.getParameter("dll_fotos"));
+            p.setPrecioUF(Double.parseDouble(request.getParameter("txt_precio_uf")));
+            p.setMetrosConstruidos(Double.parseDouble(request.getParameter("txt_metros_construidos")));
+            p.setMetrosTotal(Double.parseDouble(request.getParameter("txt_metros_total")));
+            p.setNumeroDormitorios(Integer.parseInt(request.getParameter("sp_dormitorios")));
+            p.setNumeroBanios(Integer.parseInt(request.getParameter("sp_banios")));
+            p.setTipoPropiedad(request.getParameter("txt_tipo_propiedad"));
+            p.setComuna(request.getParameter("dll_comunas"));
+            p.setDescripcion(request.getParameter("txt_descripcion"));
+            
+            if (propiedadDal.updatePropiedad(p) != 1) 
+            {
+              out.print("Error");
+            }
+            else
+            {     
+                //Poner pagina de buen ingreso
+                //request.getRequestDispatcher("modificar_propiedad").forward(request, response); 
+                out.print("Update OK");
+            }
+        }
+        catch(Exception e)
+        {
+            out.print(e.getMessage());            
         }
     }
 
