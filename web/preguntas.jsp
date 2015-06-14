@@ -90,20 +90,20 @@
         </div>
     </nav>
         <!--body-->
-        <div class="well">
+                <div class="col-sm-1"></div>
+        <div class="well col-sm-10">
             <%
             HttpSession sesion = request.getSession();
             Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");     
             %>
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
-            <h3>Seleccione una acción:</h3>
-            <div  class="row">
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Responder preguntas:</h1>
+            <h3>&nbsp;</h3>
+                <div  class="row">
                 <!--side menu-->
                 <div class="list-group col-sm-2">
                     <a href="buscar_propiedad.jsp" class="list-group-item"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-sliders"></i>&nbsp;Modificar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-trash"></i>&nbsp;Eliminar propiedades</a>
+                    <a href="listar_propiedades.jsp" class="list-group-item"><i class="fa fa-list-ol"></i>&nbsp;Listar propiedades</a>
+                    <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
                     <a href="preguntas.jsp" class="list-group-item active"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
                 </div>
                 <!--inbox-->

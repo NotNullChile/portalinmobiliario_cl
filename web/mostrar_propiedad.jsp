@@ -1,5 +1,5 @@
 <%-- 
-    Document   : modificar_propiedad
+    Document   : mostrar_propiedad
     Created on : Jun 10, 2015, 5:00:02 PM
     Author     : urtubia @ notNull
 --%>
@@ -108,8 +108,8 @@
         <div class="well col-sm-10">
             <%
             HttpSession sesion = request.getSession();
-            Ejecutivo e = (Ejecutivo)sesion.getAttribute("ejecutivo");  
-            Propiedad p = (Propiedad)sesion.getAttribute("propiedad");
+            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");  
+            Propiedad p = (Propiedad) sesion.getAttribute("propiedad");
             %>
             <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
             <h3>Seleccione una acción:</h3>
@@ -124,30 +124,37 @@
                 </div>
                 <!--búsqueda-->
                 <div class="col-sm-8">
-                    <form action="eliminar_propiedad.jsp" method="POST">
+                    <form action="modificar_propiedad.jsp" method="POST">
                     <div class="form-group">
                         <table class="table table-hover" >
                         <tbody>
-                            <%  
-                            /*
-                            try
-                            {   
-                                int idPropiedad = 1;  
-                                PropiedadDal propiedadDal = new PropiedadDal();
-                                ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
-                                if(request.getParameter("btn_buscar") != null) 
-                                {                                                 
-                                    idPropiedad = Integer.parseInt(request.getParameter("txt_codigo")); 
-                                    listaPropiedades = propiedadDal.listaPropiedades(idPropiedad);
-                                }
-                                for(Propiedad p : listaPropiedades)
-                                {                                  
-                            */
-                            %>
                             <tr>
-                                
+                                <div class="alert alert-success">
+                                    <i class="fa fa-check-circle"></i>
+                                    &nbsp;&nbsp;
+                                    <strong>Propiedad encontrada.</strong> Puede modificar o eliminar esta propiedad con los siguientes botones:
+                                </div>
                             </tr>
                             <tr>
+                                <td>
+                                    <button name="btn_modificar_propiedad" class="btn btn-warning">
+                                        <i class="fa fa-search"></i>
+                                        Modificar esta propiedad
+                                    </button>
+                                </td>  
+                                <td>
+                                    <button name="btn_eliminar_propiedad" class="btn btn-danger">
+                                        <i class="fa fa-search"></i>
+                                        Eliminar esta propiedad
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-photo"></i>
+                                    &nbsp;&nbsp;
+                                    Fotografía:
+                                </td>
                                 <td>
                                     <img src="images/<%=p.getFoto()%>" class="img-thumbnail">
                                 </td>
@@ -159,7 +166,7 @@
                                     Código de propiedad:
                                 </td>
                                 <td>
-                                    <input name="txt_codigo_prop" type="text" class="form-control col-sm-3" placeholder="<%=p.getCodigoPropiedad()%>" readonly>
+                                    <%=p.getCodigoPropiedad()%>
                                 </td>
                             </tr>
                             <tr>
@@ -168,7 +175,9 @@
                                     <i class="fa fa-building"></i>
                                     Tipo de propiedad:
                                 </td>
-                                <td><input type="text" class="form-control col-sm-3" placeholder="<%=p.getTipoPropiedad()%>"></td>
+                                <td>
+                                    <%=p.getTipoPropiedad()%>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -176,7 +185,9 @@
                                     &nbsp;&nbsp;
                                     Precio (UF)
                                 </td>
-                                <td><input type="text" class="form-control" placeholder="<%=p.getPrecioUF()%>"></td>
+                                <td>
+                                    <%=p.getPrecioUF()%>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -185,7 +196,7 @@
                                     Precio en Pesos
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control " placeholder=" <%=p.precioCPL()%> (El precio en pesos se actualizará automáticamente al guardar)" readonly>
+                                    <%=p.precioCPL()%>
                                 </td>
                             </tr>
                             <tr>
@@ -195,19 +206,7 @@
                                     Comuna
                                 </td>
                                 <td> 
-                                    <select name = "dll_comunas" class="form-control">
-                                        <option value="" disabled selected><%=p.getComuna()%></option>
-                                        <%
-                                            ComunaDal comunaDal = new ComunaDal();
-                                            ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
-                                            for(Comuna c : listasComunas)
-                                            {      
-                                        %>
-                                        <option value = "<%=c.getIdComuna()%>"><%=c.getNombreComuna()%></option>
-                                        <%
-                                            }
-                                        %>
-                                    </select> 
+                                    <%=p.getComuna()%>
                                 </td>
                             </tr>
                             <tr>
@@ -216,13 +215,17 @@
                                     &nbsp;&nbsp;
                                     Metros Totales
                                 </td>
-                                <td><input type="text" class="form-control col-sm-5" placeholder="<%=p.getMetrosTotal()%>"></td>
+                                <td>
+                                    <%=p.getMetrosTotal()%>
+                                </td>
                             </tr>
                             <tr>
                                 <td><i class="fa fa-th"></i>
                                     &nbsp;&nbsp;
                                     Metros Construidos</td>
-                                <td><input type="text" class="form-control" placeholder="<%=p.getMetrosConstruidos()%>"></td>
+                                <td>
+                                    <%=p.getMetrosConstruidos()%>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -230,7 +233,9 @@
                                     &nbsp;&nbsp;
                                     Número de Dormitorios
                                 </td>
-                                <td><input type="text" class="form-control" placeholder="<%=p.getNumeroDormitorios()%>"></td>
+                                <td>
+                                    <%=p.getNumeroDormitorios()%>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -239,7 +244,7 @@
                                     Número de Baños
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="<%=p.getNumeroBanios()%>">
+                                    <%=p.getNumeroBanios()%>
                                 </td>
                             </tr>
                             <tr>
@@ -249,40 +254,24 @@
                                     Descripción
                                 </td>
                                 <td>
-                                    <textarea class="form-control" rows="3" placeholder="<%=p.getDescripcion()%>"></textarea>
+                                    <%=p.getDescripcion()%>
                                 </td>  
                             </tr>
-                            <tr>
-                                <td>
-                                    <button class="btn btn-danger">
-                                        <i class="fa fa-search"></i>
-                                        Eliminar esta propiedad
-                                    </button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-warning">
-                                        <i class="fa fa-search"></i>
-                                        Modificar esta propiedad
-                                    </button>
-                                </td>  
-                            </tr>
+                            
                             <tr>
                             </tr>
                             <%
-                            /*
-                                }                       
-                            }
-                            catch(Exception ex)
-                            {
+                            //    }                       
+                           // }
+                            //catch(Exception ex)
+                            //{
 
-                            }
-                            */
+                            //}
                             %>
-                                                
                         </tbody>
                     </table>
-                            </div>
-                        </form>
+                        </div>
+                    </form>
                 </div><!--End of col-->
             </div><!--End of row-->     
         </div><!--End of well-->

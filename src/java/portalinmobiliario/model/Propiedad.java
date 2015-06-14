@@ -38,14 +38,14 @@ public class Propiedad {
     }
     
     public Propiedad() {
-        this.codigoPropiedad = new String();
-        this.foto = new String();
-        this.tipoPropiedad = new String();
+        this.codigoPropiedad = "no disponible";
+        this.foto = "error.jpg";
+        this.tipoPropiedad = "no disponible";
         this.precioUF = 0.0;
-        this.comuna = "";
+        this.comuna = "no asignada";
         this.metrosConstruidos = 0.0;
         this.metrosTotal = 0.0;
-        this.descripcion = new String();
+        this.descripcion = "no disponible";
         this.numeroDormitorios =0;
         this.numeroBanios = 0;
     }

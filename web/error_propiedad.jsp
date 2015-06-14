@@ -1,9 +1,12 @@
 <%-- 
-    Document   : intranet
+    Document   : error_propiedad
     Created on : Jun 10, 2015, 5:00:02 PM
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Propiedad"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="portalinmobiliario.model.PropiedadDal"%>
 <%@page import="portalinmobiliario.model.Ejecutivo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -58,11 +61,6 @@
                 background-color: #000000;
             }
         </style>
-        <!--Java servlet sessions and attributes-->
-        <%
-            HttpSession sesion = request.getSession();
-            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");
-        %>
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -75,13 +73,13 @@
                 </div>
                 <div>
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li>
                             <a href="intranet.jsp">
                                 <i class="fa fa-unlock"></i>
                                 &nbsp; Home Intranet
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="buscar_propiedad.jsp">
                                 <i class="fa fa-cogs"></i>
                                 &nbsp; Administrar Propiedades
@@ -94,58 +92,72 @@
                             </a>
                         </li>  
                         <li>
-                            <a href="cerrar_session.do">
+                            <a href="ingreso_intranet.jsp">
                                 <i class="fa fa-lock"></i>
-                                    &nbsp; Logout
+                                &nbsp; Logout
                             </a>
                         </li> 
                     </ul>
                 </div>
             </div>
         </nav>
-    
-        <div class="col-sm-1"></div>
+        <!--body-->
+                <div class="col-sm-1"></div>
         <div class="well col-sm-10">
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
-            <h3>Seleccione una acción:</h3>
-            
-            <div class="list-group col-sm-2">
-                <a href="buscar_propiedad.jsp" class="list-group-item"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
-                <a href="listar_propiedades.jsp" class="list-group-item"><i class="fa fa-list-ol"></i>&nbsp;Listar propiedades</a>
-                <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
-                <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
-            </div>
-            <div class="col-sm-1"></div>
-            <a href="buscar_propiedad.jsp" class="btn btn-lg btn-primary col-sm-2 text-left">
-                Buscar propiedades,<br>
-                Modificar propiedades,<br> 
-                Eliminar propiedades.<br><br>
-                <i class="fa fa-search"></i>
-            </a>
-            &nbsp;&nbsp;
-            <a href="listar_propiedades.jsp" class="btn btn-lg btn-warning col-sm-2">
-                Listar propiedades:<br>
-                Vea el listado completo<br>
-                de propiedades. <br><br>
-                <i class="fa fa-list-ol"></i>
-            </a>
-            &nbsp;&nbsp;
-            <a href="agregar_propiedad.jsp" class="btn btn-lg btn-success col-sm-2">
-                Agregar nuevas <br>
-                propiedades a la base <br>
-                de datos.<br><br>
-                <i class="fa fa-plus-circle"></i>
-            </a>
-            &nbsp;&nbsp;
-            <a href="preguntas.jsp" class="btn btn-lg btn-info col-sm-2">
-                Responder preguntas.<br>
-                de los usuarios. <br><br><br>
-                <i class="fa fa-inbox"></i>
-            </a>
+            <%
+            HttpSession sesion = request.getSession();
+            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");            
+            %>
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Búsqueda de propiedades:</h1>
+            <h3>&nbsp;</h3>
+                <div  class="row">
+                <!--side menu-->
+                <div class="list-group col-sm-2">
+                    <a href="buscar_propiedad.jsp" class="list-group-item active"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
+                    <a href="listar_propiedades.jsp" class="list-group-item"><i class="fa fa-list-ol"></i>&nbsp;Listar propiedades</a>
+                    <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
+                    <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
+                </div>
+                <!--búsqueda-->
+                <form action="procesar_propiedad.do" method="POST">               
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <div class="col-sm-8">
+                            <input type="text"
+                                name="txt_codigo"
+                                class="form-control"
+                                id="codigo"
+                                placeholder="Código de Propiedad" />
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary" name = "btn_buscar">
+                                <i class="fa fa-search"></i>
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                  </form>
+                    <table class="table table-hover" >
+                        <tbody>
+                        <br>
+                        <h1>
+                            <center>
+                                <i class="fa fa-search"></i>&nbsp;&nbsp;
+                                <small><i class="fa fa-times"></i>&nbsp;&nbsp;</small>
+                            <i class="fa fa-database"></i>
+                            </center>
+                        </h1>
+                        <div class="alert alert-danger">
+                            <i class="fa fa-warning"></i>
+                            <strong>Error de Búsqueda:</strong> El código ingresado no se encuentra en la base de datos.
+                            <br> Intente ingresarlo nuevamente.
+                        </div>
+                        </tbody>
+                    </table> 
+                </div>        
+            </div>        
         </div>
-        
-        
-        
+            
         <footer class="footer">
             <div class="container">
                 <!--Creative Commons License-->
@@ -156,7 +168,7 @@
                             <small>
                                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                                 <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
-                                </a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">portalinmobiliario_notNull</span>por 
+                                </a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">portalinmobiliario_notNull</span> por 
                                 <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
                                 notNull Chile</a> se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
                                     Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br /> Basada en una obra en 
@@ -169,6 +181,6 @@
                 </div>
                 <!--End of creative Commons License-->
             </div>
-        </footer>
+        </footer>            
     </body>
 </html>
