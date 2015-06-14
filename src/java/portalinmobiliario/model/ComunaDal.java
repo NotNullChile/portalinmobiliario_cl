@@ -43,7 +43,7 @@ public class ComunaDal
         {
             ArrayList <Comuna> listaComunas = new ArrayList<>();
             conexion();
-            String sql = "select * from comuna";
+            String sql = "select * from comuna order by 2";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())

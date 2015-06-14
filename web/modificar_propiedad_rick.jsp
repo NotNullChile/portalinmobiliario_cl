@@ -21,7 +21,7 @@
         <h1>Hello World!</h1>
         <h2> Modifique datos de la propiedad </h2>
 	<br>
-        <form action="modificar_propiedad.jsp" method="POST">
+        <form action="modificar_propiedad_rick.jsp" method="POST">
             <table border="0">
                 <tbody>
                     <tr>
