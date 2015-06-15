@@ -68,8 +68,11 @@
                             <td>                              
                              <select name = "dll_comunas">
                                 <%
-                                 ComunaDal comunaDal = new ComunaDal();
+                                //Instanciamos la Clase ComunaDal, la cual tiene la consulta SQL
+                                ComunaDal comunaDal = new ComunaDal();
+                                //Se crea el ArrayList de comuna y la igualamos con la que esta en la BD
                                 ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
+                                //Despues se le da al DL los valores de las comunas
                                 for(Comuna c : listasComunas)
                                 {      
                                 %>

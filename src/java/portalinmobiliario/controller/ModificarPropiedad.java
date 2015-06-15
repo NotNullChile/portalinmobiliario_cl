@@ -40,6 +40,7 @@ public class ModificarPropiedad extends HttpServlet {
         PrintWriter out = response.getWriter();
         try  
         {
+            //Instanciamos las Clases
             PropiedadDal propiedadDal = new PropiedadDal();
             Propiedad p = new Propiedad();
             p = (Propiedad)request.getSession().getAttribute("propiedad");
@@ -55,11 +56,12 @@ public class ModificarPropiedad extends HttpServlet {
 
             if (propiedadDal.updatePropiedad(p) == 1 && request.getParameter("btn_guardar") != null) 
             {
-                //Notificación de ingreso correcto.
-                request.getRequestDispatcher("propiedad_modificada.jsp").forward(request, response); 
+                request.getRequestDispatcher("confirmacion_eliminacion.jsp").forward(request, response); 
             }
+            //Si eso no ocurre pregunta si el Button(delete)es presionado borrará el objeto Propiedad
             else if(propiedadDal.deletePropiedad(p) == 1 && request.getParameter("btn_delete") != null)
-            {     
+            {    
+                //Poner pagina de buen delete
                 out.print("Delete OK");
             }
             else
@@ -114,3 +116,6 @@ public class ModificarPropiedad extends HttpServlet {
     }// </editor-fold>
 
 }
+                //Notificación de ingreso correcto.
+                request.getRequestDispatcher("propiedad_modificada.jsp").forward(request, response); 
+

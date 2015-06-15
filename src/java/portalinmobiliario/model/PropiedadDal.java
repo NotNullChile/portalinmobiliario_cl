@@ -34,12 +34,16 @@ public class PropiedadDal
             e.printStackTrace();
         }
     }
+    //Metodo que insertará una propiedad
     public int insertPropiedad(Propiedad p)
     {
         try 
         {
-            conexion();
+           //Primero se conecta a la BD 
+           conexion();
+           //Consulta que insertara una propiedad
            String insert = "insert into propiedad values('" + p.getCodigoPropiedad() + "','" + p.getFoto() + "'," + p.getPrecioUF() + "," + p.getMetrosConstruidos() + "," + p.getMetrosTotal() + "," + p.getNumeroDormitorios() + "," + p.getNumeroBanios() + ",'" + p.getTipoPropiedad() + "','" + p.getComuna() + "','" + p.getDescripcion() + "');";
+           //Esto retornará 1 = "Bien ingresado" y si es cualquier otro numero error 
            return state.executeUpdate(insert);
         }
         catch (SQLException e) 
@@ -47,12 +51,16 @@ public class PropiedadDal
             return e.getErrorCode();
         }
     }
+    //Metodo que creará una lista de propiedades
     public ArrayList<Propiedad> listaPropiedad()
     {       
         try 
         {
+            //Primero se crea un ArrayList de propiedades para guardarlas ahí 
             ArrayList <Propiedad> listaPropiedades = new ArrayList<>();
+            //Se conecta a la BD
             conexion();
+            //Consulta SQL
             String sql = "select p.idPropiedad, p.foto, p.precioUf,"
                     + "p.mtsConstruido, p.mtsTotal,p.numeroCormitorios, "
                     + "p.numeroBaños, p.tipoPropiedad,c.nombreComuna,p.descripcion "
@@ -82,6 +90,7 @@ public class PropiedadDal
         }
         
     }
+    //Metodo que creará una lista de propiedades segun la comuna
     public ArrayList<Propiedad> listaPropiedad(int idComuna)
     {       
         try 
@@ -116,7 +125,8 @@ public class PropiedadDal
             return null;
         }        
     }
-     public ArrayList<Propiedad> listaPropiedades(int idPropiedad)
+    //Metodo que creará una lista de propiedades segun la idPropiedad
+     public ArrayList<Propiedad> listaPropiedades(String idPropiedad)
     {       
         try 
         {
@@ -126,7 +136,7 @@ public class PropiedadDal
                     + " p.mtsTotal,p.numeroCormitorios,p.numeroBaños, "
                     + "p.tipoPropiedad,c.nombreComuna,p.descripcion "
                     + "from propiedad p inner join comuna c on p.idComuna = c.idComuna "
-                    + "where p.idPropiedad = " + idPropiedad + ";";
+                    + "where p.idPropiedad = '" + idPropiedad + "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
@@ -151,6 +161,7 @@ public class PropiedadDal
             return null;
         }        
     }
+     //Metodo que retornará la cuenta de propiedades ingresadas
     public int countPropiedad()
     {
       try
@@ -171,6 +182,7 @@ public class PropiedadDal
       }
       return 0;
     }
+    //Metodo que  modificará una propiedad
     public int updatePropiedad(Propiedad p)
     {
         try 
@@ -194,6 +206,7 @@ public class PropiedadDal
             return e.getErrorCode();
         }
     }
+    //Metodo que borrará una propiedad
      public int deletePropiedad(Propiedad p)
     {
         try 
@@ -207,7 +220,7 @@ public class PropiedadDal
             return e.getErrorCode();
         }
     }
-     
+    //Metodo que devuelve el Objeto Propiedad
     public Propiedad buscarPropiedad(String codigoPropiedad){
         Propiedad p = new Propiedad();
         try 

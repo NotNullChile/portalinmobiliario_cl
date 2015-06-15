@@ -42,6 +42,7 @@ public class PreguntaDal
             e.printStackTrace();
         }
     }
+    //Metodo que inserta una pregunta.
     public int insertPregunta(Pregunta p)
     {
         try 
@@ -56,6 +57,7 @@ public class PreguntaDal
         }
         
     }
+    //Metodo que crea una lista de preguntas.
     public ArrayList<Pregunta> listaPreguntas()
     {
         
