@@ -111,178 +111,276 @@
             Ejecutivo e = (Ejecutivo)sesion.getAttribute("ejecutivo");  
             Propiedad p = (Propiedad)sesion.getAttribute("propiedad");
             %>
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
-            <h3>Seleccione una acción:</h3>
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Modificación de datos de propiedad:</h1>
+            <h3>&nbsp;</h3>
             <div  class="row">
-                <!--side menu-->
+            <!--side menu-->
                 <div class="list-group col-sm-2">
-                    <a href="#" class="list-group-item active"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-sliders"></i>&nbsp;Modificar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-trash"></i>&nbsp;Eliminar propiedades</a>
-                    <a href="#" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
+                    <a href="buscar_propiedad.jsp" class="list-group-item active"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
+                    <a href="listar_propiedades.jsp" class="list-group-item"><i class="fa fa-list-ol"></i>&nbsp;Listar propiedades</a>
+                    <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
+                    <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
                 </div>
                 <!--búsqueda-->
                 <div class="col-sm-8">
-                    <form action="eliminar_propiedad.jsp" method="POST">
-                    <div class="form-group">
-                        <table class="table table-hover" >
-                        <tbody>
-                            <%  
-                            /*
-                            try
-                            {   
-                                int idPropiedad = 1;  
-                                PropiedadDal propiedadDal = new PropiedadDal();
-                                ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
-                                if(request.getParameter("btn_buscar") != null) 
-                                {                                                 
-                                    idPropiedad = Integer.parseInt(request.getParameter("txt_codigo")); 
-                                    listaPropiedades = propiedadDal.listaPropiedades(idPropiedad);
-                                }
-                                for(Propiedad p : listaPropiedades)
-                                {                                  
-                            */
-                            %>
-                            <tr>
-                                
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="images/<%=p.getFoto()%>" class="img-thumbnail">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-sm-3">
-                                    <i class="fa fa-list-ol"></i>
-                                    &nbsp;&nbsp;
-                                    Código de propiedad:
-                                </td>
-                                <td>
-                                    <input name="txt_codigo_prop" type="text" class="form-control col-sm-3" placeholder="<%=p.getCodigoPropiedad()%>" readonly>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-sm-3">
-                                    <i class="fa fa-home"></i>
-                                    <i class="fa fa-building"></i>
-                                    Tipo de propiedad:
-                                </td>
-                                <td><input type="text" class="form-control col-sm-3" placeholder="<%=p.getTipoPropiedad()%>"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-usd"></i>
-                                    &nbsp;&nbsp;
-                                    Precio (UF)
-                                </td>
-                                <td><input type="text" class="form-control" placeholder="<%=p.getPrecioUF()%>"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-money"></i>
-                                    &nbsp;&nbsp;
-                                    Precio en Pesos
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control " placeholder=" <%=p.precioCPL()%> (El precio en pesos se actualizará automáticamente al guardar)" readonly>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-map-marker"></i>
-                                    &nbsp;&nbsp;
-                                    Comuna
-                                </td>
-                                <td> 
-                                    <select name = "dll_comunas" class="form-control">
-                                        <option value="" disabled selected><%=p.getComuna()%></option>
-                                        <%
-                                            ComunaDal comunaDal = new ComunaDal();
-                                            ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
-                                            for(Comuna c : listasComunas)
-                                            {      
-                                        %>
-                                        <option value = "<%=c.getIdComuna()%>"><%=c.getNombreComuna()%></option>
-                                        <%
-                                            }
-                                        %>
-                                    </select> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-square-o"></i>
-                                    &nbsp;&nbsp;
-                                    Metros Totales
-                                </td>
-                                <td><input type="text" class="form-control col-sm-5" placeholder="<%=p.getMetrosTotal()%>"></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-th"></i>
-                                    &nbsp;&nbsp;
-                                    Metros Construidos</td>
-                                <td><input type="text" class="form-control" placeholder="<%=p.getMetrosConstruidos()%>"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-bed"></i>
-                                    &nbsp;&nbsp;
-                                    Número de Dormitorios
-                                </td>
-                                <td><input type="text" class="form-control" placeholder="<%=p.getNumeroDormitorios()%>"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-tint"></i>
-                                    &nbsp;&nbsp;
-                                    Número de Baños
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" placeholder="<%=p.getNumeroBanios()%>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-newspaper-o"></i>
-                                    &nbsp;&nbsp;
-                                    Descripción
-                                </td>
-                                <td>
-                                    <textarea class="form-control" rows="3" placeholder="<%=p.getDescripcion()%>"></textarea>
-                                </td>  
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button class="btn btn-danger">
-                                        <i class="fa fa-search"></i>
-                                        Eliminar esta propiedad
-                                    </button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-warning">
-                                        <i class="fa fa-search"></i>
-                                        Modificar esta propiedad
-                                    </button>
-                                </td>  
-                            </tr>
-                            <tr>
-                            </tr>
-                            <%
-                            /*
-                                }                       
-                            }
-                            catch(Exception ex)
-                            {
+                    <form action="modificar_propiedad.do" method="POST">
+                        <div class="form-group">
+                            <table class="table table-hover" >
+                                    <tbody>
+                                        <%                                   
+                                    try
+                                    {   
+                                        int idPropiedad = 1;                    
+                                        PropiedadDal propiedadDal = new PropiedadDal();
+                                        ArrayList<Propiedad> listaPropiedades = null;
+                                        ComunaDal comunaDal = new ComunaDal();
+                                        String codigo = request.getParameter("txt_codigo");
+                                        if(request.getParameter("btn_buscar") != null) 
+                                        {                                                 
+                                        idPropiedad = Integer.parseInt(request.getParameter("txt_codigo")); 
+                                        listaPropiedades = propiedadDal.listaPropiedades(idPropiedad);
+                                        }
+                                        //for(Propiedad p : listaPropiedades)
+                                        {   
 
-                            }
-                            */
-                            %>
-                                                
-                        </tbody>
-                    </table>
-                            </div>
-                        </form>
+                                    %>
+                                        <tr>
+                                        <div class="alert alert-warning">
+                                                <i class="fa fa-wrench"></i>
+                                                &nbsp;&nbsp;
+                                                <strong>Edición de propiedad:</strong> Modifique las catacterísticas de la propiedad seleccionada. <br>
+                                                <i class="fa fa-warning"></i>
+                                                &nbsp;&nbsp;
+                                                <strong>Advertencia: </strong>Una vez guardados los cambios no se pueden revertir.
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button name="btn_guardar"
+                                                    class="btn btn-warning">
+                                                    <i class="fa fa-cloud"></i>
+                                                    Guardar cambios
+                                                </button>
+                                            </td>  
+                                            <td>
+                                                <a href="eliminar_propiedad.jsp" 
+                                                  name="btn_eliminar_propiedad" 
+                                                  class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                    Eliminar esta propiedad
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-photo"></i>
+                                                &nbsp;&nbsp;
+                                                Fotografía:
+                                            </td>
+                                            <td>
+                                                <img src="images/<%=p.getFoto()%>" class="img-thumbnail">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-5">
+                                                <i class="fa fa-list-ol"></i>
+                                                &nbsp;&nbsp;
+                                                Código de propiedad:
+                                            </td>
+                                            <td>
+                                                <input name="txt_codigo_prop" 
+                                                       type="text" class="form-control col-sm-3" 
+                                                       value="<%=p.getCodigoPropiedad()%>" 
+                                                       readonly>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-3">
+                                                <i class="fa fa-home"></i>
+                                                <i class="fa fa-building"></i>
+                                                Tipo de propiedad:
+                                            </td>
+                                            <td>
+                                                <select name = "ddl_tipo_propiedad" 
+                                                        class="form-control"
+                                                        >
+                                                    <option value="<%=p.getTipoPropiedad()%>" ><%=p.getTipoPropiedad()%></option>
+                                                    <%
+                                                        if (p.getTipoPropiedad().equalsIgnoreCase("casa")) {
+                                                                out.println("<option>Departamento</option>");
+                                                            }
+                                                        else{
+                                                            out.println("<option>Casa</option>");
+                                                        }
+                                                    %>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-usd"></i>
+                                                &nbsp;&nbsp;
+                                                Precio (UF)
+                                            </td>
+                                            <td>
+                                                <input class="form-control"
+                                                       name="spn_precio_uf"
+                                                       type="number"   
+                                                       value="<%=p.getPrecioUF()%>"
+                                                       >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-money"></i>
+                                                &nbsp;&nbsp;
+                                                Precio en Pesos
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control " placeholder=" <%=p.precioCPL()%> (El precio en pesos se actualizará automáticamente al guardar)" readonly>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-map-marker"></i>
+                                                &nbsp;&nbsp;
+                                                Comuna
+                                            </td>
+                                            <td> 
+                                                <select name = "ddl_comunas" 
+                                                        class="form-control"
+                                                        placeholder="<%=p.getComuna()%>"
+                                                        required>
+                                                    <option value="" 
+                                                            placeholder="<%=p.getComuna()%>">
+                                                            <%=p.getComuna()%>
+                                                    </option>
+                                                    <%
+                                                        //ComunaDal comunaDal = new ComunaDal();
+                                                        ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
+                                                        for(Comuna c : listasComunas)
+                                                        {      
+                                                    %>
+                                                    <option value = "<%=c.getIdComuna()%>"><%=c.getNombreComuna()%></option>
+                                                    <%
+                                                        }
+                                                    %>
+                                                </select> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-square-o"></i>
+                                                &nbsp;&nbsp;
+                                                Metros Totales
+                                            </td>
+                                            <td><input class="form-control col-sm-2"
+                                                       min = "1" max = "10000" 
+                                                       name="spn_metros_total" 
+                                                       step = "0.1"
+                                                       type="number" 
+                                                       value="<%=p.getMetrosTotal()%>"
+                                                       required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-th"></i>
+                                                &nbsp;&nbsp;
+                                                Metros Construidos</td>
+                                            <td>
+                                                <input name="spn_metros_construidos"
+                                                       class="form-control"
+                                                       min = "1" max = "10000"
+                                                       step = "0.1" 
+                                                       type="number"    
+                                                       value="<%=p.getMetrosConstruidos()%>"
+                                                       required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-bed"></i>
+                                                &nbsp;&nbsp;
+                                                Número de Dormitorios
+                                            </td>
+                                            <td>
+                                                <input name="spn_dormitorios" 
+                                                       class="form-control"  
+                                                       min ="1" max ="10" 
+                                                       step = "1"
+                                                       type="number"
+                                                       value="<%=p.getNumeroDormitorios()%>"
+                                                       required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-tint"></i>
+                                                &nbsp;&nbsp;
+                                                Número de Baños
+                                            </td>
+                                            <td>
+                                                <input name="spn_banios"
+                                                       type="number" 
+                                                       class="form-control" 
+                                                       min = "1" max = "10" 
+                                                       step = "1"  
+                                                       value="<%=p.getNumeroBanios()%>"
+                                                       required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-newspaper-o"></i>
+                                                &nbsp;&nbsp;
+                                                Descripción
+                                            </td>
+                                            <td>
+                                                <textarea name="txt_descripcion"
+                                                          class="form-control" 
+                                                          rows="3"
+                                                          placeholder="<%=p.getDescripcion()%>"
+                                                          value="<%=p.getDescripcion()%>"
+                                                          required
+                                                          ><%=p.getDescripcion()%></textarea>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button name="btn_guardar"
+                                                    class="btn btn-warning">
+                                                    <i class="fa fa-cloud"></i>
+                                                    Guardar cambios
+                                                </button>
+                                            </td>  
+                                            <td>
+                                                <a href="eliminar_propiedad.jsp" 
+                                                  name="btn_eliminar_propiedad" 
+                                                  class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                    Eliminar esta propiedad
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            
+                                        </tr>
+                                        <%
+
+                                            }                       
+                                        }
+                                        catch(Exception ex)
+                                        {
+
+                                        }
+                                        %>
+                                    </tbody>
+                            </table>
+                            <h3>&nbsp;</h3>
+                        </div><!--End of form-group-->
+                    </form>
                 </div><!--End of col-->
             </div><!--End of row-->     
         </div><!--End of well-->

@@ -1,5 +1,5 @@
 <%-- 
-    Document   : mostrar_propiedad
+    Document   : eliminar_propiedad
     Created on : Jun 10, 2015, 5:00:02 PM
     Author     : urtubia @ notNull
 --%>
@@ -111,7 +111,7 @@
             Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");  
             Propiedad p = (Propiedad) sesion.getAttribute("propiedad");
             %>
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Resultado de la búsqueda:</h1>
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Eliminación de Propiedad:</h1>
             <h3>&nbsp;</h3>
             <div  class="row">
             <!--side menu-->
@@ -123,29 +123,32 @@
                 </div>
                 <!--búsqueda-->
                 <div class="col-sm-8">
-                    <form action="modificar_propiedad.jsp" method="POST">
+                    <form action="eliminar_propiedad.do" method="POST">
                     <div class="form-group">
                         <table class="table table-hover" >
                         <tbody>
                             <tr>
-                                <div class="alert alert-success">
-                                    <i class="fa fa-check-circle"></i>
+                                <div class="alert alert-danger">
+                                    <i class="fa fa-warning"></i>
                                     &nbsp;&nbsp;
-                                    <strong>Propiedad encontrada.</strong> Puede modificar o eliminar esta propiedad con los siguientes botones:
+                                    <strong>Eliminar propiedad</strong> 
+                                    Por favor confirme la eliminación de esta propiedad:
                                 </div>
                             </tr>
                             <tr>
                                 <td>
-                                    <button name="btn_modificar_propiedad" class="btn btn-warning">
-                                        <i class="fa fa-wrench"></i>
-                                        Modificar esta propiedad
-                                    </button>
+                                    <a href="buscar_propiedad.jsp" 
+                                        name="btn_cancelar eliminacion" 
+                                        class="btn btn-success">
+                                        <i class="fa fa-backward"></i>
+                                        Cancelar la eliminación.
+                                    </a>
                                 </td>  
                                 <td>
-                                    <a href="eliminar_propiedad.jsp" name="btn_eliminar_propiedad" class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                        Eliminar esta propiedad
-                                    </a>
+                                    <button name="btn_confirmar_eliminacion" class="btn btn-danger">                                       
+                                            <i class="fa fa-trash"></i>
+                                            Eliminar esta propiedad
+                                    </button>                                    
                                 </td>
                             </tr>
                             <tr>
@@ -261,16 +264,18 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button name="btn_modificar_propiedad" class="btn btn-warning">
-                                        <i class="fa fa-wrench"></i>
-                                        Modificar esta propiedad
-                                    </button>
+                                    <a href="buscar_propiedad.jsp" 
+                                       name="btn_cancelar eliminacion" 
+                                        class="btn btn-success">
+                                        <i class="fa fa-backward"></i>
+                                        Cancelar la eliminación.
+                                    </a>
                                 </td>  
                                 <td>
-                                    <a href="eliminar_propiedad.jsp" name="btn_eliminar_propiedad" class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                        Eliminar esta propiedad
-                                    </a>
+                                    <button name="btn_confirmar_eliminacion" class="btn btn-danger">                                       
+                                            <i class="fa fa-trash"></i>
+                                            Eliminar esta propiedad
+                                    </button>                                    
                                 </td>
                             </tr>
                         </tbody>

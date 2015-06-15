@@ -1,5 +1,5 @@
 <%-- 
-    Document   : buscar_propiedad
+    Document   : confirmacion_eliminacion
     Created on : Jun 10, 2015, 5:00:02 PM
     Author     : urtubia @ notNull
 --%>
@@ -122,6 +122,11 @@
                 <!--búsqueda-->
                 <form action="procesar_propiedad.do" method="POST">               
                 <div class="col-sm-8">
+                                <div class="alert alert-info">
+                                    <i class="fa fa-flag-o"></i>
+                                    &nbsp;&nbsp;
+                                    <strong>Propiedad eliminada.</strong>
+                                </div>
                     <div class="form-group">
                         <div class="col-sm-8">
                             <input type="text"

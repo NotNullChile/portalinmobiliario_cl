@@ -1,5 +1,5 @@
 <%-- 
-    Document   : mostrar_propiedad
+    Document   : propiedad_modificada
     Created on : Jun 10, 2015, 5:00:02 PM
     Author     : urtubia @ notNull
 --%>
@@ -111,7 +111,7 @@
             Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");  
             Propiedad p = (Propiedad) sesion.getAttribute("propiedad");
             %>
-            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Resultado de la búsqueda:</h1>
+            <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Propiedad modificada:</h1>
             <h3>&nbsp;</h3>
             <div  class="row">
             <!--side menu-->
@@ -128,23 +128,25 @@
                         <table class="table table-hover" >
                         <tbody>
                             <tr>
-                                <div class="alert alert-success">
-                                    <i class="fa fa-check-circle"></i>
+                                <div class="alert alert-info">
+                                    <i class="fa fa-flag-o"></i>
                                     &nbsp;&nbsp;
-                                    <strong>Propiedad encontrada.</strong> Puede modificar o eliminar esta propiedad con los siguientes botones:
+                                    <strong>Propiedad modificada.</strong> Estos son los nuevos datos de la propiedad seleccionada:
                                 </div>
                             </tr>
                             <tr>
                                 <td>
                                     <button name="btn_modificar_propiedad" class="btn btn-warning">
-                                        <i class="fa fa-wrench"></i>
+                                        <i class="fa fa-search"></i>
                                         Modificar esta propiedad
                                     </button>
                                 </td>  
                                 <td>
-                                    <a href="eliminar_propiedad.jsp" name="btn_eliminar_propiedad" class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                        Eliminar esta propiedad
+                                    <a href="eliminar_propiedad.jsp" 
+                                        name="btn_eliminar_propiedad" 
+                                        class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                            Eliminar esta propiedad
                                     </a>
                                 </td>
                             </tr>
@@ -262,14 +264,16 @@
                             <tr>
                                 <td>
                                     <button name="btn_modificar_propiedad" class="btn btn-warning">
-                                        <i class="fa fa-wrench"></i>
+                                        <i class="fa fa-search"></i>
                                         Modificar esta propiedad
                                     </button>
                                 </td>  
                                 <td>
-                                    <a href="eliminar_propiedad.jsp" name="btn_eliminar_propiedad" class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                        Eliminar esta propiedad
+                                    <a href="eliminar_propiedad.jsp" 
+                                        name="btn_eliminar_propiedad" 
+                                        class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                            Eliminar esta propiedad
                                     </a>
                                 </td>
                             </tr>

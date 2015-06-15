@@ -5,7 +5,6 @@
  * Atribucion-NoComercial-SinDerivar 4.0 Internacional.
  * Basada en una obra en https://github.com/NotNullChile/portalinmobiliario_cl.
  */
-
 package portalinmobiliario.controller;
 
 import java.io.IOException;
@@ -20,10 +19,10 @@ import portalinmobiliario.model.PropiedadDal;
 
 /**
  *
- * @author Ricardo
+ * @author urtubia @ notNull
  */
-@WebServlet(name = "ModificarPropiedad", urlPatterns = {"/modificar_propiedad.do"})
-public class ModificarPropiedad extends HttpServlet {
+@WebServlet(name = "EliminarPropiedad", urlPatterns = {"/eliminar_propiedad.do"})
+public class EliminarPropiedad extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,41 +36,20 @@ public class ModificarPropiedad extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try  
-        {
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             PropiedadDal propiedadDal = new PropiedadDal();
             Propiedad p = new Propiedad();
             p = (Propiedad)request.getSession().getAttribute("propiedad");
-            p.setCodigoPropiedad(request.getParameter("txt_codigo_prop"));
-            p.setTipoPropiedad(request.getParameter("ddl_tipo_propiedad"));
-            p.setPrecioUF(Double.parseDouble(request.getParameter("spn_precio_uf")));
-            p.setMetrosTotal(Double.parseDouble(request.getParameter("spn_metros_total")));
-            p.setMetrosConstruidos(Double.parseDouble(request.getParameter("spn_metros_construidos")));
-            p.setNumeroDormitorios(Integer.parseInt(request.getParameter("spn_dormitorios")));
-            p.setNumeroBanios(Integer.parseInt(request.getParameter("spn_banios")));
-            p.setComuna(request.getParameter("ddl_comunas"));
-            p.setDescripcion(request.getParameter("txt_descripcion"));
-
-            if (propiedadDal.updatePropiedad(p) == 1 && request.getParameter("btn_guardar") != null) 
-            {
-                //Notificación de ingreso correcto.
-                request.getRequestDispatcher("propiedad_modificada.jsp").forward(request, response); 
-            }
-            else if(propiedadDal.deletePropiedad(p) == 1 && request.getParameter("btn_delete") != null)
+            if(propiedadDal.deletePropiedad(p) == 1 && request.getParameter("btn_confirmar_eliminacion") != null)
             {     
-                out.print("Delete OK");
+                request.getRequestDispatcher("confirmacion_eliminacion.jsp").forward(request, response); 
             }
             else
             {
                 out.print("error");
             }
         }
-        catch(Exception e)
-        {
-            out.print(e.getMessage());            
-        }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

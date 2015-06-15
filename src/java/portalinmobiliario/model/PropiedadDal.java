@@ -177,7 +177,16 @@ public class PropiedadDal
         {
 
         conexion();
-        String sql = "update propiedad set foto = '"+ p.getFoto() +"',precioUf = " + p.getPrecioUF() + ", mtsConstruido = " + p.getMetrosConstruidos() +", mtsTotal = " + p.getMetrosTotal() + ", numeroCormitorios = "+ p.getNumeroDormitorios() + ", numeroBaños = " + p.getNumeroBanios()+ ", tipopropiedad = '"+ p.getTipoPropiedad() +"', idComuna = '" + p.getComuna() + "', descripcion = '"+ p.getDescripcion() +"' where idPropiedad = '" + p.getCodigoPropiedad() +"' ; ";
+        String sql = "UPDATE propiedad "
+                    + "SET precioUf = " + p.getPrecioUF() + ", " 
+                        + "mtsConstruido = " + p.getMetrosConstruidos() + ", "
+                        + "mtsTotal = " + p.getMetrosTotal() + ", "
+                        + "numeroCormitorios = "+ p.getNumeroDormitorios() + ", "
+                        + "numeroBaños = " + p.getNumeroBanios()+ ", "
+                        + "tipopropiedad = '"+ p.getTipoPropiedad() +"', "
+                        + "idComuna = '" + p.getComuna() + "', "
+                        + "descripcion = '"+ p.getDescripcion() +"' "
+                    + "WHERE idPropiedad = '" + p.getCodigoPropiedad() +"' ; ";
         return state.executeUpdate(sql);                    
         } 
         catch (SQLException e)
@@ -204,20 +213,32 @@ public class PropiedadDal
         try 
         {
             conexion();
-            String sql = "SELECT idPropiedad, foto, precioUF, mtsConstruido, mtsTotal, numeroCormitorios, numeroBaños, tipoPropiedad, idComuna, descripcion FROM propiedad WHERE idPropiedad = " + codigoPropiedad + ";";
+            String sql = "SELECT p.idPropiedad, "
+                                + "p.foto, "
+                                + "p.precioUF, "
+                                + "p.mtsConstruido, "
+                                + "p.mtsTotal, "
+                                + "p.numeroCormitorios, "
+                                + "p.numeroBaños, "
+                                + "p.tipoPropiedad, "
+                                + "c.nombreComuna, "
+                                + "p.descripcion "
+                    + "FROM propiedad p INNER JOIN comuna c "
+                        + "ON p.idComuna = c.idComuna "
+                    + "WHERE idPropiedad = " + codigoPropiedad + ";";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(); 
             if(rs.first()){
-                p.setCodigoPropiedad(rs.getString("idPropiedad"));
-                p.setFoto(rs.getString("foto"));
-                p.setPrecioUF(rs.getDouble("precioUF"));
-                p.setMetrosConstruidos(rs.getDouble("mtsConstruido"));
-                p.setMetrosTotal(rs.getDouble("mtsTotal"));
-                p.setNumeroDormitorios(rs.getInt("numeroCormitorios"));
-                p.setNumeroBanios(rs.getInt("numeroBaños"));
-                p.setTipoPropiedad(rs.getString("tipoPropiedad"));
-                p.setComuna(rs.getString("idComuna"));
-                p.setDescripcion(rs.getString("descripcion"));
+                p.setCodigoPropiedad(rs.getString("p.idPropiedad"));
+                p.setFoto(rs.getString("p.foto"));
+                p.setPrecioUF(rs.getDouble("p.precioUF"));
+                p.setMetrosConstruidos(rs.getDouble("p.mtsConstruido"));
+                p.setMetrosTotal(rs.getDouble("p.mtsTotal"));
+                p.setNumeroDormitorios(rs.getInt("p.numeroCormitorios"));
+                p.setNumeroBanios(rs.getInt("p.numeroBaños"));
+                p.setTipoPropiedad(rs.getString("p.tipoPropiedad"));
+                p.setComuna(rs.getString("c.nombrecomuna"));
+                p.setDescripcion(rs.getString("p.descripcion"));
             }
         } 
         catch (Exception e) 
