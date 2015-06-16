@@ -54,7 +54,7 @@ public class ProcesarPregunta extends HttpServlet {
                 if (preguntaDal.insertPregunta(p) == 1) 
                 {
                     //Redirige a la misma pagina
-                    request.getRequestDispatcher("contacto.jsp").forward(request, response);
+                    request.getRequestDispatcher("mensaje_enviado.jsp").forward(request, response);
                 }
                 else
                 {

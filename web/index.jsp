@@ -155,17 +155,13 @@
             <!--Main Table.-->
             <table class="table table-hover" >
                 <thead>
-                    <tr class="bg-primary">
-                        <td class="col-sm-2"><i class="fa fa-photo"></i></td>
-                        <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
-                        <td><i class="fa fa-usd"></i>&nbsp;UF</td>
-                        <td><i class="fa fa-usd"></i>&nbsp;Pesos</td>
-                        <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
-                        <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
-                        <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
-                        <td><i class="fa fa-bed"></i>Dorms.</td>
-                        <td><i class="fa fa-tint"></i>Baños</td>
-                        <td><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
+                    <tr class="bg-primary row">
+                        <td class="col-sm-3"><i class="fa fa-photo"></i></td>
+                        <td class="col-sm-1"><i class="fa fa-map-marker"></i></td>
+                        <td class="col-sm-1"><i class="fa fa-usd"></i>&nbsp;Precio</td>
+                        <td class="col-sm-2"><i class="fa fa-th"></i>&nbsp;Dimensiones</td>
+                        <td class="col-sm-2"><i class="fa fa-users"></i>&nbsp;Habitaciones</td>
+                        <td class="col-sm-3"><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -176,16 +172,24 @@
                         ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
                         for(Propiedad p : listaPropiedades)
                         {
-                            out.print("<tr>");
+                            out.print("<tr class='row'>");
                                 out.print("<td><img src='images/" + p.getFoto() + "' class='img-thumbnail'></td>");
-                                out.print("<td>" + p.getTipoPropiedad() + "</td>" );
-                                out.print("<td>" + p.getPrecioUF() + "</td>" );
-                                out.print("<td>" + p.precioCPL()+ "</td>" );
-                                out.print("<td>" + p.getComuna() + "</td>" );
-                                out.print("<td>" + p.getMetrosTotal() + "</td>" );
-                                out.print("<td>" + p.getMetrosConstruidos()+ "</td>" );
-                                out.print("<td>" + p.getNumeroDormitorios()+ "</td>" );
-                                out.print("<td>" + p.getNumeroBanios()+ "</td>" );
+                                if (p.getTipoPropiedad().equalsIgnoreCase("casa")) {
+                                        out.println("<td><i class='fa fa-home'></i>");
+                                    }
+                                else if (p.getTipoPropiedad().equalsIgnoreCase("departamento"))
+                                {
+                                        out.println("<td><i class='fa fa-building'></i>");
+                                }
+                                out.print("<br>" + p.getComuna() + "</td>" );
+                                
+                                out.print("<td><i class='fa fa-usd'></i>&nbsp;UF: " + p.getPrecioUF());
+                                out.print("<br><br><i class='fa fa-money'></i>&nbsp;Pesos: " + p.precioCPL()+ "</td>" );
+                                
+                                out.print("<td><i class='fa fa-square-o'></i>&nbsp;Metros totales: <br>" + p.getMetrosTotal() + "" );
+                                out.print("<br><br><i class='fa fa-th'></i>&nbsp;Metros construidos: <br>" + p.getMetrosConstruidos()+ "</td>" );
+                                out.print("<td><i class='fa fa-bed'></i>&nbsp;Dormitorios: " + p.getNumeroDormitorios());
+                                out.print("<br><br><i class='fa fa-tint'></i>&nbsp;Baños: " + p.getNumeroBanios()+ "</td>" );
                                 out.print("<td>" + p.getDescripcion()+ "</td>" );
                             out.print("</tr>");                            
                         }

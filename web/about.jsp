@@ -83,7 +83,7 @@
                         </a>
                     </li> 
                     <li>
-                        <a href="ingreso_intranet.jsp">
+                        <a href="comprobar_sesion.do">
                             <i class="fa fa-lock"></i>
                             &nbsp; Intranet
                         </a>

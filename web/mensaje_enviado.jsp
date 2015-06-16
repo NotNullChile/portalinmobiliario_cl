@@ -1,6 +1,6 @@
 <%-- 
-    Document   : intranet
-    Created on : Jun 10, 2015, 4:34:21 PM
+    Document   : mensaje_enviado
+    Created on : Jun 10, 2015, 5:01:00 PM
     Author     : urtubia @ notNull
 --%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ingreso Intranet</title>
+        <title>Contacto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Bootstrap-->
@@ -25,6 +25,22 @@
         <link rel="icon" type="image/png" href="images/pi.png">
     </head>
     <body>
+        <script language="javascript" type="text/javascript">
+            function Solo_Numerico(variable)
+            {
+                Numer=parseInt(variable);
+                if (isNaN(Numer))
+                {
+                    return "";
+                }
+                    return Numer;
+            }
+            
+            function ValNumero(Control)
+            {
+                Control.value=Solo_Numerico(Control.value);
+            }
+        </script>
         <style>
             html {
                 position: relative;
@@ -40,7 +56,7 @@
                 font-family: Raleway, Monospace;
             }
             body {
-                background-image: url(images/bg7.jpg);
+                background-image: url(images/bg3.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -57,7 +73,6 @@
                 background-color: #000000;
             }
         </style>
-        
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -76,13 +91,13 @@
                                 &nbsp; Propiedades
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="contacto.jsp">
                                 <i class="fa fa-comments"></i>
                                 &nbsp; Contacto
                             </a>
                         </li> 
-                        <li class="active">
+                        <li>
                             <a href="comprobar_sesion.do">
                                 <i class="fa fa-lock"></i>
                                 &nbsp; Intranet
@@ -91,53 +106,82 @@
                         <li>
                             <a href="about.jsp">
                                 <i class="fa fa-code"></i>
-                                    &nbsp; by not-null.cl
+                                &nbsp; by not-null.cl
                             </a>
                         </li> 
                     </ul>
                 </div>
             </div>
         </nav>
-       <!--Formulario de ingreso a intranet corporativa-->      
+        <h1></h1>
+        <!--Formulario de ingreso de consultas-->      
         <div class="container well">
-            <h1><i class="fa fa-key"></i>&nbsp;Ingreso a Intranet.</h1>
+            <h1><i class="fa fa-comments"></i> &nbsp;¿Tienes preguntas? Nuestros ejecutivos te contactarán a la brevedad:</h1>
             <hr>
             <div class="alert alert-info">
-                Escriba sus credenciales.
-            </div>
-            <form class="form-horizontal" role="form" method="post" action = "procesar_validacion_ejecutivo.do">
+                            <i class="fa fa-flag-o"></i>
+                            <strong>Mensaje enviado:</strong> ¡Muchas gracias!
+                            <br> Nuestros ejecutivos se contactarán contigo por vía telefónica o email.
+                        </div>
+            <hr>
+            <form class="form-horizontal" role="form" method="post" action = "procesar_pregunta.do">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="nombre">
                         <i class="fa fa-user"></i>
                     </label>
                     <div class="col-sm-10">
                         <input type="text"
-                            name="txt_username"
+                            name="txt_nombre"
                             class="form-control"
-                            id="nombre"
-                            placeholder="Usuario" 
-                            required
-                            />
+                            id="nombre"                           
+                            placeholder="Nombre de Contacto"
+                            required />
                     </div>
-                    <label class="control-label col-sm-2" for="password">
-                        <i class="fa fa-ellipsis-h"></i>
+                    <label class="control-label col-sm-2" for="email">
+                        <i class="fa fa-envelope"></i>
                     </label>
                     <div class="col-sm-10">
-                        <input type="password" 
+                        <input type="email" 
                             class="form-control" 
-                            id="password" 
-                            name="txt_password" 
-                            placeholder="Contraseña"
-                            required
+                            id="email" 
+                            name="txt_email" 
+                            placeholder="Escriba su email"
+                            required />
+                    </div>
+                    <label class="control-label col-sm-2" for="phone">
+                        <i class="fa fa-phone"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="tel" 
+                            class="form-control" 
+                            id="phone" 
+                            name="txt_phone" 
+                            placeholder="Escriba su número Telefónico"
+                            required 
+                            onkeyUp="return ValNumero(this);"
                             />
                     </div>
                     <label class="control-label col-sm-2" for="pregunta">
-                        <i class="fa fa-sign-in"></i>
+                        <i class="fa fa-edit"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <textarea name="txt_pregunta" 
+                            id="pregunta"
+                            value="" 
+                            cols="" 
+                            rows="3" 
+                            
+                            class="form-control"
+                            required />
+                        </textarea>
+                    </div>
+                    <label class="control-label col-sm-2" for="enviar">
+                        <i class="fa fa-check"></i>
                     </label>
                     <div class="col-sm-10">
                         <button type="submit" 
-                                class="btn btn-danger" 
-                                name="btn_enviar">Acceder</button>
+                                class="btn btn-success" 
+                                name="btn_enviar">Enviar</button>
                     </div>
                 </div>
             </form>
