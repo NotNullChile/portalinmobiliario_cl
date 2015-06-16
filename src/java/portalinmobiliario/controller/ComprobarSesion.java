@@ -5,23 +5,23 @@
  * Atribucion-NoComercial-SinDerivar 4.0 Internacional.
  * Basada en una obra en https://github.com/NotNullChile/portalinmobiliario_cl.
  */
-
 package portalinmobiliario.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import portalinmobiliario.model.Propiedad;
-import portalinmobiliario.model.PropiedadDal;
+import portalinmobiliario.model.Ejecutivo;
 
 /**
  *
- * @author Ricardo
+ * @author urtubia @ notNull
  */
-public class IngresoPropiedad extends HttpServlet {
+@WebServlet(name = "ComprobarSesion", urlPatterns = {"/comprobar_sesion.do"})
+public class ComprobarSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,35 +36,21 @@ public class IngresoPropiedad extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try
-        {
-            //Instanciamos las clases
-            PropiedadDal propiedadDal = new PropiedadDal();
-            Propiedad p = new Propiedad();
-            //Capturamos los datos del JSP
-            p.setCodigoPropiedad(Integer.parseInt(request.getParameter("txt_codigo")));
-            p.setFoto(request.getParameter("dll_foto"));
-            p.setPrecioUF(Double.parseDouble(request.getParameter("txt_precio_uf")));
-            p.setMetrosConstruidos(Double.parseDouble(request.getParameter("txt_metros_construidos")));
-            p.setMetrosTotal(Double.parseDouble(request.getParameter("txt_metros_total")));
-            p.setNumeroDormitorios(Integer.parseInt(request.getParameter("sp_dormitorios")));
-            p.setNumeroBanios(Integer.parseInt(request.getParameter("sp_banios")));
-            p.setTipoPropiedad(request.getParameter("dll_tipo_propiedad"));
-            p.setComuna(request.getParameter("dll_comunas"));
-            p.setDescripcion(request.getParameter("txt_descripcion"));
-            //Preguntamos si la inserción es = a 1 creé dicho propiedad
-            if (propiedadDal.insertPropiedad(p)  == 1)
-            {
-                response.sendRedirect("propiedad_creada.jsp");
+        try {
+            Ejecutivo prueba = (Ejecutivo)request.getSession().getAttribute("ejecutivo");
+            if (prueba.getNombreEjecutivo() != "") {
+                request.getRequestDispatcher("intranet.jsp").forward(request, response);
             }
             else
             {
-               out.print("ingreso Bad"); 
+                //out.println("Error! El nombre delejecutivo es: "+ prueba.getNombreEjecutivo());
+                request.getRequestDispatcher("ingreso_intranet.jsp").forward(request, response);
             }
         }
-        catch(Exception e)
-        {
-            out.print(e.getMessage());
+        catch (Exception e){
+            //response.sendRedirect("ingreso_intranet.jsp");
+            //out.println("ERRORRR El nombre delejecutivo es: ");
+            request.getRequestDispatcher("ingreso_intranet.jsp").forward(request, response);
         }
     }
 

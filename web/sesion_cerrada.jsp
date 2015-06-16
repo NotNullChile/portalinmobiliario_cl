@@ -1,15 +1,14 @@
 <%-- 
     Document   : intranet
-    Created on : Jun 10, 2015, 5:00:02 PM
+    Created on : Jun 10, 2015, 4:34:21 PM
     Author     : urtubia @ notNull
 --%>
 
-<%@page import="portalinmobiliario.model.Ejecutivo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Intranet</title>
+        <title>Ingreso Intranet</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Bootstrap-->
@@ -41,7 +40,7 @@
                 font-family: Raleway, Monospace;
             }
             body {
-                background-image: url(images/bg1.jpg);
+                background-image: url(images/bg7.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -58,11 +57,7 @@
                 background-color: #000000;
             }
         </style>
-        <!--Java servlet sessions and attributes-->
-        <%
-            HttpSession sesion = request.getSession();
-            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");
-        %>
+        
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -75,96 +70,80 @@
                 </div>
                 <div>
                     <ul class="nav navbar-nav">
+                        <li>
+                            <a href="propiedades.jsp">
+                                <i class="fa fa-building"></i>
+                                &nbsp; Propiedades
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contacto.jsp">
+                                <i class="fa fa-comments"></i>
+                                &nbsp; Contacto
+                            </a>
+                        </li> 
                         <li class="active">
-                            <a href="intranet.jsp">
-                                <i class="fa fa-unlock"></i>
-                                &nbsp; Home Intranet
-                            </a>
-                        </li>
-                        <li>
-                            <a href="buscar_propiedad.jsp">
-                                <i class="fa fa-cogs"></i>
-                                &nbsp; Administrar Propiedades
-                            </a>
-                        </li>
-                        <li>
-                            <a href="preguntas.jsp">
-                                <i class="fa fa-inbox"></i>
-                                &nbsp; Responder Preguntas
-                            </a>
-                        </li>  
-                        <li>
-                            <a href="cerrar_session.do">
+                            <a href="ingreso_intranet.jsp">
                                 <i class="fa fa-lock"></i>
-                                    &nbsp; Logout
+                                &nbsp; Intranet
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="about.jsp">
+                                <i class="fa fa-code"></i>
+                                    &nbsp; by not-null.cl
                             </a>
                         </li> 
                     </ul>
                 </div>
             </div>
         </nav>
-        
-        <div class="col-sm-1"></div>
-        <div class="well col-sm-10">
-            <div class="row">
-                <div class="col-sm-9">
-                    <h1>
-                        <i class="fa fa-spin fa-cog">
-                        </i>
-                        &nbsp;Bienvenido
-                        <%=e.getNombreEjecutivo()%>
-                    </h1>
+       <!--Formulario de ingreso a intranet corporativa-->      
+        <div class="container well">
+            <h1><i class="fa fa-key"></i>&nbsp;Ingreso a Intranet.</h1>
+            <hr>
+            <div class="alert alert-info">
+                <i class="fa fa-flag-o"></i>
+                &nbsp;&nbsp;
+                Ha cerrado su sesión exitosamente.
+            </div>
+            <form class="form-horizontal" role="form" method="post" action = "procesar_validacion_ejecutivo.do">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nombre">
+                        <i class="fa fa-user"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text"
+                            name="txt_username"
+                            class="form-control"
+                            id="nombre"
+                            placeholder="Usuario" 
+                            required
+                            />
+                    </div>
+                    <label class="control-label col-sm-2" for="password">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="password" 
+                            class="form-control" 
+                            id="password" 
+                            name="txt_password" 
+                            placeholder="Contraseña"
+                            required
+                            />
+                    </div>
+                    <label class="control-label col-sm-2" for="pregunta">
+                        <i class="fa fa-sign-in"></i>
+                    </label>
+                    <div class="col-sm-10">
+                        <button type="submit" 
+                                class="btn btn-danger" 
+                                name="btn_enviar">Acceder</button>
+                    </div>
                 </div>
-                    <div class="col-sm-2">
-                        <br>
-                        <a class="btn btn-danger btn-block"href="cerrar_session.do">
-                            &nbsp; Cerrar Sesión<br>
-                            <i class="fa fa-lock"></i>
-                        </a>
-                        </div>
-            </div>
-            <h3>Seleccione una acción:</h3>
-            <div class="row">
-            <div class="list-group col-sm-2">
-                <a href="buscar_propiedad.jsp" class="list-group-item"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
-                <a href="listar_propiedades.jsp" class="list-group-item"><i class="fa fa-list-ol"></i>&nbsp;Listar propiedades</a>
-                <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
-                <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
-            </div>
-            
-            <div class="col-sm-1"></div>
-            <a href="buscar_propiedad.jsp" class="btn btn-lg btn-primary col-sm-2 text-left">
-                Buscar propiedades,<br>
-                Modificar propiedades,<br> 
-                Eliminar propiedades.<br><br>
-                <i class="fa fa-search"></i>
-            </a>
-            
-            &nbsp;&nbsp;
-            <a href="listar_propiedades.jsp" class="btn btn-lg btn-warning col-sm-2">
-                Listar propiedades:<br>
-                Vea el listado completo<br>
-                de propiedades. <br><br>
-                <i class="fa fa-list-ol"></i>
-            </a>
-            &nbsp;&nbsp;
-            <a href="agregar_propiedad.jsp" class="btn btn-lg btn-success col-sm-2">
-                Agregar nuevas <br>
-                propiedades a la base <br>
-                de datos.<br><br>
-                <i class="fa fa-plus-circle"></i>
-            </a>
-            &nbsp;&nbsp;
-            <a href="preguntas.jsp" class="btn btn-lg btn-info col-sm-2">
-                Responder preguntas.<br>
-                de los usuarios. <br><br><br>
-                <i class="fa fa-inbox"></i>
-            </a>
-            </div>
+            </form>
         </div>
-            
-        
-        
         
         <footer class="footer">
             <div class="container">
@@ -176,7 +155,7 @@
                             <small>
                                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                                 <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
-                                </a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">portalinmobiliario_notNull</span>por 
+                                </a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">portalinmobiliario_notNull</span> por 
                                 <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
                                 notNull Chile</a> se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
                                     Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br /> Basada en una obra en 

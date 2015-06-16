@@ -58,6 +58,11 @@
                 /* Set the fixed height of the footer here */
                 height: 60px;
                 background-color: #000000;
+               .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
             }
         </style>
         <!--Bootstrap Navigation Bar-->
@@ -85,7 +90,7 @@
                             </a>
                         </li> 
                         <li>
-                            <a href="comprobar_sesion.do">
+                            <a href="ingreso_intranet.jsp">
                                 <i class="fa fa-lock"></i>
                                 &nbsp; Intranet
                             </a>
@@ -153,51 +158,53 @@
             <!--End of Pre-table header-->
             <br>
             <!--Main Table.-->
-            <table class="table table-hover" >
-                <thead>
-                    <tr class="bg-primary">
-                        <td class="col-sm-2"><i class="fa fa-photo"></i></td>
-                        <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
-                        <td><i class="fa fa-usd"></i>&nbsp;UF</td>
-                        <td><i class="fa fa-usd"></i>&nbsp;Pesos</td>
-                        <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
-                        <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
-                        <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
-                        <td><i class="fa fa-bed"></i>Dorms.</td>
-                        <td><i class="fa fa-tint"></i>Baños</td>
-                        <td><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                    try
+            
+            
+            
+            
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+    <div class="item active">
+    <%
+            try
                     {                                         
                         PropiedadDal propiedadDal = new PropiedadDal();
                         ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
                         for(Propiedad p : listaPropiedades)
                         {
-                            out.print("<tr>");
-                                out.print("<td><img src='images/" + p.getFoto() + "' class='img-thumbnail'></td>");
-                                out.print("<td>" + p.getTipoPropiedad() + "</td>" );
-                                out.print("<td>" + p.getPrecioUF() + "</td>" );
-                                out.print("<td>" + p.precioCPL()+ "</td>" );
-                                out.print("<td>" + p.getComuna() + "</td>" );
-                                out.print("<td>" + p.getMetrosTotal() + "</td>" );
-                                out.print("<td>" + p.getMetrosConstruidos()+ "</td>" );
-                                out.print("<td>" + p.getNumeroDormitorios()+ "</td>" );
-                                out.print("<td>" + p.getNumeroBanios()+ "</td>" );
-                                out.print("<td>" + p.getDescripcion()+ "</td>" );
-                            out.print("</tr>");                            
+                              out.println("<div class='item'>");
+                              out.println("<img src='images/"+ p.getFoto() +"' alt='"+ p.getDescripcion()+"'>");
+                              out.println("</div>");
                         }
-                    }
+                    }   
                     catch(Exception e)
                     {
                         
                     }
-                    %>     
-                    <tr><td>&nbsp;</td></tr>
-                </tbody>
-            </table>
+                    %>
+  </div>
+                    <!-- Wrapper for slides -->
+
+
+  <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
             <!--End of Main table-->
         
         <!--Main Page end.-->

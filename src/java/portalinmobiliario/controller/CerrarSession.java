@@ -42,7 +42,7 @@ public class CerrarSession extends HttpServlet {
             sesion.invalidate();
         
             //Redirecciono a index.jsp
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("sesion_cerrada.jsp");
             
         }
     }

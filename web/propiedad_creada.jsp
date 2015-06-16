@@ -1,5 +1,5 @@
 <%-- 
-    Document   : listar_propiedades
+    Document   : propiedad_listada
     Created on : Jun 10, 2015, 5:02:40 PM
     Author     : urtubia @ notNull
 --%>
@@ -122,8 +122,23 @@
                     <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
                 </div>
                 <div class="col-sm-10">
+                    
                     <table class="table table-hover col-sm-12">
-                        <thead>
+                        <thead><tr>
+                                <div class="alert alert-info col-sm-9">
+                                    <i class="fa fa-flag-o"></i>
+                                    &nbsp;&nbsp;
+                                    <strong>Propiedad creada.</strong> Revisa sus valores al final del listado:
+                                </div>
+                                <div class="col-sm-2"">
+                                    <a href="agregar_propiedad.jsp"class="btn btn-success">
+                                        <i class="fa fa-plus-circle">
+                                        </i>
+                                        &nbsp;Agregar una nueva propiedad
+                                        <br>&nbsp;
+                                    </a>
+                                </div>
+                            </tr>
                             <tr class="bg-primary row">
                                 <td class="col-sm-1"><i class="fa fa-list-ol"></i>&nbsp;ID</td>
                                 <td class="col-sm-1"><i class="fa fa-photo"></i></td>
@@ -173,7 +188,7 @@
 
                             }
                             %>
-                        <tr><td>&nbsp;</td></tr>
+                            <tr><td>&nbsp;</td></tr>
                         </tbody>
                     </table>
                         <h3>&nbsp;</h3>

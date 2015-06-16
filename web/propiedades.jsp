@@ -107,25 +107,28 @@
         <div class="container bg-success ">
             <br>
             <div class="col-sm-5">
-            <h4>    
-            Selecciona la comuna donde buscas casa o departamento:
-            </h4>
+            <h1>    
+            ¿Dónde quieres vivir?
+            </h1>
             </div>       
             <div class="col-sm-5">                    
-            <select name = "dll_comunas" class="form-control">
-                <%
-                ComunaDal comunaDal = new ComunaDal();
-                ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
-                for(Comuna c : listasComunas)
-                {      
-                %>
-                 <option value = "<%=c.getIdComuna()%>"><%=c.getNombreComuna()%></option>
-                 <%
-                }
-                 %>
-            </select>                
+                <br>
+                    <select name = "dll_comunas" class="form-control">
+                        <%
+                            ComunaDal comunaDal = new ComunaDal();
+                            ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
+                            for(Comuna c : listasComunas)
+                            {      
+                        %>
+                        <option value = "<%=c.getIdComuna()%>"><%=c.getNombreComuna()%></option>
+                        <%
+                            }
+                        %>
+                    </select> 
+                <br>
             </div>          
             <div class="col-sm-2">
+                <br>
                 <button class="btn btn-success" type="submit" value="Filtrar Resultados" name="btn_comuna" >
                     <i class="fa fa-filter"></i> &nbsp; Filtrar Resultados
                 </button>
@@ -135,8 +138,7 @@
             <table class="table table-hover" >
                 <thead>
                     <tr class="bg-primary">
-                        <td><i class="fa fa-photo"></i>&nbsp;ID</td>
-                        <td><i class="fa fa-photo"></i></td>
+                        <td class="col-sm-2"><i class="fa fa-photo"></i></td>
                         <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
                         <td><i class="fa fa-usd"></i>&nbsp;UF</td>
                         <td><i class="fa fa-usd"></i>&nbsp;Pesos</td>
@@ -164,7 +166,6 @@
                         {                                       
                     %>
                     <tr>
-                        <td><%=p.getCodigoPropiedad()%></td>
                         <td><img src="images/<%=p.getFoto()%>" class="img-thumbnail"></td>
                         <td><%=p.getTipoPropiedad()%></td>
                         <td><%=p.getPrecioUF()%></td>
