@@ -137,7 +137,11 @@
                         <table class="table table-hover">
                             <%
                                 PropiedadDal propiedadDal = new PropiedadDal();
-                                int codigo = propiedadDal.countPropiedad() + 1;
+                                int codigo = propiedadDal.countPropiedad() + 1;;
+                                if(codigo >= 0)
+                                {
+                                  codigo = propiedadDal.maxPropiedad() + 1;
+                                }                                     
                             %>
                             <tr>
                                 <td class="col-sm-2">
@@ -240,7 +244,7 @@
                                     <input type="number" 
                                            name="txt_metros_construidos" 
                                            value="1" size="8"
-                                           maxlength="8" 
+                                           maxlength="8" min="1"
                                            class="form-control"
                                            required
                                            >
@@ -255,7 +259,7 @@
                                     <input class="form-control"
                                            type="number"  
                                            name="txt_metros_total" 
-                                           value="1" 
+                                           value="1"  min="1"
                                            size="8" 
                                            maxlength="8"
                                            value="1"

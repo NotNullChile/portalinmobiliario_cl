@@ -183,6 +183,7 @@ public class PropiedadDal
       }
       return 0;
     }
+    
     //Metodo que  modificará una propiedad
     public int updatePropiedad(Propiedad p)
     {
