@@ -59,38 +59,38 @@
                         </div>
                     </a>
                 </div>
-            <div>
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="intranet.jsp">
-                            <i class="fa fa-unlock"></i>
-                            &nbsp; Home Intranet
-                        </a>
-                    </li>
-                    <li>
-                        <a href="buscar_propiedad.jsp">
-                            <i class="fa fa-cogs"></i>
-                            &nbsp; Administrar Propiedades
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="preguntas.jsp">
-                            <i class="fa fa-inbox"></i>
-                            &nbsp; Responder Preguntas
-                        </a>
-                    </li>  
-                    <li>
-                        <a href="ingreso_intranet.jsp">
-                            <i class="fa fa-lock"></i>
-                                &nbsp; Logout
-                        </a>
-                    </li> 
-                </ul>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="intranet.jsp">
+                                <i class="fa fa-unlock"></i>
+                                &nbsp; Home Intranet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="buscar_propiedad.jsp">
+                                <i class="fa fa-cogs"></i>
+                                &nbsp; Administrar Propiedades
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="preguntas.jsp">
+                                <i class="fa fa-inbox"></i>
+                                &nbsp; Responder Preguntas
+                            </a>
+                        </li>  
+                        <li>
+                            <a href="ingreso_intranet.jsp">
+                                <i class="fa fa-lock"></i>
+                                    &nbsp; Logout
+                            </a>
+                        </li> 
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
         <!--body-->
-                <div class="col-sm-1"></div>
+        <div class="col-sm-1"></div>
         <div class="well col-sm-10">
             <%
             HttpSession sesion = request.getSession();
@@ -107,15 +107,15 @@
                     <a href="preguntas.jsp" class="list-group-item active"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
                 </div>
                 <!--inbox-->
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     <table class="table table-hover" >
                         <thead>
-                            <tr class="bg-primary">
-                                <td><i class="fa fa-user"></i>&nbsp;Nombre</td>
-                                <td><i class="fa fa-question"></i>&nbsp;Pregunta</td>
-                                <td><i class="fa fa-envelope"></i>&nbsp;Email</td>
-                                <td><i class="fa fa-phone"></i>&nbsp;Fono</td>
-                                <td><i class="fa fa-external-link"></i>&nbsp;Contestar</td>
+                            <tr class="bg-primary row">
+                                <td class="col-sm-2"><i class="fa fa-user"></i>&nbsp;Nombre</td>
+                                <td class="col-sm-4"><i class="fa fa-question"></i>&nbsp;Pregunta</td>
+                                <td class="col-sm-2"><i class="fa fa-envelope"></i>&nbsp;Email</td>
+                                <td class="col-sm-2"><i class="fa fa-phone"></i>&nbsp;Fono</td>
+                                <td class="col-sm-2"><i class="fa fa-external-link"></i>&nbsp;Contestar</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -128,18 +128,19 @@
                             //Ahora se crea un arrayList para encontrar cada pregunta
                             for(Pregunta pregunta : listadoPreguntas)
                             {
-                                out.println("<tr>");
-                                    out.println("<td>" + pregunta.getNombreCliente()    + "</td>");
-                                    out.println("<td>" + pregunta.getPregunta()         + "</td>");
-                                    out.println("<td>" + pregunta.getEmail()            + "</td>");
-                                    out.println("<td>" + pregunta.getTelefonoContacto() + "</td>");
-                                    out.println("<td>");
+                                out.println("<tr class='row'>");
+                                    out.println("<td class='col-sm-2'>" + pregunta.getNombreCliente()    + "</td>");
+                                    out.println("<td class='col-sm-4'>" + pregunta.getPregunta()         + "</td>");
+                                    out.println("<td class='col-sm-2'>" + pregunta.getEmail()            + "</td>");
+                                    out.println("<td class='col-sm-2'>" + pregunta.getTelefonoContacto() + "</td>");
+                                    out.println("<td class='col-sm-2'>");
                                         out.println("<button class='btn btn-success'>");
                                             out.println("<i class='fa fa-envelope'></i> email");
                                         out.println("</button>");
                                         out.println("<button class='btn btn-success'>");
                                             out.println("<i class='fa fa-skype'></i> skype");
                                         out.println("</button>");                                           
+                                    out.println("</td>");
                                 out.println("</tr>");
                             }
                             %>

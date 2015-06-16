@@ -1,5 +1,5 @@
 <%-- 
-    Document   : propiedades
+    Document   : listar_propiedades
     Created on : Jun 10, 2015, 5:02:40 PM
     Author     : urtubia @ notNull
 --%>
@@ -45,7 +45,7 @@
                 font-family: Raleway, Monospace;
             }
             body {
-                background-image: url(images/bg5.jpg);
+                background-image: url(images/bg1.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -76,118 +76,112 @@
                 <div>
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="propiedades.jsp">
-                                <i class="fa fa-building"></i>
-                                &nbsp; Propiedades
+                            <a href="intranet.jsp">
+                                <i class="fa fa-unlock"></i>
+                                &nbsp; Home Intranet
                             </a>
                         </li>
                         <li>
-                            <a href="contacto.jsp">
-                                <i class="fa fa-comments"></i>
-                                &nbsp; Contacto
+                            <a href="buscar_propiedad.jsp">
+                                <i class="fa fa-cogs"></i>
+                                &nbsp; Administrar Propiedades
                             </a>
-                        </li> 
+                        </li>
                         <li>
-                            <a href="ingreso_intranet.jsp">
+                            <a href="preguntas.jsp">
+                                <i class="fa fa-inbox"></i>
+                                &nbsp; Responder Preguntas
+                            </a>
+                        </li>  
+                        <li>
+                            <a href="cerrar_session.do">
                                 <i class="fa fa-lock"></i>
-                                &nbsp; Intranet
-                            </a>
-                        </li> 
-                        <li>
-                            <a href="about.jsp">
-                                <i class="fa fa-code"></i>
-                                    &nbsp; by not-null.cl
+                                    &nbsp; Logout
                             </a>
                         </li> 
                     </ul>
                 </div>
             </div>
         </nav>
- <form action="propiedades.jsp" method="POST">  
-        <div class="container bg-success ">
-            <br>
-            <div class="col-sm-5">
-            <h4>    
-            Selecciona la comuna donde buscas casa o departamento:
-            </h4>
-            </div>       
-            <div class="col-sm-5">                    
-            <select name = "dll_comunas" class="form-control">
-                <%
-                ComunaDal comunaDal = new ComunaDal();
-                ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
-                for(Comuna c : listasComunas)
-                {      
-                %>
-                 <option value = "<%=c.getIdComuna()%>"><%=c.getNombreComuna()%></option>
-                 <%
-                }
-                 %>
-            </select>                
-            </div>          
-            <div class="col-sm-2">
-                <button class="btn btn-success" type="submit" value="Filtrar Resultados" name="btn_comuna" >
-                    <i class="fa fa-filter"></i> &nbsp; Filtrar Resultados
-                </button>
+        
+        <div class="col-sm-1"></div>
+        <div class="well col-sm-10">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>
+                        <i class="fa fa-spin fa-cog"></i>&nbsp;Listado completo de propiedades: 
+                    </h1>
+                </div>
+            </div>  
+            <h3>&nbsp;</h3>
+            <div class="row">
+                <div class="list-group col-sm-2">
+                    <a href="buscar_propiedad.jsp" class="list-group-item"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
+                    <a href="listar_propiedades.jsp" class="list-group-item active"><i class="fa fa-list-ol"></i>&nbsp;Listar propiedades</a>
+                    <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
+                    <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
+                </div>
+                <div class="col-sm-10">
+                    <table class="table table-hover col-sm-12">
+                        <thead>
+                            <tr class="bg-primary row">
+                                <td class="col-sm-1"><i class="fa fa-list-ol"></i>&nbsp;ID</td>
+                                <td class="col-sm-1"><i class="fa fa-photo"></i></td>
+                                <td class="col-sm-1"><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
+                                <td class="col-sm-1"><i class="fa fa-usd"></i>&nbsp;UF</td>
+                                <td class="col-sm-1"><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
+                                <td class="col-sm-1"><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
+                                <td class="col-sm-1"><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
+                                <td class="col-sm-1"><i class="fa fa-bed"></i></td>
+                                <td class="col-sm-1"><i class="fa fa-tint"></i></td>
+                                <td class="col-sm-3"><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%                                   
+                            try
+                            {   
+                                int comuna = 1;  
+                                PropiedadDal propiedadDal = new PropiedadDal();
+                                ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
+                                if(request.getParameter("btn_comuna") != null) 
+                                {                                                 
+                                comuna = Integer.parseInt(request.getParameter("dll_comunas")); 
+                                listaPropiedades = propiedadDal.listaPropiedad(comuna);
+                                }
+                                for(Propiedad p : listaPropiedades)
+                                {                                       
+                            %>
+                            <tr class="row">
+                                <td class="col-sm-1"><%=p.getCodigoPropiedad()%></td>
+                                <td class="col-sm-1"><img src="images/<%=p.getFoto()%>" class="img-thumbnail"></td>
+                                <td class="col-sm-1"><%=p.getTipoPropiedad()%></td>
+                                <td class="col-sm-1"><%=p.getPrecioUF()%></td>
+                                <td class="col-sm-1"><%=p.getComuna()%></td>
+                                <td class="col-sm-1"><%=p.getMetrosTotal()%></td>
+                                <td class="col-sm-1"><%=p.getMetrosConstruidos()%></td>
+                                <td class="col-sm-1"><%=p.getNumeroDormitorios()%></td>
+                                <td class="col-sm-1"><%=p.getNumeroBanios()%></td>                      
+                                <td class="col-sm-3"><%=p.getDescripcion()%></td>  
+                            </tr>
+                            
+                            <%
+                                }                       
+                            }
+                            catch(Exception e)
+                            {
+
+                            }
+                            %>
+                        </tbody>
+                    </table>
+                        <h3>&nbsp;</h3>
+                </div>
             </div>
-            </form> 
-            <br>
-            <table class="table table-hover" >
-                <thead>
-                    <tr class="bg-primary">
-                        <td><i class="fa fa-photo"></i>&nbsp;ID</td>
-                        <td><i class="fa fa-photo"></i></td>
-                        <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
-                        <td><i class="fa fa-usd"></i>&nbsp;UF</td>
-                        <td><i class="fa fa-usd"></i>&nbsp;Pesos</td>
-                        <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
-                        <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
-                        <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
-                        <td><i class="fa fa-bed"></i>Dorms.</td>
-                        <td><i class="fa fa-tint"></i>Baños</td>
-                        <td><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%                                   
-                    try
-                    {   
-                        int comuna = 1;  
-                        PropiedadDal propiedadDal = new PropiedadDal();
-                        ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
-                        if(request.getParameter("btn_comuna") != null) 
-                        {                                                 
-                        comuna = Integer.parseInt(request.getParameter("dll_comunas")); 
-                        listaPropiedades = propiedadDal.listaPropiedad(comuna);
-                        }
-                        for(Propiedad p : listaPropiedades)
-                        {                                       
-                    %>
-                    <tr>
-                        <td><%=p.getCodigoPropiedad()%></td>
-                        <td><img src="images/<%=p.getFoto()%>" class="img-thumbnail"></td>
-                        <td><%=p.getTipoPropiedad()%></td>
-                        <td><%=p.getPrecioUF()%></td>
-                        <td><%=p.precioCPL()%></td>
-                        <td><%=p.getComuna()%></td>
-                        <td><%=p.getMetrosTotal()%></td>
-                        <td><%=p.getMetrosConstruidos()%></td>
-                        <td><%=p.getNumeroDormitorios()%></td>
-                        <td><%=p.getNumeroBanios()%></td>                      
-                        <td><%=p.getDescripcion()%></td>  
-                    </tr>
-                    <%
-                       }                       
-                    }
-                    catch(Exception e)
-                    {
-                              
-                    }
-                    %>
-                </tbody>
-            </table>
         </div>
-    
+        <div class="col-sm-1"></div>
+        
+        
         <footer class="footer">
             <div class="container">
                 <!--Creative Commons License-->

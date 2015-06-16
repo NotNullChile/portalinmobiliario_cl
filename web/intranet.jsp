@@ -103,18 +103,19 @@
                 </div>
             </div>
         </nav>
-    
+        
         <div class="col-sm-1"></div>
         <div class="well col-sm-10">
             <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Bienvenido <%=e.getNombreEjecutivo()%></h1>
             <h3>Seleccione una acción:</h3>
-            
+            <div class="row">
             <div class="list-group col-sm-2">
                 <a href="buscar_propiedad.jsp" class="list-group-item"><i class="fa fa-search"></i>&nbsp;Buscar propiedades</a>
                 <a href="listar_propiedades.jsp" class="list-group-item"><i class="fa fa-list-ol"></i>&nbsp;Listar propiedades</a>
                 <a href="agregar_propiedad.jsp" class="list-group-item"><i class="fa fa-plus-circle"></i>&nbsp;Agregar propiedades</a>
                 <a href="preguntas.jsp" class="list-group-item"><i class="fa fa-inbox"></i>&nbsp;Responder preguntas</a>
             </div>
+            
             <div class="col-sm-1"></div>
             <a href="buscar_propiedad.jsp" class="btn btn-lg btn-primary col-sm-2 text-left">
                 Buscar propiedades,<br>
@@ -122,6 +123,7 @@
                 Eliminar propiedades.<br><br>
                 <i class="fa fa-search"></i>
             </a>
+            
             &nbsp;&nbsp;
             <a href="listar_propiedades.jsp" class="btn btn-lg btn-warning col-sm-2">
                 Listar propiedades:<br>
@@ -142,7 +144,9 @@
                 de los usuarios. <br><br><br>
                 <i class="fa fa-inbox"></i>
             </a>
+            </div>
         </div>
+            
         
         
         
