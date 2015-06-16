@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -58,7 +59,32 @@ public class ComunaDal
         catch (Exception e) 
         {
             return null;
+        }      
+    }
+    public String nombreComuna(int idProp)
+    {     
+        
+        try 
+        {
+            
+            conexion();
+            String sql = "SELECT c.nombreComuna  FROM propiedad p INNER JOIN  comuna c on p.idComuna = c.idComuna WHERE p.idPropiedad = " + idProp + ";";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.first())
+            {  
+                String  nombre = rs.getString(1);
+                return  nombre;          
+            }
+              conn.close();
+             
+        } 
+        catch (SQLException e) 
+        {
+            return null;
+            
         }
+       return null;
         
     }
 }

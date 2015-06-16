@@ -4,6 +4,7 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.PropiedadDal"%>
 <%@page import="portalinmobiliario.model.ComunaDal"%>
 <%@page import="portalinmobiliario.model.Comuna"%>
 <%@page import="java.util.ArrayList"%>
@@ -15,15 +16,40 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <script language="javascript" type="text/javascript">
+            function Solo_Numerico(variable)
+            {
+                Numer=parseInt(variable);
+                if (isNaN(Numer))
+                {
+                    return "";
+                }
+                    return Numer;
+            }
+            
+            function ValNumero(Control)
+            {
+                Control.value=Solo_Numerico(Control.value);
+            }
+        </script>
         <h1>Hello World!</h1>
         <form action="ingreso_propiedad.do" method="post">
             <table>
+                <%
+                PropiedadDal propiedadDal = new PropiedadDal();
+                int codigo = propiedadDal.countPropiedad() + 1;
+                
+                %>
                         <tr>
                             <td>
 				Codigo Propiedad 		
                             </td>				
                             <td>
-                                <input type="text" name="txt_codigo" value="" size="5" />
+                                <input type="text" 
+                                       name="txt_codigo" 
+                                       value="<%=codigo%>" 
+                                       size="5" 
+                                       readonly="true" />
                             </td>
 			</tr>
                         <tr>
@@ -88,7 +114,10 @@
                                 Metros Construidos
                             </td>
                             <td>
-				<input type="text" name="txt_metros_construidos" value="" size="10">
+                                <input type="text" name="txt_metros_construidos" 
+                                       value="" size="8"
+                                       maxlength="8" required
+                                       >
                             </td>										
 			</tr>
 			<tr>
@@ -96,7 +125,10 @@
                                 Metro Total
                             </td>
                             <td>
-                                <input type="text" name="txt_metros_total" value="" size="10">
+                                <input type="text"  name="txt_metros_total" 
+                                       value="" size="8" 
+                                       maxlength="8" required
+                                       >
                             </td>
                         </tr>
 			<tr>
@@ -104,7 +136,13 @@
 				Dormitorios
                              </td>
                              <td>
-				<input type="number" min="1" max="10" step="1" value="1" size="6" name="sp_dormitorios">
+				<input type="number" 
+                                       min="1" max="10" 
+                                       step="1" value="1" 
+                                       size="6" name="sp_dormitorios"
+                                       maxlength="2"
+                                       onkeyUp="return ValNumero(this);"
+                                       >
                              </td>
 			</tr>
                         <tr>
@@ -112,7 +150,12 @@
 				Baños
                              </td>
                              <td>
-                                <input type="number" min="1" max="10" step="1" value="1" size="6" name="sp_banios">
+                                <input type="number" 
+                                       min = "1" max = "10"   
+                                       step="1"  value="1" 
+                                       size="6" name="sp_banios"
+                                       maxlength="2"
+                                       onkeyUp="return ValNumero(this);">
                              </td>
 			</tr>
 			<tr>
@@ -120,7 +163,10 @@
 				Valor UF
                              </td>
                              <td>
-				<input type="text" name="txt_precio_uf" value="" size="15">
+				<input type="text" name="txt_precio_uf" 
+                                       value="" size="15"
+                                       required  maxlength="8"
+                                       >
                              </td>
 			</tr>
 			<tr>
@@ -128,12 +174,16 @@
 				Descripcion
                               </td>
                               <td>
-				<textarea name="txt_descripcion" value="" cols="30" rows="10"></textarea>
+				<textarea name="txt_descripcion" value="" 
+                                          cols="30" rows="10"
+                                          required maxlength="255">                              
+                                </textarea>
                               </td>
 			</tr>
 			<tr>
                               <td>
-                                 <input type="submit" value="Crear Propiedad" name="btn_enviar">
+                                 <input type="submit" value="Crear Propiedad" 
+                                        name="btn_enviar">
                               </td>
                         </tr>
                </table>

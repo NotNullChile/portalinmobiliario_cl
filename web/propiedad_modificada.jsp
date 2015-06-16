@@ -167,7 +167,7 @@
                                     Código de propiedad:
                                 </td>
                                 <td>
-                                    <%=p.getCodigoPropiedad()%>
+                                   <%=p.getCodigoPropiedad()%>
                                 </td>
                             </tr>
                             <tr>
@@ -206,8 +206,8 @@
                                     &nbsp;&nbsp;
                                     Comuna
                                 </td>
-                                <td> 
-                                    <%=p.getComuna()%>
+                                <td>    
+                                    <%=p.getComuna()%>                                   
                                 </td>
                             </tr>
                             <tr>

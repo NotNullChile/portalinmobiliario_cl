@@ -148,6 +148,7 @@
             <table class="table table-hover" >
                 <thead>
                     <tr class="bg-primary">
+                        <td><i class="fa fa-photo"></i>&nbsp;ID</td>
                         <td><i class="fa fa-photo"></i></td>
                         <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
                         <td><i class="fa fa-usd"></i>&nbsp;UF</td>
@@ -169,6 +170,7 @@
                         for(Propiedad p : listaPropiedades)
                         {
                             out.print("<tr>");
+                                out.print("<td>" + p.getCodigoPropiedad() + "</td>");
                                 out.print("<td><img src='images/" + p.getFoto() + "' class='img-thumbnail'></td>");
                                 out.print("<td>" + p.getTipoPropiedad() + "</td>" );
                                 out.print("<td>" + p.getPrecioUF() + "</td>" );

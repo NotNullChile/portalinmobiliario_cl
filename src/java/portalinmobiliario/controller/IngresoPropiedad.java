@@ -42,7 +42,7 @@ public class IngresoPropiedad extends HttpServlet {
             PropiedadDal propiedadDal = new PropiedadDal();
             Propiedad p = new Propiedad();
             //Capturamos los datos del JSP
-            p.setCodigoPropiedad(request.getParameter("txt_codigo"));
+            p.setCodigoPropiedad(Integer.parseInt(request.getParameter("txt_codigo")));
             p.setFoto(request.getParameter("dll_foto"));
             p.setPrecioUF(Double.parseDouble(request.getParameter("txt_precio_uf")));
             p.setMetrosConstruidos(Double.parseDouble(request.getParameter("txt_metros_construidos")));

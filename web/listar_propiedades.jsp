@@ -1,14 +1,19 @@
 <%-- 
-    Document   : contacto
-    Created on : Jun 10, 2015, 5:01:00 PM
+    Document   : propiedades
+    Created on : Jun 10, 2015, 5:02:40 PM
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Propiedad"%>
+<%@page import="portalinmobiliario.model.Comuna"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="portalinmobiliario.model.ComunaDal"%>
+<%@page import="portalinmobiliario.model.PropiedadDal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Contacto</title>
+        <title>Listado de propiedades</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--Bootstrap-->
@@ -25,22 +30,6 @@
         <link rel="icon" type="image/png" href="images/pi.png">
     </head>
     <body>
-        <script language="javascript" type="text/javascript">
-            function Solo_Numerico(variable)
-            {
-                Numer=parseInt(variable);
-                if (isNaN(Numer))
-                {
-                    return "";
-                }
-                    return Numer;
-            }
-            
-            function ValNumero(Control)
-            {
-                Control.value=Solo_Numerico(Control.value);
-            }
-        </script>
         <style>
             html {
                 position: relative;
@@ -56,7 +45,7 @@
                 font-family: Raleway, Monospace;
             }
             body {
-                background-image: url(images/bg3.jpg);
+                background-image: url(images/bg5.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -73,6 +62,7 @@
                 background-color: #000000;
             }
         </style>
+        
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -85,13 +75,13 @@
                 </div>
                 <div>
                     <ul class="nav navbar-nav">
-                        <li>
+                        <li class="active">
                             <a href="propiedades.jsp">
                                 <i class="fa fa-building"></i>
                                 &nbsp; Propiedades
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="contacto.jsp">
                                 <i class="fa fa-comments"></i>
                                 &nbsp; Contacto
@@ -106,81 +96,98 @@
                         <li>
                             <a href="about.jsp">
                                 <i class="fa fa-code"></i>
-                                &nbsp; by not-null.cl
+                                    &nbsp; by not-null.cl
                             </a>
                         </li> 
                     </ul>
                 </div>
             </div>
         </nav>
-        <h1></h1>
-        <!--Formulario de ingreso de consultas-->      
-        <div class="container well">
-            <h1><i class="fa fa-comments"></i> &nbsp;¿Tienes preguntas? Nuestros ejecutivos te contactarán a la brevedad:</h1>
-            <hr>
-            <form class="form-horizontal" role="form" method="post" action = "procesar_pregunta.do">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="nombre">
-                        <i class="fa fa-user"></i>
-                    </label>
-                    <div class="col-sm-10">
-                        <input type="text"
-                            name="txt_nombre"
-                            class="form-control"
-                            id="nombre"                           
-                            placeholder="Nombre de Contacto"
-                            required />
-                    </div>
-                    <label class="control-label col-sm-2" for="email">
-                        <i class="fa fa-envelope"></i>
-                    </label>
-                    <div class="col-sm-10">
-                        <input type="email" 
-                            class="form-control" 
-                            id="email" 
-                            name="txt_email" 
-                            placeholder="Escriba su email"
-                            required />
-                    </div>
-                    <label class="control-label col-sm-2" for="phone">
-                        <i class="fa fa-phone"></i>
-                    </label>
-                    <div class="col-sm-10">
-                        <input type="tel" 
-                            class="form-control" 
-                            id="phone" 
-                            name="txt_phone" 
-                            placeholder="Escriba su número Telefónico"
-                            required 
-                            onkeyUp="return ValNumero(this);"
-                            />
-                    </div>
-                    <label class="control-label col-sm-2" for="pregunta">
-                        <i class="fa fa-edit"></i>
-                    </label>
-                    <div class="col-sm-10">
-                        <textarea name="txt_pregunta" 
-                            id="pregunta"
-                            value="" 
-                            cols="" 
-                            rows="3" 
-                            
-                            class="form-control"
-                            required />
-                        </textarea>
-                    </div>
-                    <label class="control-label col-sm-2" for="enviar">
-                        <i class="fa fa-check"></i>
-                    </label>
-                    <div class="col-sm-10">
-                        <button type="submit" 
-                                class="btn btn-success" 
-                                name="btn_enviar">Enviar</button>
-                    </div>
-                </div>
-            </form>
+ <form action="propiedades.jsp" method="POST">  
+        <div class="container bg-success ">
+            <br>
+            <div class="col-sm-5">
+            <h4>    
+            Selecciona la comuna donde buscas casa o departamento:
+            </h4>
+            </div>       
+            <div class="col-sm-5">                    
+            <select name = "dll_comunas" class="form-control">
+                <%
+                ComunaDal comunaDal = new ComunaDal();
+                ArrayList<Comuna> listasComunas = comunaDal.listaComuna();
+                for(Comuna c : listasComunas)
+                {      
+                %>
+                 <option value = "<%=c.getIdComuna()%>"><%=c.getNombreComuna()%></option>
+                 <%
+                }
+                 %>
+            </select>                
+            </div>          
+            <div class="col-sm-2">
+                <button class="btn btn-success" type="submit" value="Filtrar Resultados" name="btn_comuna" >
+                    <i class="fa fa-filter"></i> &nbsp; Filtrar Resultados
+                </button>
+            </div>
+            </form> 
+            <br>
+            <table class="table table-hover" >
+                <thead>
+                    <tr class="bg-primary">
+                        <td><i class="fa fa-photo"></i>&nbsp;ID</td>
+                        <td><i class="fa fa-photo"></i></td>
+                        <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
+                        <td><i class="fa fa-usd"></i>&nbsp;UF</td>
+                        <td><i class="fa fa-usd"></i>&nbsp;Pesos</td>
+                        <td><i class="fa fa-map-marker"></i>&nbsp;Comuna</td>
+                        <td><i class="fa fa-square-o"></i>&nbsp;m2 Totales</td>
+                        <td><i class="fa fa-th"></i>&nbsp;m2 Construidos</td>
+                        <td><i class="fa fa-bed"></i>Dorms.</td>
+                        <td><i class="fa fa-tint"></i>Baños</td>
+                        <td><i class="fa fa-newspaper-o"></i>&nbsp;Descripción</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%                                   
+                    try
+                    {   
+                        int comuna = 1;  
+                        PropiedadDal propiedadDal = new PropiedadDal();
+                        ArrayList<Propiedad> listaPropiedades = propiedadDal.listaPropiedad();
+                        if(request.getParameter("btn_comuna") != null) 
+                        {                                                 
+                        comuna = Integer.parseInt(request.getParameter("dll_comunas")); 
+                        listaPropiedades = propiedadDal.listaPropiedad(comuna);
+                        }
+                        for(Propiedad p : listaPropiedades)
+                        {                                       
+                    %>
+                    <tr>
+                        <td><%=p.getCodigoPropiedad()%></td>
+                        <td><img src="images/<%=p.getFoto()%>" class="img-thumbnail"></td>
+                        <td><%=p.getTipoPropiedad()%></td>
+                        <td><%=p.getPrecioUF()%></td>
+                        <td><%=p.precioCPL()%></td>
+                        <td><%=p.getComuna()%></td>
+                        <td><%=p.getMetrosTotal()%></td>
+                        <td><%=p.getMetrosConstruidos()%></td>
+                        <td><%=p.getNumeroDormitorios()%></td>
+                        <td><%=p.getNumeroBanios()%></td>                      
+                        <td><%=p.getDescripcion()%></td>  
+                    </tr>
+                    <%
+                       }                       
+                    }
+                    catch(Exception e)
+                    {
+                              
+                    }
+                    %>
+                </tbody>
+            </table>
         </div>
-        
+    
         <footer class="footer">
             <div class="container">
                 <!--Creative Commons License-->

@@ -38,7 +38,7 @@ public class ProcesarPropiedad extends HttpServlet {
             
             prop = prop_dal.buscarPropiedad(codigoPropiedad);
             
-            if (prop.getCodigoPropiedad() != "no disponible") {
+            if (prop.getCodigoPropiedad() >=prop_dal.minPropiedad() && prop.getCodigoPropiedad() <= prop_dal.maxPropiedad() ) {
                 //Si se recibe una propiedad válida, se crea el atributo de sesión
                 request.getSession().setAttribute("propiedad", prop);
                 //...y se muestra la propiedad encontrada.

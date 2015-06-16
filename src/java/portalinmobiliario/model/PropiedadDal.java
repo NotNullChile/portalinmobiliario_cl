@@ -61,16 +61,16 @@ public class PropiedadDal
             //Se conecta a la BD
             conexion();
             //Consulta SQL
-            String sql = "select p.idPropiedad, p.foto, p.precioUf,"
+            String sql = "SELECT p.idPropiedad, p.foto, p.precioUf,"
                     + "p.mtsConstruido, p.mtsTotal,p.numeroCormitorios, "
                     + "p.numeroBaños, p.tipoPropiedad,c.nombreComuna,p.descripcion "
-                    + "from propiedad p inner join comuna c on p.idComuna = c.idComuna;";
+                    + "FROM propiedad p INNER JOIN comuna c on p.idComuna = c.idComuna;";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
                 Propiedad p = new Propiedad(); 
-                p.setCodigoPropiedad(rs.getString(1));
+                p.setCodigoPropiedad(rs.getInt(1));
                 p.setFoto(rs.getString(2));
                 p.setPrecioUF(rs.getDouble(3));
                 p.setMetrosConstruidos(rs.getDouble(4));
@@ -97,16 +97,17 @@ public class PropiedadDal
         {
             ArrayList <Propiedad> listaPropiedades = new ArrayList<>();
             conexion();
-            String sql = "select p.idPropiedad, p.foto, p.precioUf,p.mtsConstruido,"
+            String sql = "SELECT p.idPropiedad, p.foto, p.precioUf,p.mtsConstruido,"
                     + " p.mtsTotal,p.numeroCormitorios,p.numeroBaños, "
                     + "p.tipoPropiedad,c.nombreComuna,p.descripcion "
-                    + "from propiedad p inner join comuna c on p.idComuna = c.idComuna "
-                    + "where c.idComuna = " + idComuna + ";";
+                    + "FROM propiedad p INNER JOIN comuna c on p.idComuna = c.idComuna "
+                    + "WHERE c.idComuna = " + idComuna + ";";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                Propiedad p = new Propiedad();             
+                Propiedad p = new Propiedad();
+                p.setCodigoPropiedad(rs.getInt(1));
                 p.setFoto(rs.getString(2));
                 p.setPrecioUF(rs.getDouble(3));
                 p.setMetrosConstruidos(rs.getDouble(4));
@@ -132,17 +133,17 @@ public class PropiedadDal
         {
             ArrayList <Propiedad> listaPropiedades = new ArrayList<>();
             conexion();
-            String sql = "select p.idPropiedad, p.foto, p.precioUf,p.mtsConstruido,"
+            String sql = "SELECT p.idPropiedad, p.foto, p.precioUf,p.mtsConstruido,"
                     + " p.mtsTotal,p.numeroCormitorios,p.numeroBaños, "
                     + "p.tipoPropiedad,c.nombreComuna,p.descripcion "
-                    + "from propiedad p inner join comuna c on p.idComuna = c.idComuna "
-                    + "where p.idPropiedad = '" + idPropiedad + "';";
+                    + "FROM propiedad p INNER JOIN comuna c on p.idComuna = c.idComuna "
+                    + "WHERE p.idPropiedad = '" + idPropiedad + "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
                 Propiedad p = new Propiedad();
-                p.setCodigoPropiedad(rs.getString(1));
+                p.setCodigoPropiedad(rs.getInt(1));
                 p.setFoto(rs.getString(2));
                 p.setPrecioUF(rs.getDouble(3));
                 p.setMetrosConstruidos(rs.getDouble(4));
@@ -167,7 +168,7 @@ public class PropiedadDal
       try
       {
             conexion();
-            String sql = "select count(idPropiedad) from propiedad;";
+            String sql = "SELECT count(idPropiedad) FROM propiedad;";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
@@ -198,7 +199,7 @@ public class PropiedadDal
                         + "tipopropiedad = '"+ p.getTipoPropiedad() +"', "
                         + "idComuna = '" + p.getComuna() + "', "
                         + "descripcion = '"+ p.getDescripcion() +"' "
-                    + "WHERE idPropiedad = '" + p.getCodigoPropiedad() +"' ; ";
+                    + "WHERE idPropiedad = " + p.getCodigoPropiedad() +" ; ";
         return state.executeUpdate(sql);                    
         } 
         catch (SQLException e)
@@ -212,7 +213,7 @@ public class PropiedadDal
         try 
         {
         conexion();
-        String sql = "delete from propiedad where idPropiedad = '"+ p.getCodigoPropiedad() +"';";
+        String sql = "DELETE FROM propiedad WHERE idPropiedad = "+ p.getCodigoPropiedad() +";";
         return state.executeUpdate(sql);                    
         } 
         catch (SQLException e)
@@ -242,7 +243,7 @@ public class PropiedadDal
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(); 
             if(rs.first()){
-                p.setCodigoPropiedad(rs.getString("p.idPropiedad"));
+                p.setCodigoPropiedad(rs.getInt("p.idPropiedad"));
                 p.setFoto(rs.getString("p.foto"));
                 p.setPrecioUF(rs.getDouble("p.precioUF"));
                 p.setMetrosConstruidos(rs.getDouble("p.mtsConstruido"));
@@ -259,5 +260,48 @@ public class PropiedadDal
             
         }
         return p;
+    }
+    public int minPropiedad()
+    {
+      try
+      {
+            conexion();
+            String sql = "SELECT min(idPropiedad) FROM propiedad;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            { 
+               return rs.getInt(1);
+            }
+            conn.close(); 
+       }
+      catch(SQLException e)
+      {
+          return e.getErrorCode();
+      }
+      return 0;
+    }
+    public int maxPropiedad()
+    {
+      try
+      {
+            conexion();
+            String sql = "SELECT max(idPropiedad) FROM propiedad;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            { 
+               return rs.getInt(1);
+            }
+           conn.close(); 
+       }
+      catch(SQLException e)
+      {
+          return e.getErrorCode();
+          
+      }
+      
+      return 0;
+      
     }
 }

@@ -135,6 +135,7 @@
             <table class="table table-hover" >
                 <thead>
                     <tr class="bg-primary">
+                        <td><i class="fa fa-photo"></i>&nbsp;ID</td>
                         <td><i class="fa fa-photo"></i></td>
                         <td><i class="fa fa-home">/<i class="fa fa-building"></i></i></td>
                         <td><i class="fa fa-usd"></i>&nbsp;UF</td>
@@ -163,6 +164,7 @@
                         {                                       
                     %>
                     <tr>
+                        <td><%=p.getCodigoPropiedad()%></td>
                         <td><img src="images/<%=p.getFoto()%>" class="img-thumbnail"></td>
                         <td><%=p.getTipoPropiedad()%></td>
                         <td><%=p.getPrecioUF()%></td>

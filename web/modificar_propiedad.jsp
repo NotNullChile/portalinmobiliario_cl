@@ -130,14 +130,14 @@
                                         <%                                   
                                     try
                                     {   
-                                        int idPropiedad = 1;                    
+                                        String idPropiedad = "1";                    
                                         PropiedadDal propiedadDal = new PropiedadDal();
                                         ArrayList<Propiedad> listaPropiedades = null;
                                         ComunaDal comunaDal = new ComunaDal();
                                         String codigo = request.getParameter("txt_codigo");
                                         if(request.getParameter("btn_buscar") != null) 
                                         {                                                 
-                                        idPropiedad = Integer.parseInt(request.getParameter("txt_codigo")); 
+                                        idPropiedad = request.getParameter("txt_codigo"); 
                                         listaPropiedades = propiedadDal.listaPropiedades(idPropiedad);
                                         }
                                         //for(Propiedad p : listaPropiedades)

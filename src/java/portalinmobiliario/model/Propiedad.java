@@ -12,7 +12,7 @@ package portalinmobiliario.model;
  */
 public class Propiedad {
     //Class fields.
-    private String codigoPropiedad;
+    private int codigoPropiedad;
     private String foto;
     private String tipoPropiedad;
     private double precioUF;
@@ -24,7 +24,7 @@ public class Propiedad {
     private int numeroBanios;
     
     //Class constructors.
-    public Propiedad(String codigoPropiedad,String foto ,String tipoPropiedad, double precioUF, String comuna, double metrosConstruidos, double metrosTotal, String descripcion, int numeroDormitorios, int numeroBanios) {
+    public Propiedad(int codigoPropiedad,String foto ,String tipoPropiedad, double precioUF, String comuna, double metrosConstruidos, double metrosTotal, String descripcion, int numeroDormitorios, int numeroBanios) {
         this.codigoPropiedad = codigoPropiedad;
         this.foto = foto;
         this.tipoPropiedad = tipoPropiedad;
@@ -38,7 +38,7 @@ public class Propiedad {
     }
     
     public Propiedad() {
-        this.codigoPropiedad = "no disponible";
+        this.codigoPropiedad = 0;
         this.foto = "error.jpg";
         this.tipoPropiedad = "no disponible";
         this.precioUF = 0.0;
@@ -61,11 +61,11 @@ public class Propiedad {
         this.foto = foto;
     }
     
-    public String getCodigoPropiedad() {
+    public int getCodigoPropiedad() {
         return codigoPropiedad;
     }
 
-    public void setCodigoPropiedad(String codigoPropiedad) {
+    public void setCodigoPropiedad(int codigoPropiedad) {
         this.codigoPropiedad = codigoPropiedad;
     }
 
