@@ -98,7 +98,33 @@
             </div>
         </div>
     </nav>
-        <h1>We are not Null!</h1>
+        <div class="container well">
+            <h1><i class="fa fa-newspaper-o"></i> &nbsp;We are not null</h1>
+            <hr>
+                <div class="row">
+                        <div class="col-sm-6">Ricardo Carrasco</div>
+                        <div class="col-sm-6">Randy Urtubia</div>
+                </div>
+                    <div class="row">
+                        Sitio desarrollado utilizando:
+                        <h3>Tecnologías Backend</h3>
+                        <ul>Patrón de Arquitectura MVC</ul>
+                        <ul>Java Servlets</ul>
+                        <ul>Java Beans</ul>
+                        <ul>MySQL RDBMS</ul>
+                        <ul>Glassfish Server</ul>
+                        <ul>GitHub CVS</ul>
+                        <br>
+                        <h3>Tecnologías Frontend</h3>
+                        <ul>HTML5</ul>
+                        <ul>Java JSP</ul>
+                        <ul>CSS</ul>
+                        <ul>Javascript</ul>
+                        <ul>Bootstrap</ul>
+                        <ul>Font Awesome</ul>
+                        <ul>Google Fonts</ul>
+                </div>
+        </div>
 
         <footer class="footer">
             <div class="container">
