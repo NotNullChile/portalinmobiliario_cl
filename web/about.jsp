@@ -103,7 +103,7 @@
             <hr>
                 <div class="row">
                         <div class="col-sm-6">Ricardo Carrasco</div>
-                        <div class="col-sm-6">Randy Urtubia</div>
+                        <div class="col-sm-6">Randy Urtubia.</div>
                 </div>
                     <div class="row">
                         Sitio desarrollado utilizando:
