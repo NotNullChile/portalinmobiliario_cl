@@ -57,6 +57,12 @@
                 height: 60px;
                 background-color: #000000;
             }
+              .green-border {
+                border-color: green;
+                border-width: 3px;
+                border-style: solid;
+                border-radius: 50%;
+            }
         </style>
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
@@ -102,11 +108,28 @@
             <h1><i class="fa fa-newspaper-o"></i> &nbsp;We are not null</h1>
             <hr>
                 <div class="row">
-                        <div class="col-sm-6">Ricardo Carrasco</div>
-                        <div class="col-sm-6">Randy Urtubia.</div>
+                    <div class="col-sm-5"><h3>Ricardo Carrasco</h3>
+                            <br>
+                            <img class="img-thumbnail green-border" src="images/Link.jpg" width="218" height="223" alt="Link"/>
+                            <br>
+                            <br>
+                        <br>
+                        <br>
+                            <i class="fa fa-github"></i>&nbsp;&nbsp;<a href="https://github.com/RicardoACS">RicardoACS @ GitHub</a>
+                        </div>
+                    <div class="col-sm-5"><h3>Randy Urtubia.</h3>
+                        <br>
+                        <img class="img-thumbnail green-border" src="images/tboi.png" width="223" height="223" alt="The Binding of Isaac"/>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <i class="fa fa-github"></i>&nbsp;&nbsp;<a href="https://github.com/rurtubia">rurtubia @ GitHub</a>
+                        </div>
+                        
                 </div>
                     <div class="row">
-                        Sitio desarrollado utilizando:
+                        <h1>Sitio desarrollado utilizando:</h1>
                         <h3>Tecnologías Backend</h3>
                         <ul>Patrón de Arquitectura MVC</ul>
                         <ul>Java Servlets</ul>
