@@ -4,6 +4,7 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Ejecutivo"%>
 <%@page import="portalinmobiliario.model.PropiedadDal"%>
 <%@page import="portalinmobiliario.model.ComunaDal"%>
 <%@page import="portalinmobiliario.model.Comuna"%>
@@ -77,6 +78,21 @@
                 Control.value=Solo_Numerico(Control.value);
             }
         </script>
+        <!--Java servlet sessions and attributes-->
+        <%
+            try
+            {
+              HttpSession sesion = request.getSession();
+              Ejecutivo ej = (Ejecutivo) sesion.getAttribute("ejecutivo");
+              ej.getAlias();  
+            }
+            catch(Exception error404)
+            {
+                
+                request.getRequestDispatcher("error404.jsp").forward(request, response);
+            }
+            
+        %>
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -108,7 +124,7 @@
                             </a>
                         </li>  
                         <li>
-                            <a href="ingreso_intranet.jsp">
+                            <a href="cerrar_session.do">
                                 <i class="fa fa-lock"></i>
                                     &nbsp; Logout
                             </a>

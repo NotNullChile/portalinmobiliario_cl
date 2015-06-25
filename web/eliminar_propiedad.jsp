@@ -63,6 +63,11 @@
                 background-color: #000000;
             }
         </style>
+        <!--Java servlet sessions and attributes-->
+        <%
+            HttpSession sesion = request.getSession();
+            Ejecutivo ex = (Ejecutivo) sesion.getAttribute("ejecutivo");
+        %>
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -94,7 +99,7 @@
                             </a>
                         </li>  
                         <li>
-                            <a href="ingreso_intranet.jsp">
+                            <a href="cerrar_session.do">
                                 <i class="fa fa-lock"></i>
                                 &nbsp; Logout
                             </a>
@@ -107,8 +112,6 @@
         <div class="col-sm-1"></div>
         <div class="well col-sm-10">
             <%
-            HttpSession sesion = request.getSession();
-            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");  
             Propiedad p = (Propiedad) sesion.getAttribute("propiedad");
             %>
             <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Eliminación de Propiedad:</h1>

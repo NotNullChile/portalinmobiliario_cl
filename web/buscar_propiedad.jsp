@@ -63,7 +63,8 @@
         </style>
         <%
             HttpSession sesion = request.getSession();
-            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");            
+            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo"); 
+            e.getAlias();
         %>
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
@@ -96,7 +97,7 @@
                             </a>
                         </li>  
                         <li>
-                            <a href="ingreso_intranet.jsp">
+                            <a href="cerrar_session.do">
                                 <i class="fa fa-lock"></i>
                                 &nbsp; Logout
                             </a>

@@ -38,7 +38,7 @@ public class ComprobarSesion extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             Ejecutivo prueba = (Ejecutivo)request.getSession().getAttribute("ejecutivo");
-            if (prueba.getNombreEjecutivo() != "") {
+            if (!prueba.getNombreEjecutivo().equals(null)) {
                 request.getRequestDispatcher("intranet.jsp").forward(request, response);
             }
             else

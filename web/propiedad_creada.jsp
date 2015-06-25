@@ -4,6 +4,7 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="portalinmobiliario.model.Ejecutivo"%>
 <%@page import="portalinmobiliario.model.Propiedad"%>
 <%@page import="portalinmobiliario.model.Comuna"%>
 <%@page import="java.util.ArrayList"%>
@@ -62,7 +63,11 @@
                 background-color: #000000;
             }
         </style>
-        
+        <!--Java servlet sessions and attributes-->
+        <%
+            HttpSession sesion = request.getSession();
+            Ejecutivo ej = (Ejecutivo) sesion.getAttribute("ejecutivo");
+        %>
         <!--Bootstrap Navigation Bar-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">

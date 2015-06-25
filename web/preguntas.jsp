@@ -92,7 +92,7 @@
                             </a>
                         </li>  
                         <li>
-                            <a href="ingreso_intranet.jsp">
+                            <a href="cerrar_session.do">
                                 <i class="fa fa-lock"></i>
                                     &nbsp; Logout
                             </a>
@@ -106,7 +106,8 @@
         <div class="well col-sm-10">
             <%
             HttpSession sesion = request.getSession();
-            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");     
+            Ejecutivo e = (Ejecutivo) sesion.getAttribute("ejecutivo");  
+            e.getAlias();
             %>
             <h1><i class="fa fa-spin fa-cog"></i>&nbsp;Responder preguntas:</h1>
             <h3>&nbsp;</h3>
